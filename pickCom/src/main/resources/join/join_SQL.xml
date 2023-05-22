@@ -40,4 +40,16 @@
         WHERE MEMBER_ID = #{MEMBER_ID}
         ]]>
 	</select>
+
+	<!-- 이메일 중복확인 -->
+	<select id="selectEmailCheck" parameterType="String" resultType="int">
+	<![CDATA[
+		SELECT
+			COUNT(MEMBER_EMAIL) cnt
+		FROM
+			MEMBER
+		WHERE
+			MEMBER_EMAIL = #{MEMBER_EMAIL}
+		]]>
+	</select>
 </mapper>

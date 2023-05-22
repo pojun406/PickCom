@@ -1,17 +1,28 @@
 package shop.product;
 
+import common.AbstractDao;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Map;
 
-public interface ProductDAO {
+@Repository("productDAO")
+public class ProductDAO extends AbstractDao {
     // 신제품 리스트
-    public List<Map<String, Object>> newProductList(Map<String, Object> map);
+    @SuppressWarnings("unchecked")
+    public List<Map<String, Object>> newProductList(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>) newProductList("product.newProductList", map);
+    }
 
     // 베스트제품 리스트
-    public List<Map<String, Object>> bestProductList(Map<String, Object> map);
+    public List<Map<String, Object>> bestProductList(Map<String, Object> map){
+        return (List<Map<String, Object>>) bestProductList("product.bestProductList", map);
+    }
 
     // 카테고리별 제품 리스트
-    public List<Map<String, Object>> cateProductList(Map<String, Object> map);
+    public List<Map<String, Object>> cateProductList(Map<String, Object> map){
+        return (List<Map<String, Object>>) selectPagingList("product.cateProductList", map);
+    }
 
     // 메인에서 검색
     public List<Map<String, Object>> mainSearch(Map<String, Object> map);

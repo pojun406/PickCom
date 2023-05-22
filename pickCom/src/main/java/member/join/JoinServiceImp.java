@@ -1,12 +1,26 @@
 package member.join;
 
 import common.JDBConnection;
+import jakarta.annotation.Resource;
 import member.MemberDTO;
+import org.springframework.stereotype.Service;
+
 import java.sql.*;
+import java.util.Map;
 
+@Service("joinService")
 public class JoinServiceImp extends JDBConnection implements JoinService {
+    @Resource(name="joinDAO")
+    private JoinDAO joinDAO;
 
-    public void memberInsert(MemberDTO m){
+    // 이메일 인증 설정
+    private MailSender mailSender;
+
+    public void setMailSender(MailSender mailSender) {this.mailSender = mailSender;}
+
+    // 회원가입
+    @Override
+    public void memberInsert(Map<String, Object> map) throws Exception{
         Connection con = null;
         PreparedStatement ps = null;
         try {
@@ -25,8 +39,13 @@ public class JoinServiceImp extends JDBConnection implements JoinService {
         } finally {
             closeConnection(con, ps);
         }
+
+        joinDAO.memberInsert(map);
     };
-    public boolean idCheck(String id){
+
+    // 아이디 중복체크
+    @Override
+    public int idCheck(String id) throws Exception{
         boolean result=true;
         Connection con=null;
         ResultSet rs=null;
@@ -45,10 +64,18 @@ public class JoinServiceImp extends JDBConnection implements JoinService {
         } finally {
             closeConnection(con, ps, rs);
         }
-        return result;
+        return joinDAO.idCheck(id);
     };
-    public boolean mailCheck (String email){
-        boolean result = false;
-        return result;
+
+    // 이메일 인증
+    @Override
+    public boolean mailCheck (String email) throws Exception{
+        return false;
     };
+
+    // 이메일 중복 체크
+    @Override
+    public int selectEmailCheck(String email) throws Exception{
+        return joinDAO.selectEmailCheck(email);
+    }
 }
