@@ -9,8 +9,8 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 import java.util.Map;
 
-public class AbstractDao {
-    protected Log log = LogFactory.getLog(AbstractDao.class);
+public class AbstractDAO {
+    protected Log log = LogFactory.getLog(AbstractDAO.class);
 
     @Autowired
     private SqlSessionTemplate sqlSession;

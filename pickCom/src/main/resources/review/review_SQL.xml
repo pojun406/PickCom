@@ -1,2 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+    <insert id="insertReviewFile" parameterType="hashmap"> <!-- 상품 Review 이미지 등록 -->
+        <![CDATA[
+			INSERT INTO REVIEW_IMAGE
+					(
+						REVIEW_IMAGE_NUM,
+						PRODUCT_NO,
+						REVIEW_IMAGE_ORG,
+						REVIEW_IMAGE_STD
+					)
+			VALUES
+					(
+						REVIEW_IMAGE_SEQ.NEXTVAL,
+						#{IDX},
+						'null',
+						#{UPLOAD_SAVE_NAME}
+					)
+		]]>
+    </insert>
+
+    <select id="selectReviewList" parameterType="hashmap" resultType="hashmap"> <!-- 상품 Review 리스트 -->
+        <![CDATA[
+
+		SELECT 	AAA.*
+			FROM(
+				SELECT 	COUNT(*) OVER() AS TOTAL_COUNT1,
+					AA.*,
+					ROWNUM AS NUM
+				FROM(
+					SELECT
+					REVIEW_NO,
+					MEMBER_NO,
+					ORDER_NO,
+					ORDER_DETAIL_NO,
+					REVIEW_TITLE,
+					REVIEW_CONTENT,
+					REVIEW_RATING,
+					REVIEW_DATE,
+					PRODUCT_NO,
+					REVIEW_READCNT,
+					REVIEW_IMG,
+					MEMBER_NAME
+					FROM
+						REVIEW
+				WHERE PRODUCT_NO = #{IDX}
+				ORDER BY REVIEW_NO DESC
+					  ) AA
+					) AAA
+				WHERE 	AAA.NUM BETWEEN #{START} AND #{END}
+		]]>
+    </select>
+
+    <insert id="insertProductReview" parameterType="hashmap"> <!-- 상품 Review 등록 -->
+        <![CDATA[
+			INSERT INTO REVIEW(
+								REVIEW_NO,
+								MEMBER_NO,
+								REVIEW_TITLE,
+								REVIEW_CONTENT,
+								REVIEW_DATE,
+								PRODUCT_NO,
+								REVIEW_IMG,
+								MEMBER_NAME
+								)
+						values(
+								REVIEW_NO_SEQ.NEXTVAL,
+								#{MEMBER_NO},
+								#{REVIEW_TITLE},
+								#{REVIEW_CONTENT},
+								sysdate,
+								#{IDX},
+								#{REVIEW_IMG},
+								#{MEMBER_NAME}
+							   )
+		]]>
+    </insert>
+
+    <update id="updateReview" parameterType="hashmap"> <!-- 상품 Review 수정 -->
+        <![CDATA[
+			UPDATE  REVIEW
+			  SET   REVIEW_TITLE = #{REVIEW_TITLE},
+			        REVIEW_CONTENT = #{REVIEW_CONTENT},
+			        REVIEW_DATE = #{REVIEW_DATE}
+			WHERE   PRODUCT_NO = #{IDX}
+			  AND   REVIEW_NO = #{REVIEW_NO}
+			  AND   MEMBER_NO = #{MEMBER_NO}
+		]]>
+    </update>
+
+    <update id="deleteReview" parameterType="hashmap"> <!-- 상품 Review 삭제(숨김) 만들어놨지만 사용X -->
+        <![CDATA[
+			UPDATE  REVIEW
+			  SET   REVIEW_TITLE = #{REVIEW_TITLE},
+			        REVIEW_CONTENT = #{REVIEW_CONTENT},
+			        REVIEW_DATE = #{REVIEW_DATE}
+			WHERE   PRODUCT_NO = #{IDX}
+			  AND   REVIEW_NO = #{REVIEW_NO}
+			  AND   MEMBER_NO = #{MEMBER_NO}
+		]]>
+    </update>
+</mapper>

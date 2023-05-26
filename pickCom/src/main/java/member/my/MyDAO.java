@@ -1,6 +1,6 @@
 package member.my;
 
-import common.AbstractDao;
+import common.AbstractDAO;
 import common.CommandMap;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository("myDAO")
-public class MyDAO extends AbstractDao {
+public class MyDAO extends AbstractDAO {
     // 구매 목록
     public List<Map<String,Object>> orderList(Map<String,Object> map) throws Exception{
         return (List<Map<String,Object>>) orderList("my.selectOrderList",map);

@@ -13,11 +13,6 @@ public class JoinServiceImp extends JDBConnection implements JoinService {
     @Resource(name="joinDAO")
     private JoinDAO joinDAO;
 
-    // 이메일 인증 설정
-    private MailSender mailSender;
-
-    public void setMailSender(MailSender mailSender) {this.mailSender = mailSender;}
-
     // 회원가입
     @Override
     public void memberInsert(Map<String, Object> map) throws Exception{
@@ -65,12 +60,6 @@ public class JoinServiceImp extends JDBConnection implements JoinService {
             closeConnection(con, ps, rs);
         }
         return joinDAO.idCheck(id);
-    };
-
-    // 이메일 인증
-    @Override
-    public boolean mailCheck (String email) throws Exception{
-        return false;
     };
 
     // 이메일 중복 체크

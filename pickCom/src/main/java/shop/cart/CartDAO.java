@@ -1,6 +1,6 @@
 package shop.cart;
 
-import common.AbstractDao;
+import common.AbstractDAO;
 import common.CommandMap;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository("cartDAO")
-public class CartDAO extends AbstractDao {
+public class CartDAO extends AbstractDAO {
     // 장바구니 리스트 출력
     public List<Map<String, Object>> cartList(CommandMap commandMap) throws Exception {
         return (List<Map<String,Object>>) selectList("cart.cartList", commandMap.getMap());

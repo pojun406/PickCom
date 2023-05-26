@@ -1,108 +1,142 @@
 package shop.product;
 
-import common.AbstractDao;
+import common.AbstractDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
 @Repository("productDAO")
-public class ProductDAO extends AbstractDao {
+public class ProductDAO extends AbstractDAO {
     // 신제품 리스트
-    @SuppressWarnings("unchecked")
     public List<Map<String, Object>> newProductList(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>) newProductList("product.newProductList", map);
     }
 
     // 베스트제품 리스트
-    public List<Map<String, Object>> bestProductList(Map<String, Object> map){
+    public List<Map<String, Object>> bestProductList(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>) bestProductList("product.bestProductList", map);
     }
 
     // 카테고리별 제품 리스트
-    public List<Map<String, Object>> cateProductList(Map<String, Object> map){
+    public List<Map<String, Object>> cateProductList(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>) selectPagingList("product.cateProductList", map);
     }
 
     // 메인에서 검색
-    public List<Map<String, Object>> mainSearch(Map<String, Object> map);
+    public List<Map<String, Object>> mainSearch(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>) selectPagingList("product.mainSearch", map);
+    }
 
     // 장바구니 번호 검색
-    public List<Map<String, Object>> selectCartNo(Map<String, Object> map);
+    public List<Map<String, Object>> selectCartNo(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>) selectList("product.selectCartNo", map);
+    }
 
     // 제품 디테일 데이터 가져옴
-    public Map<String, Object> selectProductDetail(Map<String, Object> map);
+    public Map<String, Object> selectProductDetail(Map<String, Object> map) throws Exception{
+        return (Map<String, Object>) selectOne("product.selectProductDetail", map);
+    }
 
     // 제품 qna리스트 가져옴
-    public List<Map<String, Object>> selectProductQna(Map<String, Object> map);
-
-    // 제품 리뷰리스트 가져옴
-    public List<Map<String, Object>> selectReviewList(Map<String, Object> map);
-
-    // 제품 리뷰 수정
-    public void updateReview(Map<String, Object> map);
+    public List<Map<String, Object>> selectProductQna(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>) selectList("product.selectProductQna", map);
+    }
 
     // 조회수 증가
-    public void productHitCnt(Map<String, Object> map);
+    public void productHitCnt(Map<String, Object> map) throws Exception{
+        update("product.productReadCntUp", map);
+    }
 
     // 제품 등록
-    public void insertProduct(Map<String, Object> map);
+    public void insertProduct(Map<String, Object> map) throws Exception{
+        insert("product.productInsert", map);
+    }
 
     // 제품 수정
-    public void updateProduct(Map<String, Object> map);
+    public void updateProduct(Map<String, Object> map) throws Exception{
+        update("product.updateProduct", map);
+    }
 
     // 제품 삭제
-    public void deleteProduct(Map<String, Object> map);
+    public void deleteProduct(Map<String, Object> map) throws Exception{
+        update("product.deleteProduct", map);
+    }
 
     // 제품 썸네일 이미지 수정
-    public void updateProductThumbnail(Map<String, Object> map);
+    public void updateProductThumbnail(Map<String, Object> map) throws Exception{
+        update("product.updateProductThumbnail", map);
+    }
 
     // 제품 옵션 등록
-    public void goodsAttribute(Map<String, Object> map);
+    public void productAttribute(Map<String, Object> map) throws Exception{
+        insert("product.attributeInsert", map);
+    }
 
     // 제품 옵션 삭제
-    public void attributeDelete(Map<String, Object> map);
+    public void attributeDelete(Map<String, Object> map) throws Exception{
+        insert("product.attributeDelete", map);
+    }
 
     // 제품 썸네일 이미지 등록
-    public void insertProductThumbnail(Map<String, Object> map);
+    public void insertProductThumbnail(Map<String, Object> map) throws Exception{
+        update("product.updateProductThumbnail", map);
+    }
 
     // 제품 이미지 등록
-    public void insertFile(Map<String, Object> map);
+    public void insertFile(Map<String, Object> map) throws Exception{
+        insert("product.insertFile", map);
+    }
 
-    // 리뷰 이미지 등록
-    public void insertReviewFile(Map<String, Object> map);
+
 
     // 제품 이미지 삭제
-    public void deleteFile(Map<String, Object> map);
+    public void deleteFile(Map<String, Object> map) throws Exception{
+        insert("product.deleteFile", map);
+    }
 
     /*
      * public void deleteFileList(Map<String, Object> map) throws Exception {
-     * update("goods.deleteFileList", map); }
+     * update("product.deleteFileList", map); }
      */
 
     /*
      * public void updateFile(Map<String, Object> map) throws Exception { // 파일수정
-     * update("goods.updateFile", map); }
+     * update("product.updateFile", map); }
      */
 
     // 제품 좋아요 등록
-    public void insertProductLike(Map<String, Object> map);
+    public void insertProductLike(Map<String, Object> map){
+        insert("product.insertProductLike", map);
+    }
 
     // 제품 좋아요 삭제
-    public void deleteProductLike(Map<String, Object> map);
+    public void deleteProductLike(Map<String, Object> map){
+        delete("shop.deleteProductLike", map);
+    }   
 
     // 제품 장바구니 등록
-    public void insertCart(Map<String, Object> map);
+    public void insertCart(Map<String, Object> map){
+        insert("product.insertCart", map);
+    }
 
     // 제품 pk번호 가져오기
-    public Map<String, Object> selectProductAttNum(Map<String, Object> map);
+    public Map<String, Object> selectProductAttNum(Map<String, Object> map){
+        return (Map<String, Object>) selectOne("product.selectProductAttNum", map);
+    }   
 
     // 제품 qna 등록
-    public void insertProductQna(Map<String, Object> map);
+    public void insertProductQna(Map<String, Object> map){
+        insert("product.insertProductQna", map);
+    }
 
     // 제품 qna 수정
-    public void updateProductQna(Map<String, Object> map);
+    public void updateProductQna(Map<String, Object> map){
+        update("product.updateProductQna", map);
+    }
 
     // 구매 리스트 초기화
-    public void gumeListDelete(Map<String, Object> map);
+    public void gumeListDelete(Map<String, Object> map){
+        delete("product.gumelistdelete", map);
+    }
 }

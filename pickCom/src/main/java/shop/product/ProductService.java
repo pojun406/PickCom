@@ -3,11 +3,12 @@ package shop.product;
 import org.springframework.stereotype.Service;
 
 import common.JDBConnection;
+
+import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 import java.util.List;
 import java.util.Map;
 
-@Service
 public interface ProductService{
 
     // 신제품 리스트 * 기능 추가 예정
@@ -17,10 +18,10 @@ public interface ProductService{
     public List<Map<String, Object>> bestProductList(Map<String, Object> map) throws Exception;
 
     // 카테고리별 제품 리스트
-    public List<Map<String, Object>> cateProductList(Map<String, Object> map) throws Exception;
+    public List<Map<String, Object>> cateProductList(Map<String, Object> map, String keyword) throws Exception;
 
     // 메인에서 검색
-    public List<Map<String, Object>> mainSearch(Map<String, Object> map) throws Exception;
+    public List<Map<String, Object>> mainSearch(Map<String, Object> map, String keyword) throws Exception;
 
     // 장바구니 번호 검색
     public List<Map<String, Object>> selectCartNo(Map<String, Object> map) throws Exception;
@@ -31,44 +32,14 @@ public interface ProductService{
     // 제품 qna리스트 가져옴
     public List<Map<String, Object>> selectProductQna(Map<String, Object> map) throws Exception;
 
-    // 제품 리뷰리스트 가져옴
-    public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception;
-
-    // 제품 리뷰 수정
-    public void updateReview(Map<String, Object> map) throws Exception;
-
-    // 조회수 증가
-    public void productHitCnt(Map<String, Object> map) throws Exception;
-
     // 제품 등록
-    public void insertProduct(Map<String, Object> map) throws Exception;
+    public void insertProduct(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
     // 제품 수정
-    public void updateProduct(Map<String, Object> map) throws Exception;
+    public void updateProduct(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
     // 제품 삭제
-    public void deleteProduct(Map<String, Object> map) throws Exception;
-
-    // 제품 썸네일 이미지 수정
-    public void updateProductThumbnail(Map<String, Object> map) throws Exception;
-
-    // 제품 옵션 등록
-    public void productAttribute(Map<String, Object> map) throws Exception;
-
-    // 제품 옵션 삭제
-    public void attributeDelete(Map<String, Object> map) throws Exception;
-
-    // 제품 썸네일 이미지 등록
-    public void insertProductThumbnail(Map<String, Object> map) throws Exception;
-
-    // 제품 이미지 등록
-    public void insertFile(Map<String, Object> map) throws Exception;
-
-    // 리뷰 이미지 등록
-    public void insertReviewFile(Map<String, Object> map) throws Exception;
-
-    // 제품 이미지 삭제
-    public void deleteFile(Map<String, Object> map) throws Exception;
+    public void deleteProduct(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
 
     /*
@@ -88,19 +59,16 @@ public interface ProductService{
     public void deleteProductLike(Map<String, Object> map) throws Exception;
 
     // 제품 장바구니 등록
-    public void insertCart(Map<String, Object> map) throws Exception;
+    public void insertCart(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
     // 제품 pk번호 가져오기
     public Map<String, Object> selectProductAttNum(Map<String, Object> map) throws Exception;
 
     // 제품 qna 등록
-    public void insertProductQna(Map<String, Object> map) throws Exception;
+    public void insertProductQna(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
     // 제품 qna 수정
-    public void updateProductQna(Map<String, Object> map) throws Exception;
-
-    // 제품 리뷰 등록
-    public void insertProductReview(Map<String, Object> map) throws Exception;
+    public void updateProductQna(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
     // 구매 리스트 초기화
     public void gumeListDelete(Map<String, Object> map) throws Exception;

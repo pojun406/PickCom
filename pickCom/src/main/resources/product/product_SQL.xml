@@ -1,2 +1,494 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+    <select id="newProductList" parameterType="hashmap" resultType="hashmap"> <!-- 최신 상품 리스트 -->
+        <![CDATA[
+			SELECT
+				AAA.* 
+			FROM( select count(*) over() as total_count, AA.*
+			FROM(
+				select ROW_NUMBER() OVER (ORDER BY PRODUCT_DATE desc) RNUM,
+				GS.PRODUCT_NO,
+				GS.PRODUCT_CATEGORY,
+				GS.PRODUCT_NAME,
+				GS.PRODUCT_CONTENT,
+				GS.PRODUCT_ORIGIN_PRICE,
+				GS.PRODUCT_SELL_PRICE,
+				GS.PRODUCT_SALE_PRICE,
+				GS.PRODUCT_DATE,
+				GS.PRODUCT_KEYWORD,
+				GS.PRODUCT_READCNT,
+                GS.PRODUCT_PICK,
+                GS.PRODUCT_THUMBNAIL,
+                GI.PRODUCT_image_std
+			FROM
+				PRODUCT GS, PRODUCT_IMAGE GI
+			WHERE 
+				GS.PRODUCT_NO = GI.PRODUCT_NO
+			AND GUBUN = '0'
+				) AA
+		      ) AAA
+		      WHERE AAA.RNUM BETWEEN 0 AND 12 
+		]]>
+    </select>
+
+    <select id="bestProductList" parameterType="hashmap" resultType="hashmap"> <!-- 베스트 상품 리스트 -->
+        <![CDATA[
+			SELECT
+			AAA.* 
+			FROM( select count(*) over() as total_count, AA.*
+			FROM(
+				select ROW_NUMBER() OVER (ORDER BY PRODUCT_READCNT desc) RNUM,
+				GS.PRODUCT_NO,
+				GS.PRODUCT_CATEGORY,
+				GS.PRODUCT_NAME,
+				GS.PRODUCT_CONTENT,
+				GS.PRODUCT_ORIGIN_PRICE,
+				GS.PRODUCT_SELL_PRICE,
+				GS.PRODUCT_SALE_PRICE,
+				GS.PRODUCT_DATE,
+				GS.PRODUCT_KEYWORD,
+				GS.PRODUCT_READCNT,
+                GS.PRODUCT_PICK,
+                GS.PRODUCT_THUMBNAIL,
+                GI.PRODUCT_image_std
+			FROM
+				PRODUCT GS, PRODUCT_IMAGE GI 
+			WHERE 
+				GS.PRODUCT_NO = GI.PRODUCT_NO
+			AND GUBUN = '0'	
+			) AA
+		      ) AAA
+		      WHERE AAA.RNUM BETWEEN 0 AND 12
+		       
+		]]>
+    </select>
+
+
+    <select id="cateProductList" parameterType="hashmap" resultType="hashmap"> <!-- 상품 카테고리별 검색 순서 페이징 리스트  -->
+        <include refid="common.pagingPre2"/>
+
+        SELECT GS.PRODUCT_NO,
+        GS.PRODUCT_CATEGORY,
+        GS.PRODUCT_NAME,
+        GS.PRODUCT_CONTENT,
+        GS.PRODUCT_ORIGIN_PRICE,
+        GS.PRODUCT_SELL_PRICE,
+        GS.PRODUCT_SALE_PRICE,
+        GS.PRODUCT_DATE,
+        GS.PRODUCT_KEYWORD,
+        GS.PRODUCT_READCNT,
+        GS.PRODUCT_PICK,
+        GS.PRODUCT_THUMBNAIL,
+        GS.GUBUN,
+        GI.PRODUCT_IMAGE_STD
+        FROM PRODUCT GS, PRODUCT_IMAGE GI
+        WHERE GS.PRODUCT_NO = GI.PRODUCT_NO
+        AND PRODUCT_CATEGORY = #{cate}
+        <if test="keyword != null">
+            AND (PRODUCT_NAME LIKE '%' || #{keyword} || '%' OR PRODUCT_KEYWORD LIKE '%' || #{keyword} || '%')
+        </if>
+        AND GUBUN = '0'
+        <if test="orderBy != '' and orderBy != 'null'">
+            ORDER BY ${orderBy} ${orderSort}
+        </if>
+        <include refid="common.pagingPost2"/>
+
+    </select>
+
+
+    <select id="mainSearch" parameterType="hashmap" resultType="hashmap"> <!-- 메인검색 리스트 -->
+        <include refid="common.pagingPre2"/>
+        SELECT GS.PRODUCT_NO,
+        GS.PRODUCT_CATEGORY,
+        GS.PRODUCT_NAME,
+        GS.PRODUCT_CONTENT,
+        GS.PRODUCT_ORIGIN_PRICE,
+        GS.PRODUCT_SELL_PRICE,
+        GS.PRODUCT_SALE_PRICE,
+        GS.PRODUCT_DATE,
+        GS.PRODUCT_KEYWORD,
+        GS.PRODUCT_READCNT,
+        GS.PRODUCT_PICK,
+        GS.PRODUCT_THUMBNAIL,
+        GI.PRODUCT_IMAGE_STD
+        FROM PRODUCT GS, PRODUCT_IMAGE GI
+        WHERE GS.PRODUCT_NO = GI.PRODUCT_NO
+        <if test="keyword != null">
+            AND (PRODUCT_NAME LIKE '%' || #{keyword} || '%' OR PRODUCT_KEYWORD LIKE '%' || #{keyword} || '%')
+        </if>
+        AND GUBUN = '0'
+        ORDER BY PRODUCT_NO DESC
+        <include refid="common.pagingPost2"/>
+
+    </select>
+
+
+
+
+    <select id="selectProductDetail" parameterType="hashmap" resultType="hashmap"> <!-- 상품 상세보기 -->
+        <![CDATA[
+			SELECT 
+				PRODUCT_NO,
+				PRODUCT_CATEGORY,
+				PRODUCT_NAME,
+				PRODUCT_CONTENT,
+				PRODUCT_ORIGIN_PRICE,
+				PRODUCT_SELL_PRICE,
+				PRODUCT_SALE_PRICE, 
+				PRODUCT_DATE,
+				PRODUCT_KEYWORD,
+				PRODUCT_READCNT, 
+				PRODUCT_PICK,
+				PRODUCT_THUMBNAIL
+			FROM 
+				PRODUCT 
+			WHERE 
+	           	PRODUCT_NO = #{IDX}	
+
+		]]>
+    </select>
+
+    <select id="selectProductAtt" parameterType="hashmap" resultType="hashmap"> <!-- 상품상세보기 컬러랑 사이즈 배열로 가져오기 -->
+        <![CDATA[
+			SELECT 
+				LISTAGG(PRODUCT_ATT_COLOR,',') WITHIN GROUP(ORDER BY PRODUCT_ATT_COLOR) AS PRODUCT_ATT_COLOR,
+                LISTAGG(PRODUCT_ATT_SIZE,',') WITHIN GROUP(ORDER BY PRODUCT_ATT_SIZE) AS PRODUCT_ATT_SIZE
+			FROM 
+				PRODUCT_ATTRIBUTE
+			WHERE 
+	           	PRODUCT_NO = #{IDX}	
+
+		]]>
+    </select>
+
+    <select id="selectProductAttNum" parameterType="hashmap" resultType="hashmap"> <!-- 상품상세보기 상품옵션 PK값 가져오기 -->
+        <![CDATA[
+			SELECT
+				PRODUCT_ATT_NO
+			FROM
+				PRODUCT_ATTRIBUTE	
+			WHERE
+				PRODUCT_NO = #{IDX}
+			AND PRODUCT_ATT_COLOR like '%' || #{SELECT_COLOR} || '%' 
+            AND PRODUCT_ATT_SIZE like  '%' || #{SELECT_SIZE} || '%'
+		]]>
+    </select>
+
+
+
+
+    <update id="productReadCntUp" parameterType="hashmap"> <!-- 조회수 증가 -->
+        <![CDATA[
+			UPDATE PRODUCT
+			SET
+				PRODUCT_READCNT = NVL(PRODUCT_READCNT, 0) + 1
+			WHERE
+				PRODUCT_NO = #{IDX}
+		]]>
+    </update>
+
+
+    <insert id="productInsert" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX"> <!-- 상품 등록 -->
+        <selectKey keyProperty="IDX" resultType="string" order="BEFORE">
+            SELECT PRODUCT_NO_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        <![CDATA[
+			INSERT INTO PRODUCT(
+								PRODUCT_NO,
+								PRODUCT_CATEGORY,
+								PRODUCT_NAME,
+								PRODUCT_CONTENT,
+								PRODUCT_ORIGIN_PRICE,
+								PRODUCT_SELL_PRICE,
+								PRODUCT_SALE_PRICE,
+								PRODUCT_DATE,
+								PRODUCT_KEYWORD,
+								PRODUCT_PICK,
+								PRODUCT_THUMBNAIL
+							 )
+						VALUES(
+								#{IDX},
+								#{PRODUCT_CATEGORY},
+								#{PRODUCT_NAME},
+								#{PRODUCT_CONTENT},
+								#{PRODUCT_ORIGIN_PRICE},
+								#{PRODUCT_SELL_PRICE},
+								#{PRODUCT_SALE_PRICE},
+								sysdate,
+								#{PRODUCT_KEYWORD},
+								#{PRODUCT_PICK},
+								#{PRODUCT_THUMBNAIL}
+							  )				
+		]]>
+    </insert>
+
+    <update id="updateProduct" parameterType="hashmap"> <!-- 상품 업데이트 -->
+        <![CDATA[
+			UPDATE  PRODUCT
+			SET     PRODUCT_CATEGORY = #{PRODUCT_CATEGORY},
+			        PRODUCT_NAME = #{PRODUCT_NAME},
+			        PRODUCT_CONTENT = #{PRODUCT_CONTENT},
+			        PRODUCT_ORIGIN_PRICE = #{PRODUCT_ORIGIN_PRICE},
+			        PRODUCT_SELL_PRICE = #{PRODUCT_SELL_PRICE},
+			        PRODUCT_SALE_PRICE = #{PRODUCT_SALE_PRICE},
+			        PRODUCT_DATE = sysdate,
+			        PRODUCT_KEYWORD = #{PRODUCT_KEYWORD},
+			        PRODUCT_PICK = #{PRODUCT_PICK}
+			WHERE   PRODUCT_NO = #{IDX}
+		]]>
+    </update>
+
+    <update id="deleteProduct" parameterType="hashmap"> <!-- 상품 삭제(숨김) -->
+        <![CDATA[
+			UPDATE  PRODUCT
+			SET     GUBUN = #{GUBUN}
+			WHERE   PRODUCT_NO = #{IDX}
+		]]>
+    </update>
+
+
+    <insert id="attributeInsert" parameterType="hashmap"> <!-- 상품 옵션 등록 -->
+        <![CDATA[
+			INSERT INTO PRODUCT_ATTRIBUTE(
+										PRODUCT_ATT_NO,
+										PRODUCT_NO,
+										PRODUCT_ATT_SIZE,
+										PRODUCT_ATT_COLOR,
+										PRODUCT_ATT_AMOUNT,
+										PRODUCT_ATT_DISPLAY
+										)
+								values(
+										PRODUCT_ATT_NO_SEQ.NEXTVAL,
+										#{IDX},
+										#{PRODUCT_ATT_SIZE},
+										#{PRODUCT_ATT_COLOR},
+										#{PRODUCT_ATT_AMOUNT},
+										'0'
+									    )
+		
+		]]>
+    </insert>
+
+    <delete id="attributeDelete" parameterType="hashmap"> <!-- 상품 옵션 삭제 -->
+        <![CDATA[
+			DELETE  
+			  FROM  PRODUCT_ATTRIBUTE
+			WHERE   PRODUCT_NO = #{IDX}
+		]]>
+    </delete>
+
+    <insert id="insertFile" parameterType="hashmap"> <!-- 상품 이미지 등록 -->
+        <![CDATA[
+			INSERT INTO PRODUCT_IMAGE
+					(
+						PRODUCT_IMAGE_NUM,
+						PRODUCT_NO,
+						PRODUCT_IMAGE_ORG,
+						PRODUCT_IMAGE_STD
+					)
+			VALUES
+					(
+						PRODUCT_IMAGE_SEQ.NEXTVAL,
+						#{IDX},
+						'null',
+						#{UPLOAD_SAVE_NAME}
+					)
+		]]>
+    </insert>
+
+
+
+    <delete id="deleteFile" parameterType="hashmap"> <!-- 상품 이미지 삭제 -->
+        <![CDATA[
+			DELETE  
+			  FROM  PRODUCT_IMAGE
+			WHERE   PRODUCT_NO = #{IDX}
+		]]>
+    </delete>
+
+    <update id="updateProductThumbnail" parameterType="hashmap"> <!-- 상품 썸네일 이미지 등록 -->
+        <![CDATA[
+			UPDATE  PRODUCT 
+			SET     PRODUCT_THUMBNAIL = #{PRODUCT_THUMBNAIL}
+			WHERE   PRODUCT_NO = #{IDX}
+		]]>
+    </update>
+
+    <insert id="insertProductLike" parameterType="hashmap"> <!-- 디테일에서 상품 좋아요 등록 -->
+        <![CDATA[
+			INSERT INTO PRODUCT_LIKE
+					(
+						LIKE_NO,
+						PRODUCT_NO,
+						MEMBER_NO,
+						LIKE_DATE
+					)
+			VALUES
+					(
+						LIKE_NO_SEQ.NEXTVAL,
+						#{IDX},
+						#{MEMBER_NO},
+						sysdate
+					)
+		]]>
+    </insert>
+
+    <delete id="deleteProductLike" parameterType="hashmap"> <!-- 상품 좋아요 삭제 -->
+        <![CDATA[
+			DELETE 
+			FROM    PRODUCT_LIKE 
+			WHERE   MEMBER_NO = #{MEMBER_NO}
+			AND     PRODUCT_NO = #{PRODUCT_NO}
+		]]>
+    </delete>
+
+    <insert id="insertCart" parameterType="hashmap">  <!-- 상품 장바구니 추가 -->
+        <selectKey resultType="string" keyProperty="PRODUCT_ATT_NO" order="BEFORE">
+            SELECT
+            PRODUCT_ATT_NO
+            FROM
+            PRODUCT_ATTRIBUTE
+            WHERE
+            PRODUCT_NO = #{IDX}
+            AND PRODUCT_ATT_COLOR like '%' || #{ORDER_COLOR} || '%'
+            AND PRODUCT_ATT_SIZE like  '%' || #{ORDER_SIZE} || '%'
+        </selectKey>
+        <![CDATA[
+			INSERT INTO CART(
+								CART_NO,
+								MEMBER_NO,
+								PRODUCT_NO,
+								PRODUCT_ATT_NO,
+								CART_PRODUCT_AMOUNT,
+								CART_DATE,
+								ORDER_COLOR,
+								ORDER_SIZE,
+								GUBUN
+							 )
+						VALUES(
+								CART_NO_SEQ.NEXTVAL,
+								#{MEMBER_NO},
+								#{IDX},
+								#{PRODUCT_ATT_NO},
+								#{CART_PRODUCT_AMOUNT},
+								sysdate,
+								#{ORDER_COLOR},
+								#{ORDER_SIZE},
+								#{GUBUN}
+							  )				
+		]]>
+    </insert>
+
+    <select id="selectCartNo" parameterType="hashmap" resultType="hashmap"> <!-- 상품상세보기 장바구니 PK값 가져오기 -->
+        <![CDATA[
+			SELECT 
+        			LISTAGG(CART_NO,',') WITHIN GROUP(ORDER BY CART_NO) AS CART_NO
+			FROM 
+					CART
+			WHERE 
+	           	    MEMBER_NO = #{MEMBER_NO}
+              AND   GUBUN = '1'
+		]]>
+    </select>
+
+
+
+
+    <update id="updateProductAmount" parameterType="hashmap"><!-- 주문한 상품 수량변경 -->
+        <![CDATA[
+        UPDATE  PRODUCT_ATTRIBUTE
+        SET     PRODUCT_ATT_AMOUNT = PRODUCT_ATT_AMOUNT-#{ORDER_DETAIL_AMOUNT}
+        WHERE   PRODUCT_ATT_NO = #{PRODUCT_ATT_NO}
+        ]]>
+    </update>
+
+    <update id="updateProductDisplay" parameterType="hashmap"><!-- 재고수량 0이하  -->
+        <![CDATA[
+        UPDATE
+            PRODUCT_ATTRIBUTE
+        SET
+            PRODUCT_ATT_DISPLAY = 1
+        WHERE
+            PRODUCT_ATT_AMOUNT <= 0
+          AND PRODUCT_ATT_NO = #{PRODUCT_ATT_NO}
+
+        ]]>
+    </update>
+
+
+    <select id="selectProductQna" parameterType="hashmap" resultType="hashmap"> <!-- 상품 QNA 리스트 -->
+        <![CDATA[
+			
+			SELECT
+				  AAA.* 
+			FROM( select count(*) over() as total_count, AA.*
+			FROM(
+				select ROW_NUMBER() OVER (ORDER BY PRODUCT_QNA_DATE desc) RNUM,
+				PRODUCT_QNA_NO,
+				PRODUCT_NO,
+				MEMBER_NO,
+				PRODUCT_QNA_LEVEL,
+				PRODUCT_QNA_TITLE,
+				PRODUCT_QNA_CONTENT,
+				PRODUCT_QNA_DATE,
+				PRODUCT_QNA_SECRET,
+				MEMBER_NAME,
+				PRODUCT_QNA_AN
+			FROM
+				PRODUCT_QNA
+				) AA
+		          ) AAA
+               WHERE PRODUCT_NO = #{IDX}
+              	AND AAA.RNUM BETWEEN 0 AND 9 
+		]]>
+    </select>
+
+    <insert id="insertProductQna" parameterType="hashmap"> <!-- 상품 QNA 등록 상품문의는 등록만되고 삭제 수정안됨 관리자만 삭제가능 -->
+        <![CDATA[
+			INSERT INTO PRODUCT_QNA(
+								PRODUCT_QNA_NO,
+								PRODUCT_NO,
+								MEMBER_NO,
+								PRODUCT_QNA_LEVEL,
+								PRODUCT_QNA_TITLE,
+								PRODUCT_QNA_CONTENT,
+								PRODUCT_QNA_DATE,
+								MEMBER_NAME,
+								PRODUCT_QNA_SECRET
+								)
+						values(
+								PRODUCT_QNA_NO_SEQ.NEXTVAL,
+								#{IDX},
+								#{MEMBER_NO},
+								0,
+								#{PRODUCT_QNA_TITLE},
+								#{PRODUCT_QNA_CONTENT},
+								sysdate,
+								#{MEMBER_NAME},
+								#{PRODUCT_QNA_SECRET}
+							   )
+		]]>
+    </insert>
+
+    <!-- 답변수정 -->
+    <update id="updateProductQna" parameterType="hashmap">
+        UPDATE PRODUCT_QNA
+        SET
+            PRODUCT_QNA_AN = #{PRODUCT_QNA_AN},
+            PRODUCT_QNA_LEVEL = 1
+        WHERE
+            PRODUCT_QNA_NO = #{PRODUCT_QNA_NO}
+    </update>
+
+    <delete id="gumeListDelete" parameterType="hashmap"> <!-- 구매목록 초기화 -->
+        <![CDATA[
+			DELETE  
+			  FROM  CART
+			WHERE   GUBUN = '1'
+		]]>
+    </delete>
+
+</mapper>

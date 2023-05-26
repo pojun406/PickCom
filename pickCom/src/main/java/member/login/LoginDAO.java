@@ -1,12 +1,12 @@
 package member.login;
 
-import common.AbstractDao;
+import common.AbstractDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 
 @Repository("loginDAO")
-public class LoginDAO extends AbstractDao {
+public class LoginDAO extends AbstractDAO {
     // 로그인
     public Map<String, Object> memberLogin(Map<String, Object> map) throws Exception{
         return (Map<String, Object>)selectOne("login.loginAction", map);

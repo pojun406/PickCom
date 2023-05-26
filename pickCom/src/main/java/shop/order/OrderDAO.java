@@ -1,14 +1,13 @@
 package shop.order;
 
-import common.AbstractDao;
+import common.AbstractDAO;
 import common.CommandMap;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Map;
 
 @Repository("orderDAO")
-public class OrderDAO extends AbstractDao {
+public class OrderDAO extends AbstractDAO {
     // 주문페이지에서 필요한 정보 검색
     public Map<String, Object> orderMemberInfo(CommandMap commandMap) throws Exception{
         return (Map<String, Object>) selectOne("order.orderMemberInfo", commandMap.getMap());

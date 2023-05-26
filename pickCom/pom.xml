@@ -57,6 +57,13 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- Spring MVC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
 		<!-- mainSender -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>
@@ -69,7 +76,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
-			<version>4.0.0</version>
+			<version>2.5</version>
 		</dependency>
 	</dependencies>
 

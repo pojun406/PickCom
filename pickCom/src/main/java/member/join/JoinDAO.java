@@ -1,12 +1,12 @@
 package member.join;
 
-import common.AbstractDao;
+import common.AbstractDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 
 @Repository("joinDAO")
-public class JoinDAO extends AbstractDao {
+public class JoinDAO extends AbstractDAO {
     // 회원가입
     public void memberInsert(Map<String, Object> map) throws Exception{
         insert("join.insertMember", map);
