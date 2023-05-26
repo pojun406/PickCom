@@ -7,14 +7,14 @@
 		<![CDATA[
         INSERT INTO MEMBER
         (
-            member_id,
-         	member_name,
-         	member_nickName,
-         	member_passwd,
-         	member_email,
-         	member_rank,
-         	member_stat,
-         	member_visitCount
+            MEMBER_ID,
+         	MEMBER_NAME,
+         	MEMBER_NICKNAME,
+         	MEMBER_PASSWD,
+         	MEMBER_EMAIL,
+         	MEMBER_RANK,
+         	MEMBER_DELETE,
+         	MEMBER_VISITCOUNT
         )
         VALUES
             (
@@ -24,7 +24,7 @@
                 #{MEMBER_PASSWD},
                 #{MEMBER_EMAIL},
                 #{MEMBER_RANK},
-                #{MEMBER_STAT},
+                #{MEMBER_DELETE},
                 #{MEMBER_VISITCOUNT}
             )
         ]]>

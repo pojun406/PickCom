@@ -17,10 +17,10 @@ public class CartController {
     private CartService cartService;
 
     //세션값으로 장바구니 전체리스트
-    @RequestMapping(value="/basket/basketList.do")
-    public ModelAndView basketList(CommandMap commandMap, HttpServletRequest request) throws Exception {
+    @RequestMapping(value="/cart/cartList.do")
+    public ModelAndView cartList(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
-        ModelAndView mv = new ModelAndView("basket/basketList");
+        ModelAndView mv = new ModelAndView("cart/cartList");
 
         Object MEMBER_NO = "";
         //세션값 가져오기
@@ -31,8 +31,8 @@ public class CartController {
         commandMap.put("MEMBER_NO", MEMBER_NO);
         // 세션 값으로 적용
 
-        List<Map<String,Object>> list = basketService.basketList(commandMap);
-        //GOODS_NO, BASKET_NO, MEMBER_NO, BASKET_GOODS_AMOUNT, GOODS_ATT_NO, GOODS_ATT_SIZE,
+        List<Map<String,Object>> list = cartService.cartList(commandMap);
+        //GOODS_NO, cart_NO, MEMBER_NO, cart_GOODS_AMOUNT, GOODS_ATT_NO, GOODS_ATT_SIZE,
         //GOODS_ATT_COLOR, GOODS_NAME, GOODS_SELL_PRICE, GOODS_SALE_PRICE, UPLOAD_SAVE_NAME, MEMBER_GRADE
 
         mv.addObject("list", list);
@@ -42,29 +42,29 @@ public class CartController {
     }
 
     //장바구니 수량 수정
-    @RequestMapping(value="/basket/basketModify.do")
-    public ModelAndView basketModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
+    @RequestMapping(value="/cart/cartModify.do")
+    public ModelAndView cartModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
-        ModelAndView mv = new ModelAndView("redirect:/basket/basketList.do");
+        ModelAndView mv = new ModelAndView("redirect:/cart/cartList.do");
 
         //수량수정
-        basketService.basketModify(commandMap, request);
+        cartService.cartModify(commandMap, request);
         return mv;
     }
 
     //장바구니 선택삭제(1개)
-    @RequestMapping(value="/basket/basketDelete.do")
-    public ModelAndView basketDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
+    @RequestMapping(value="/cart/cartDelete.do")
+    public ModelAndView cartDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
-        ModelAndView mv = new ModelAndView("redirect:/basket/basketList.do");
-        System.out.println(commandMap.get("BASKET_NO"));
-        basketService.basketDelete(commandMap, request);
+        ModelAndView mv = new ModelAndView("redirect:/cart/cartList.do");
+        System.out.println(commandMap.get("cart_NO"));
+        cartService.cartDelete(commandMap, request);
         return mv;
     }
 
     //정바구니 전체삭제
-    @RequestMapping(value="/basket/basketAllDelete.do")
-    public ModelAndView basketAllDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
+    @RequestMapping(value="/cart/cartAllDelete.do")
+    public ModelAndView cartAllDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         Object MEMBER_NO = "";
         //세션값 가져오기
@@ -75,16 +75,16 @@ public class CartController {
         // 세션 값으로 적용
         commandMap.put("MEMBER_NO", MEMBER_NO);
 
-        ModelAndView mv = new ModelAndView("redirect:/basket/basketList.do");
+        ModelAndView mv = new ModelAndView("redirect:/cart/cartList.do");
         System.out.println(commandMap.get("MEMBER_NO"));
-        basketService.basketAllDelete(commandMap, request);
+        cartService.cartClear(commandMap, request);
         return mv;
     }
 
-    //장바구니에서 제품 찜하기
-    @RequestMapping(value="/basket/like.do")
+    /*//장바구니에서 제품 찜하기
+    @RequestMapping(value="/cart/like.do")
     public ModelAndView goodsLike(CommandMap commandMap, HttpServletRequest request) throws Exception {
-        ModelAndView mv = new ModelAndView("redirect:/basket/basketList.do");
+        ModelAndView mv = new ModelAndView("redirect:/cart/cartList.do");
 
         Object MEMBER_NO = "";
         //세션값 가져오기
@@ -96,14 +96,14 @@ public class CartController {
         commandMap.put("MEMBER_NO", MEMBER_NO);
 
         //해당제품 찜하기 여부 확인
-        Map<String,Object> map = basketService.selectGoodsLike(commandMap, request);
+        Map<String,Object> map = cartService.selectProductLike(commandMap, request);
         //이미 있으면'1', 없으면'0'
         String like_cnt = String.valueOf(map.get("LIKE_CNT"));
 
         //없을때 찜하기 추가
         if(like_cnt.equals("0")) {
-            basketService.insertGoodsLike(commandMap, request);
+            cartService.insertProductLike(commandMap, request);
         }
         return mv;
-    }
+    }*/
 }

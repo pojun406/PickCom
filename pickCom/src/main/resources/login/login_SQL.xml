@@ -7,8 +7,7 @@
     <select id="selectFindId" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
         SELECT
-            MEMBER_ID,
-            MEMBER_NAME
+            *
         FROM
             MEMBER
         WHERE
@@ -23,16 +22,15 @@
 		<![CDATA[
         SELECT
             MEMBER_ID,
-            MEMBER_PASSWD,
-            MEMBER_NO,
             MEMBER_NAME,
-            MEMBER_PHONE,
+            MEMBER_NICKNAME,
+            MEMBER_PASSWD,
             MEMBER_EMAIL,
-            MEMBER_ZIPCODE,
-            MEMBER_ADDR1,
-            MEMBER_ADDR2,
+            MEMBER_RANK,
+            TO_CHAR(MEMBER_REGDATE,, 'YYYY/MM/DD') MEMBER_REGDATE,
+			TO_CHAR(MEMBER_LASTDATE,, 'YYYY/MM/DD') MEMBER_LASTDATE,
             MEMBER_DELETE,
-            TO_CHAR(MEMBER_BIRTH, 'YYYY/MM/DD') MEMBER_BIRTH
+            MEMBER_VISITCOUNT
         FROM
             MEMBER
         WHERE

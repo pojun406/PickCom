@@ -9,7 +9,7 @@ public class MemberDTO {
     private String member_rank;
     private String member_regDate;
     private String member_lastDate;
-    private boolean member_stat;
+    private boolean member_delete;
     private int member_visitCount;
 
     public String getMember_id() {
@@ -76,12 +76,12 @@ public class MemberDTO {
         this.member_lastDate = member_lastDate;
     }
 
-    public boolean isMember_stat() {
-        return member_stat;
+    public boolean isMember_delete() {
+        return member_delete;
     }
 
-    public void setMember_stat(boolean member_stat) {
-        this.member_stat = member_stat;
+    public void setMember_delete(boolean member_delete) {
+        this.member_delete = member_delete;
     }
 
     public int getMember_visitCount() {

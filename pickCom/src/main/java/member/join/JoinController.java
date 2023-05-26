@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Random;
 
 @Controller
 public class JoinController {
@@ -17,35 +20,24 @@ public class JoinController {
     private JoinService joinService;
 
     // 회원가입 폼
-    @RequestMapping(value="/joinForm.do")
+    @RequestMapping(value="/signup01_first.do")
     public ModelAndView joinForm(CommandMap commandMap) throws Exception {
-        ModelAndView mv = new ModelAndView("login/joinForm");
+        ModelAndView mv = new ModelAndView("login/signup01_first");
 
 
         return mv;
     }
 
     // 회원가입 처리
-    @RequestMapping(value="/joinAction.do", method= RequestMethod.POST)
+    @RequestMapping(value="/signup03_main.do", method= RequestMethod.POST)
     public ModelAndView insertMember(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("login/joinAction");
-        // 이메일, SMS 수신 여부
-        String email_agree = (String)commandMap.get("EMAIL_AGREE");
-        String sms_agree = (String)commandMap.get("SMS_AGREE");
-        // 체크를 하지 않으면 '0' 으로 set 후 넘김
-        if(email_agree == null) {
-            email_agree = "0";
-            commandMap.put("EMAIL_AGREE", email_agree);
-        }
-        if(sms_agree == null) {
-            sms_agree = "0";
-            commandMap.put("SMS_AGREE", sms_agree);
-        }
-        // 이메일
+
+        /*// 이메일
         String email = request.getParameter("MEMBER_EMAIL") + "@" + request.getParameter("MEMBER_EMAIL2");
         System.out.println("이메일 : "+email);
         // 직접입력일 경우
-        if(request.getParameter("MEMBER_EMAIL2") == "") {
+        if(request.getParameter("MEMBER_EMAIL") == "") {
             email = request.getParameter("MEMBER_EMAIL");
         }
         commandMap.remove("MEMBER_EMAIL");
@@ -55,13 +47,38 @@ public class JoinController {
                 + request.getParameter("MEMBER_BIRTH2")
                 + request.getParameter("MEMBER_BIRTH3");
         commandMap.remove("MEMBER_BIRTH");
-        commandMap.put("MEMBER_BIRTH", birth);
+        commandMap.put("MEMBER_BIRTH", birth);*/
+        if (!JoinPattern.idChk(request.getParameter("MEMBER_ID"))){
 
-        joinService.memberInsert(commandMap.getMap());
+        } else if (!JoinPattern.nameChk(request.getParameter("MEMBER_NICKNAME"))) {
 
-        mv.addObject("MEMBER_NAME", commandMap.get("MEMBER_NAME"));
+        } else if (!JoinPattern.pwdChk(request.getParameter("MEMBER_PASSWD"))) {
 
+        } else{
+            joinService.memberInsert(commandMap.getMap());
+
+            mv.addObject("MEMBER_NAME", commandMap.get("MEMBER_NAME"));
+        }
         return mv;
+    }
+
+    //이메일 인증-회원가입
+    @RequestMapping(value = "/signup03_main.do", produces = "application/json")
+    @ResponseBody
+    public boolean sendMailAuth(HttpSession session, @RequestParam String user_email) {
+        int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+        String joinCode = String.valueOf(ran);
+        session.setAttribute("joinCode", joinCode);
+
+        try{
+            new MailSender(user_email, ran);
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return false;
     }
 
     //아이디 중복 체크
