@@ -7,12 +7,12 @@
 		<![CDATA[
         SELECT
             ORDER_DATE,
-            ORDER_TOTAL_ORDER_PRICE,
+            ORDER_TOTALPRICE,
             ORDER_STATE
         FROM
-            ORDER_LIST
+            ORDER
         WHERE
-            MEMBER_NO = #{MEMBER_NO}
+            MEMBER_ID = #{MEMBER_ID}
         ]]>
 	</select>
 
@@ -20,18 +20,17 @@
     <select id="memberModify" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
         SELECT
-            MEMBER_NO,
+            MEMBER_NUM,
             MEMBER_ID,
             MEMBER_NAME,
+            MEMBER_NICKNAME,
             MEMBER_PASSWD,
-            TO_CHAR(MEMBER_BIRTH,'YYYY/MM/DD') MEMBER_BIRTH,
             MEMBER_EMAIL,
-            MEMBER_PHONE,
-            MEMBER_ZIPCODE,
-            MEMBER_ADDR1,
-            MEMBER_ADDR2,
-            EMAIL_AGREE,
-            SMS_AGREE
+            MEMBER_RANK,
+            TO_CHAR(MEMBER_REGDATE,, 'YYYY/MM/DD') MEMBER_REGDATE,
+            TO_CHAR(MEMBER_LASTDATE,, 'YYYY/MM/DD') MEMBER_LASTDATE,
+            MEMBER_DELETE,
+            MEMBER_VISITCOUNT
         FROM
             MEMBER
         WHERE
@@ -51,20 +50,13 @@
         ]]>
 	</select>
 
-    <!-- 비밀번호 변경 -->
+    <!-- 비밀번호 변경, 회원정보 업데이트 -->
     <update id="passwdChange" parameterType="hashmap">
         UPDATE MEMBER SET
         MEMBER_NAME = #{MEMBER_NAME},
         <if test="MEMBER_NEWPASSWD != null and MEMBER_NEWPASSWD != ''">
-            MEMBER_PASSWD = #{MEMBER_NEWPASSWD},
+            MEMBER_PASSWD = #{MEMBER_NEWPASSWD}
         </if>
-        MEMBER_PHONE = #{MEMBER_PHONE},
-        MEMBER_ZIPCODE = #{MEMBER_ZIPCODE},
-        MEMBER_ADDR1 = #{MEMBER_ADDR1},
-        MEMBER_ADDR2 = #{MEMBER_ADDR2},
-        MEMBER_BIRTH = #{MEMBER_BIRTH},
-        EMAIL_AGREE = #{EMAIL_AGREE},
-        SMS_AGREE = #{SMS_AGREE}
         WHERE
         MEMBER_NO = #{MEMBER_NO}
     </update>
@@ -90,22 +82,8 @@
         ]]>
 	</select>
 
-    <!-- 제품 좋아요 목록 -->
-    <select id="productLikeList" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-        SELECT
-            L.LIKE_NO,L.GOODS_NO,
-            G.GOODS_NAME,G.GOODS_SELL_PRICE,G.GOODS_THUMBNAIL
-        FROM
-            GOODS_LIKE L, GOODS G
-        WHERE
-            L.MEMBER_NO = #{MEMBER_NO}
-          AND L.GOODS_NO = G.GOODS_NO
-        ]]>
-	</select>
-
-    <!-- 게시글 목록 -->
-    <select id="boardList" parameterType="hashmap" resultType="hashmap">
+    <!-- QNA 목록 -->
+    <!--<select id="boardList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
         SELECT
             Q.GOODS_QNA_NO, Q.GOODS_NO, Q.GOODS_QNA_CONTENT,
@@ -117,17 +95,15 @@
             MEMBER_NO = #{MEMBER_NO}
           AND Q.GOODS_NO = G.GOODS_NO
         ]]>
-	</select>
+	</select>-->
 
     <!-- 댓글 목록 -->
     <select id="replyList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
         SELECT
-            Q.GOODS_QNA_NO, Q.GOODS_NO, Q.GOODS_QNA_CONTENT,
-            Q.GOODS_QNA_TITLE, Q.GOODS_QNA_LEVEL, Q.GOODS_QNA_DATE,
-            Q.GOODS_QNA_SECRET, Q.GOODS_QNA_AN, G.GOODS_NAME, G.GOODS_THUMBNAIL
+
         FROM
-            GOODS_QNA Q, GOODS G
+
         WHERE
             MEMBER_NO = #{MEMBER_NO}
           AND Q.GOODS_NO = G.GOODS_NO

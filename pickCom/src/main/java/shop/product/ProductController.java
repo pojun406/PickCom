@@ -5,12 +5,15 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import shop.cart.CartService;
 import shop.order.OrderService;
 import shop.review.ReviewService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
@@ -27,8 +30,9 @@ public class ProductController {
     @Resource(name="reviewService")
     private ReviewService reviewService;
 
+    // NewItem 리스트 출력
     @RequestMapping(value = "/shop/newProductList.do")
-    public ModelAndView newProductList(CommandMap commandMap) throws Exception { // NewItem 리스트 출력
+    public ModelAndView newProductList(CommandMap commandMap) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/productList");
 
@@ -41,8 +45,9 @@ public class ProductController {
 
     }
 
-    @RequestMapping(value = "/shop/bestProductList.do") // url
-    public ModelAndView bestproductList(CommandMap commandMap) throws Exception { // BEST 리스트 출력
+    // BEST 리스트 출력
+    @RequestMapping(value = "/shop/bestProductList.do")
+    public ModelAndView bestproductList(CommandMap commandMap) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/productList");
 
@@ -55,9 +60,10 @@ public class ProductController {
 
     }
 
+    // 카테고리별 상품리스트
     @RequestMapping(value = "/shop/productList/{cate}/{orderBy}.do")
     public ModelAndView openBoardList(@PathVariable String cate, @PathVariable String orderBy, CommandMap commandMap,
-                                      @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)  // 카테고리별 상품리스트
+                                      @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)
             throws Exception {
         ModelAndView mv = new ModelAndView("/shop/cateProductList");
         commandMap.put("cate", cate);
@@ -85,9 +91,10 @@ public class ProductController {
         return mv;
     }
 
+    // 카테고리별 리스트 제이슨
     @RequestMapping(value = "/shop/cateProductList/{cate}/{orderBy}.do")
     public ModelAndView selectProductList(@PathVariable String cate, @PathVariable String orderBy, CommandMap commandMap,
-                                        @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request) // 카테고리별 리스트 제이슨
+                                        @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)
             throws Exception {
 
         ModelAndView mv = new ModelAndView("jsonView");
@@ -131,9 +138,10 @@ public class ProductController {
         return mv;
     }
 
+    // 메인에서 검색시 리스트
     @RequestMapping(value = "/shop/openMainSearch.do")
     public ModelAndView openMainSearch(CommandMap commandMap,
-                                       @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request) // 메인에서 검색시 리스트
+                                       @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)
             throws Exception {
         ModelAndView mv = new ModelAndView("/shop/mainSearch");
 
@@ -149,9 +157,10 @@ public class ProductController {
         return mv;
     }
 
-    @RequestMapping(value = "/shop/mainSearch.do")
+    // 메인에서 검색시 리스트 제이슨
+    /*@RequestMapping(value = "/shop/mainSearch.do")
     public ModelAndView mainSearch(CommandMap commandMap,
-                                   @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request) // 메인에서 검색시 리스트 제이슨
+                                   @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)
             throws Exception {
 
         ModelAndView mv = new ModelAndView("jsonView");
@@ -176,11 +185,11 @@ public class ProductController {
         }
 
         return mv;
-    }
+    }*/
 
-
+    // 상품디테일
     @RequestMapping(value = "/shop/productDetail.do")
-    public ModelAndView productDetail(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품디테일
+    public ModelAndView productDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/productDetail");
 
@@ -228,8 +237,9 @@ public class ProductController {
 
     }
 
+    // 상품 디테일 제이슨
     @RequestMapping(value = "/shop/productDetailList.do")
-    public ModelAndView productDetailList(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품 디테일 제이슨
+    public ModelAndView productDetailList(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("jsonView");
         List<Map<String, Object>> list = null;
@@ -260,8 +270,9 @@ public class ProductController {
         return mv;
     }
 
+    // 상품등록 폼
     @RequestMapping(value = "/shop/openProductWrite.do") // url
-    public ModelAndView productWriteForm(CommandMap commandMap) throws Exception { // 상품등록 폼
+    public ModelAndView productWriteForm(CommandMap commandMap) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/productWrite");
         mv.addObject("type", "write");
@@ -270,8 +281,9 @@ public class ProductController {
 
     }
 
+    // 상품등록
     @RequestMapping(value = "/shop/productWrite.do", method = RequestMethod.POST)
-    public ModelAndView productWrite(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품등록
+    public ModelAndView productWrite(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("redirect:http:/stu/main.do");
 
@@ -281,9 +293,9 @@ public class ProductController {
 
     }
 
-
+    // 상품삭제(숨김)
     @RequestMapping(value = "/shop/productDelete.do", method = RequestMethod.POST)
-    public ModelAndView deleteProduct(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품삭제(숨김)
+    public ModelAndView deleteProduct(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("redirect:http:/stu/main.do");
 
@@ -293,9 +305,9 @@ public class ProductController {
 
     }
 
-
+    /*// 상품디테일에서 좋아요 추가
     @RequestMapping(value = "/shop/productLike.do", method = RequestMethod.POST)
-    public ModelAndView productLike(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품디테일에서 좋아요 추가
+    public ModelAndView productLike(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do");
 
         mv.addObject("IDX", commandMap.getMap().get("PRODUCT_NO"));
@@ -317,19 +329,20 @@ public class ProductController {
             basketService.insertProductLike(commandMap, request);
         }
         return mv;
-    }
+    }*/
 
+    // 상품디테일 장바구니 클릭시 팝업창
     @RequestMapping(value = "/shop/basketPopUp.do", method = RequestMethod.GET)
-    public ModelAndView basketPopUp(CommandMap commandMap) throws Exception { // 상품디테일 장바구니 클릭시 팝업창
+    public ModelAndView basketPopUp(CommandMap commandMap) throws Exception {
         ModelAndView mv = new ModelAndView("/shop/basketPopUp");
 
         return mv;
     }
 
 
-
+    // 상품디테일에서 장바구니 추가
     @RequestMapping(value = "/shop/insertBasket.do", method = RequestMethod.POST)
-    public ModelAndView insertBasket(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품디테일에서 장바구니 추가
+    public ModelAndView insertBasket(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do");
 
         commandMap.remove("resultList");
@@ -378,8 +391,9 @@ public class ProductController {
         return mv;
     }
 
+    // 상품디테일에서 구매
     @RequestMapping(value = "/shop/productOrder.do", method = RequestMethod.POST)
-    public ModelAndView productOrder(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품디테일에서 구매
+    public ModelAndView productOrder(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("order/orderWrite");
 
         productService.gumeListDelete(commandMap.getMap());

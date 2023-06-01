@@ -1,6 +1,7 @@
 package member;
 
 public class MemberDTO {
+    private int member_num;
     private String member_id;
     private String member_name;
     private String member_nickName;
@@ -11,6 +12,14 @@ public class MemberDTO {
     private String member_lastDate;
     private boolean member_delete;
     private int member_visitCount;
+
+    public int getMember_num() {
+        return member_num;
+    }
+
+    public void setMember_num(int member_num) {
+        this.member_num = member_num;
+    }
 
     public String getMember_id() {
         return member_id;

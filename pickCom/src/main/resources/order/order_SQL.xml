@@ -6,64 +6,35 @@
     <!-- 주문페이지에 필요한 회원정보 검색 -->
     <select id="orderMemberInfo" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-        SELECT DISTINCT
-            M.MEMBER_NAME, M.MEMBER_PHONE, M.MEMBER_ZIPCODE, M.MEMBER_ADDR1, M.MEMBER_ADDR2,
-            P.POINT_TOTAL
+        SELECT
+            MEMBER_ID,
+            MEMBER_NAME,
+            MEMBER_NICKNAME,
+            MEMBER_PASSWD,
+            MEMBER_EMAIL,
+            MEMBER_RANK,
+            TO_CHAR(MEMBER_REGDATE,, 'YYYY/MM/DD') MEMBER_REGDATE,
+            TO_CHAR(MEMBER_LASTDATE,, 'YYYY/MM/DD') MEMBER_LASTDATE,
+            MEMBER_DELETE,
+            MEMBER_VISITCOUNT
         FROM
-            MEMBER M, POINT P
+            MEMBER
         WHERE
-            M.MEMBER_NO = #{MEMBER_NO}
-          AND P.MEMBER_NO = M.MEMBER_NO
-          AND P.POINT_NO = (SELECT MAX(POINT_NO) FROM POINT)
+            MEMBER_NUM = #{MEMBER_NUM}
         ]]>
 	</select>
 
     <!-- 주문추가 -->
     <insert id="insertOrder" parameterType="hashmap">
-        <selectKey keyProperty="ORDER_NO" resultType="int" order="BEFORE">
-            SELECT ORDER_NO_SEQ.NEXTVAL FROM DUAL
-        </selectKey>
         <![CDATA[
-			INSERT INTO ORDER_LIST
+			INSERT INTO ORDERS
 			(
-				ORDER_NO,
-			    MEMBER_NO,
-			    ORDER_NAME,
-			    ORDER_ZIPCODE,
-			    ORDER_ADDR1,
-			    ORDER_ADDR2,
-			    ORDER_PHONE,
-			    ORDER_PAY_NAME,
-			    ORDER_PAY_OPTION,
-			    ORDER_PAY_BANK,
-			    ORDER_DATE,
-			    ORDER_TOTAL_ORDER_PRICE,
-			    ORDER_TOTAL_PAY_PRICE,
-			    ORDER_STATE,
-			    ORDER_USE_POINT,
-			    ORDER_SAVE_POINT,
-			    ORDER_FEE,
-			    ORDER_EXPRESS
+				MEMBER_NUM,
+			    ORDER_ADDRESS
 			)
 			VALUES
 			(
-				#{ORDER_NO},
-				#{MEMBER_NO},
-				#{ORDER_NAME},
-				#{ORDER_ZIPCODE},
-				#{ORDER_ADDR1},
-				#{ORDER_ADDR2},
-				#{ORDER_PHONE},
-				#{ORDER_PAY_NAME},
-				#{ORDER_PAY_OPTION},
-				#{ORDER_PAY_BANK},
-				SYSDATE,
-				#{ORDER_TOTAL_ORDER_PRICE},
-				#{ORDER_TOTAL_PAY_PRICE},
-				0,
-				#{ORDER_USE_POINT},
-				#{ORDER_SAVE_POINT},
-				#{ORDER_FEE},
+				#{MEMBER_NUM},
 				0
 			)
 		]]>
