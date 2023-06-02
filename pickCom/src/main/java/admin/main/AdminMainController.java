@@ -1,24 +1,22 @@
 package admin.main;
 
-import org.apache.log4j.Logger;
+import common.CommandMap;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import stu.common.common.CommandMap;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 public class AdminMainController {
+
 	
-	Logger log = Logger.getLogger(this.getClass());
-	
-	@Resource(name="adminMainService")
+	@Resource (name="adminMainService")
 	private AdminMainService adminMainService;
 	
 	/* mvc:annotation-driven을 선언하면 HandlerMethodArgumentResolver가 Map형식일때 동작을 못함 해서

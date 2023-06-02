@@ -1,8 +1,7 @@
 package admin.main;
 
+import common.CommandMap;
 import org.springframework.stereotype.Repository;
-import stu.common.common.CommandMap;
-import stu.common.dao.AbstractDao;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,7 @@ public class AdminDao extends AbstractDao{
 	// 굳이 따로 빼서 처리가 필요없다면 adminDao에서 커넥션을 받아와 바로 처리한다
 	
 	@SuppressWarnings("unchecked")
-	public List<Map<String,Object>> dashBoard(CommandMap map) throws Exception { //adminMain대쉬보드 
+	public List<Map<String,Object>> dashBoard(CommandMap map) throws Exception { //adminMain대쉬보드
 		
 		return (List<Map<String,Object>>) dashBoard("admin.dash_count",map);
 	}

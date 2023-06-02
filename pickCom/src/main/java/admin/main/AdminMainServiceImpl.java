@@ -1,19 +1,15 @@
 package admin.main;
 
-import org.apache.log4j.Logger;
+import common.CommandMap;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-import stu.common.common.CommandMap;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
 @Service("adminMainService")
 public class AdminMainServiceImpl implements AdminMainService {
-	
-	Logger log = Logger.getLogger(this.getClass()); // 로그
-	
-	@Resource(name="adminDao")
+	@Resource (name="adminDao")
 	private AdminDao adminDao;
 
 	@Override
