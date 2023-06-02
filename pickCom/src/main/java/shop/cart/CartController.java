@@ -26,9 +26,9 @@ public class CartController {
         //세션값 가져오기
         HttpSession session = request.getSession();
         MEMBER_NO = (Object)session.getAttribute("SESSION_NO");
-        commandMap.remove("MEMBER_NO");
+        commandMap.remove("MEMBER_NUM");
         // 기존 회원번호 데이터 삭제
-        commandMap.put("MEMBER_NO", MEMBER_NO);
+        commandMap.put("MEMBER_NUM", MEMBER_NO);
         // 세션 값으로 적용
 
         List<Map<String,Object>> list = cartService.cartList(commandMap);
@@ -57,7 +57,7 @@ public class CartController {
     public ModelAndView cartDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("redirect:/cart/cartList.do");
-        System.out.println(commandMap.get("cart_NO"));
+        System.out.println(commandMap.get("cart_NUM"));
         cartService.cartDelete(commandMap, request);
         return mv;
     }
@@ -71,12 +71,12 @@ public class CartController {
         HttpSession session = request.getSession();
         MEMBER_NO = (Object)session.getAttribute("SESSION_NO");
         // 기존 회원번호 데이터 삭제
-        commandMap.remove("MEMBER_NO");
+        commandMap.remove("MEMBER_NUM");
         // 세션 값으로 적용
-        commandMap.put("MEMBER_NO", MEMBER_NO);
+        commandMap.put("MEMBER_NUM", MEMBER_NO);
 
         ModelAndView mv = new ModelAndView("redirect:/cart/cartList.do");
-        System.out.println(commandMap.get("MEMBER_NO"));
+        System.out.println(commandMap.get("MEMBER_NUM"));
         cartService.cartClear(commandMap, request);
         return mv;
     }

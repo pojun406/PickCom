@@ -18,4 +18,7 @@ public interface CartService {
 
     // 장바구니 초기화
     public void cartClear(CommandMap commandMap, HttpServletRequest request) throws Exception;
+
+    // 장바구니에서 선택상품 주문시
+    List<Map<String, Object>> cartSelectList(CommandMap commandMap, HttpServletRequest request) throws Exception;
 }

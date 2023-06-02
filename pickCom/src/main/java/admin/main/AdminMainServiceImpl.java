@@ -9,7 +9,8 @@ import java.util.Map;
 
 @Service("adminMainService")
 public class AdminMainServiceImpl implements AdminMainService {
-	@Resource (name="adminDao")
+	
+	@Resource(name="adminDao")
 	private AdminDao adminDao;
 
 	@Override

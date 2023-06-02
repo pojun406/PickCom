@@ -15,7 +15,7 @@ public interface OrderService {
     // 입력한 주문 번호 검색
     public Map<String, Object> selectOrder(CommandMap commandMap, HttpServletRequest request) throws Exception;
 
-    /*public void orderModify(CommandMap commandMap, HttpServletRequest request) throws Exception;
+    /*public void orderModify(CommandMap commandMap, HttpServletRequest request) throws Exception;*/
 
-    public void updateMember(CommandMap commandMap, HttpServletRequest request) throws Exception;*/
+    public void updateMember(CommandMap commandMap, HttpServletRequest request) throws Exception;
 }

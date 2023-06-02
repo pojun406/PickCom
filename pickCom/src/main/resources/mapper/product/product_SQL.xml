@@ -208,8 +208,8 @@
                                   #{PRODUCT_CLASSIFICATION},
                                   #{PRODUCT_DESCRIPTION},
                                   #{PRODUCT_STAT},
-                                  #{PRODUCT_IMG},
-                                  #{PRODUCT_VISITCOUNT}
+                                  PRODUCT_IMG,
+                                  PRODUCT_VISITCOUNT
 							  )				
 		]]>
     </insert>
@@ -218,15 +218,16 @@
     <update id="updateProduct" parameterType="hashmap">
         <![CDATA[
 			UPDATE  PRODUCT
-			SET     PRODUCT_NAME = #{PRODUCT_NAME},
-                    PRODUCT_SALEPRICE = #{PRODUCT_SALEPRICE},
-                    PRODUCT_ORIGINALPRICE = #{PRODUCT_ORIGINALPRICE},
-                    PRODUCT_QUANTITY = #{PRODUCT_QUANTITY},
-                    PRODUCT_CLASSIFICATION = #{PRODUCT_CLASSIFICATION},
-                    PRODUCT_DESCRIPTION = #{PRODUCT_DESCRIPTION},
-                    PRODUCT_STAT = #{PRODUCT_STAT},
-                    PRODUCT_IMG = #{PRODUCT_IMG},
-                    PRODUCT_VISITCOUNT = #{PRODUCT_VISITCOUNT}
+			SET     PRODUCT_CATEGORY = #{PRODUCT_CATEGORY},
+			        PRODUCT_NAME = #{PRODUCT_NAME},
+			        PRODUCT_CONTENT = #{PRODUCT_CONTENT},
+			        PRODUCT_ORIGIN_PRICE = #{PRODUCT_ORIGIN_PRICE},
+			        PRODUCT_SELL_PRICE = #{PRODUCT_SELL_PRICE},
+			        PRODUCT_SALE_PRICE = #{PRODUCT_SALE_PRICE},
+			        PRODUCT_DATE = sysdate,
+			        PRODUCT_KEYWORD = #{PRODUCT_KEYWORD},
+			        PRODUCT_PICK = #{PRODUCT_PICK}
+			WHERE   PRODUCT_NO = #{IDX}
 		]]>
     </update>
 
@@ -234,8 +235,8 @@
     <update id="deleteProduct" parameterType="hashmap">
         <![CDATA[
 			UPDATE  PRODUCT
-			SET     PRODUCT_STAT = false
-			WHERE   PRODUCT_NUM = #{IDX}
+			SET     GUBUN = #{GUBUN}
+			WHERE   PRODUCT_NO = #{IDX}
 		]]>
     </update>
 

@@ -28,4 +28,9 @@ public class CartDAO extends AbstractDAO {
     public void cartClear(CommandMap commandMap) throws Exception{
         delete("cart.cartClear", commandMap.getMap());
     }
+
+    // 장바구니에서 선택상품 주문시
+    public List<Map<String, Object>> cartSelectList(CommandMap commandMap) {
+        return (List<Map<String,Object>>) selectList("cart.cartSelectList", commandMap.getMap());
+    }
 }

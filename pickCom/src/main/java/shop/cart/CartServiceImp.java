@@ -38,4 +38,10 @@ public class CartServiceImp implements CartService {
     public void cartClear(CommandMap commandMap, HttpServletRequest request) throws Exception{
         cartDAO.cartClear(commandMap);
     }
+
+    // 장바구니에서 선택상품 주문시
+    @Override
+    public List<Map<String, Object>> cartSelectList(CommandMap commandMap, HttpServletRequest request) throws Exception {
+        return (List<Map<String, Object>>) cartDAO.cartSelectList(commandMap);
+    }
 }

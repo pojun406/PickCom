@@ -92,7 +92,7 @@ public class ProductController {
     }
 
     // 카테고리별 리스트 제이슨
-    @RequestMapping(value = "/shop/cateProductList/{cate}/{orderBy}.do")
+    /*@RequestMapping(value = "/shop/cateProductList/{cate}/{orderBy}.do")
     public ModelAndView selectProductList(@PathVariable String cate, @PathVariable String orderBy, CommandMap commandMap,
                                         @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)
             throws Exception {
@@ -136,7 +136,7 @@ public class ProductController {
         // mv.addObject("category", cate);
 
         return mv;
-    }
+    }*/
 
     // 메인에서 검색시 리스트
     @RequestMapping(value = "/shop/openMainSearch.do")
@@ -238,7 +238,7 @@ public class ProductController {
     }
 
     // 상품 디테일 제이슨
-    @RequestMapping(value = "/shop/productDetailList.do")
+    /*@RequestMapping(value = "/shop/productDetailList.do")
     public ModelAndView productDetailList(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("jsonView");
@@ -268,7 +268,7 @@ public class ProductController {
         }
 
         return mv;
-    }
+    }*/
 
     // 상품등록 폼
     @RequestMapping(value = "/shop/openProductWrite.do") // url
@@ -310,81 +310,81 @@ public class ProductController {
     public ModelAndView productLike(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do");
 
-        mv.addObject("IDX", commandMap.getMap().get("PRODUCT_NO"));
-        System.out.println("좋아요!!!!=" + commandMap.getMap().get("PRODUCT_NO"));
+        mv.addObject("IDX", commandMap.getMap().get("PRODUCT_NUM"));
+        System.out.println("좋아요!!!!=" + commandMap.getMap().get("PRODUCT_NUM"));
 
-        Object MEMBER_NO = "";
+        Object MEMBER_NUM = "";
         // 세션값 가져오기
         HttpSession session = request.getSession();
-        MEMBER_NO = (Object) session.getAttribute("SESSION_NO"); // 세션 아이디
+        MEMBER_NUM = (Object) session.getAttribute("SESSION_NO"); // 세션 아이디
         // 기존 회원번호 데이터 삭제
-        commandMap.remove("MEMBER_NO");
+        commandMap.remove("MEMBER_NUM");
         // 세션 값으로 적용
-        commandMap.put("MEMBER_NO", MEMBER_NO);
+        commandMap.put("MEMBER_NUM", MEMBER_NUM);
 
-        Map<String, Object> map = basketService.selectProductLike(commandMap, request);
+        Map<String, Object> map = cartService.selectProductLike(commandMap, request);
         String like_cnt = String.valueOf(map.get("LIKE_CNT"));
 
         if (like_cnt.equals("0")) {
-            basketService.insertProductLike(commandMap, request);
+            cartService.insertProductLike(commandMap, request);
         }
         return mv;
     }*/
 
     // 상품디테일 장바구니 클릭시 팝업창
-    @RequestMapping(value = "/shop/basketPopUp.do", method = RequestMethod.GET)
-    public ModelAndView basketPopUp(CommandMap commandMap) throws Exception {
-        ModelAndView mv = new ModelAndView("/shop/basketPopUp");
+    @RequestMapping(value = "/shop/cartPopUp.do", method = RequestMethod.GET)
+    public ModelAndView cartPopUp(CommandMap commandMap) throws Exception {
+        ModelAndView mv = new ModelAndView("/shop/cartPopUp");
 
         return mv;
     }
 
 
     // 상품디테일에서 장바구니 추가
-    @RequestMapping(value = "/shop/insertBasket.do", method = RequestMethod.POST)
-    public ModelAndView insertBasket(CommandMap commandMap, HttpServletRequest request) throws Exception {
+    @RequestMapping(value = "/shop/insertcart.do", method = RequestMethod.POST)
+    public ModelAndView insertcart(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do");
 
         commandMap.remove("resultList");
-        Object MEMBER_NO = "";
+        Object MEMBER_NUM = "";
         // 세션값 가져오기
         HttpSession session = request.getSession();
-        MEMBER_NO = (Object) session.getAttribute("SESSION_NO");
+        MEMBER_NUM = (Object) session.getAttribute("SESSION_NO");
         // 기존 회원번호 데이터 삭제
-        commandMap.remove("MEMBER_NO");
+        commandMap.remove("MEMBER_NUM");
         // 세션 값으로 적용
-        commandMap.put("MEMBER_NO", MEMBER_NO);
+        commandMap.put("MEMBER_NUM", MEMBER_NUM);
 
         //장바구니에 넣을 상품이 한개일때
         if (commandMap.get("ORDER_SIZE").getClass().getName().equals("java.lang.String")) {
             Map<String, Object> map = new HashMap<String, Object>();
             System.out.println("CommandMap1=" + commandMap.getMap());
             map.put("IDX", commandMap.get("IDX"));
-            map.put("MEMBER_NO", commandMap.get("MEMBER_NO"));
+            map.put("MEMBER_NUM", commandMap.get("MEMBER_NUM"));
             map.put("ORDER_SIZE", commandMap.get("ORDER_SIZE"));
             map.put("ORDER_COLOR", commandMap.get("ORDER_COLOR"));
-            map.put("BASKET_PRODUCT_AMOUNT", commandMap.get("BASKET_PRODUCT_AMOUNT"));
+            map.put("CART_PRODUCT_AMOUNT", commandMap.get("CART_PRODUCT_AMOUNT"));
             map.put("GUBUN", "0");
-            productService.insertBasket(map, request);
+            productService.insertCart(map, request);
         } else { //장바구니에 넣을 상품이 두가지 이상일때(색상,사이즈가 다른)
             System.out.println("CommandMap2=" + commandMap.getMap());
             String[] Size = (String[]) commandMap.getMap().get("ORDER_SIZE");
             String[] Color = (String[]) commandMap.getMap().get("ORDER_COLOR");
-            String[] Amount = (String[]) commandMap.getMap().get("BASKET_PRODUCT_AMOUNT");
-            String[] product_No = (String[]) commandMap.getMap().get("IDX");
-            System.out.println("다중 사이즈0=" + product_No[0]);
-            System.out.println("다중 사이즈1=" + product_No[1]);
+            String[] Amount = (String[]) commandMap.getMap().get("CART_PRODUCT_AMOUNT");
+            String[] product_NUM = (String[]) commandMap.getMap().get("IDX");
+            System.out.println("다중 사이즈0=" + product_NUM[0]);
+            System.out.println("다중 사이즈1=" + product_NUM[1]);
             Map<String, Object> map1 = new HashMap<String, Object>();
 
             for (int j = 0; j <= Size.length - 1; j++) {
                 map1.put("ORDER_SIZE", Size[j]);
                 map1.put("ORDER_COLOR", Color[j]);
-                map1.put("BASKET_PRODUCT_AMOUNT", Amount[j]);
-                map1.put("IDX", product_No[j]);
-                map1.put("MEMBER_NO", commandMap.get("MEMBER_NO"));
+                map1.put("CART_PRODUCT_AMOUNT", Amount[j]);
+                map1.put("IDX", product_NUM[j]);
+                map1.put("MEMBER_NUM", commandMap.get("MEMBER_NUM"));
                 map1.put("GUBUN", "0");
                 System.out.println("Size1111=" + Size[j]);
-                productService.insertBasket(map1, request);
+                productService.insertCart(map1, request);
             }
         }
         mv.addObject("IDX", commandMap.getMap().get("IDX"));
@@ -397,14 +397,14 @@ public class ProductController {
         ModelAndView mv = new ModelAndView("order/orderWrite");
 
         productService.gumeListDelete(commandMap.getMap());
-        Object MEMBER_NO = "";
+        Object MEMBER_NUM = "";
         // 세션값 가져오기
         HttpSession session = request.getSession();
-        MEMBER_NO = (Object) session.getAttribute("SESSION_NO");
+        MEMBER_NUM = (Object) session.getAttribute("SESSION_NO");
         // 기존 회원번호 데이터 삭제
-        commandMap.remove("MEMBER_NO");
+        commandMap.remove("MEMBER_NUM");
         // 세션 값으로 적용
-        commandMap.put("MEMBER_NO", MEMBER_NO);
+        commandMap.put("MEMBER_NUM", MEMBER_NUM);
 
 
 
@@ -416,41 +416,41 @@ public class ProductController {
             System.out.println("CommandMap1=" + commandMap.getMap());
 
             map.put("IDX", commandMap.get("IDX"));
-            map.put("MEMBER_NO", commandMap.get("MEMBER_NO"));
+            map.put("MEMBER_NUM", commandMap.get("MEMBER_NUM"));
             map.put("ORDER_SIZE", commandMap.get("ORDER_SIZE"));
             map.put("ORDER_COLOR", commandMap.get("ORDER_COLOR"));
-            map.put("BASKET_PRODUCT_AMOUNT", commandMap.get("BASKET_PRODUCT_AMOUNT"));
+            map.put("CART_PRODUCT_AMOUNT", commandMap.get("CART_PRODUCT_AMOUNT"));
             map.put("GUBUN", "1");
-            productService.insertBasket(map, request);
+            productService.insertCart(map, request);
         } else { // 배열로 왔을 때
             System.out.println("CommandMap2=" + commandMap.getMap());
             String[] Size = (String[]) commandMap.getMap().get("ORDER_SIZE");
             String[] Color = (String[]) commandMap.getMap().get("ORDER_COLOR");
-            String[] Amount = (String[]) commandMap.getMap().get("BASKET_PRODUCT_AMOUNT");
-            String[] product_No = (String[]) commandMap.getMap().get("IDX");
+            String[] Amount = (String[]) commandMap.getMap().get("CART_PRODUCT_AMOUNT");
+            String[] product_NUM = (String[]) commandMap.getMap().get("IDX");
 
-            System.out.println("다중 사이즈0=" + product_No[0]);
-            System.out.println("다중 사이즈1=" + product_No[1]);
+            System.out.println("다중 사이즈0=" + product_NUM[0]);
+            System.out.println("다중 사이즈1=" + product_NUM[1]);
             Map<String, Object> map1 = new HashMap<String, Object>();
             for (int j = 0; j <= Size.length - 1; j++) {
                 map1.put("ORDER_SIZE", Size[j]);
                 map1.put("ORDER_COLOR", Color[j]);
-                map1.put("BASKET_PRODUCT_AMOUNT", Amount[j]);
-                map1.put("IDX", product_No[j]);
-                map1.put("MEMBER_NO", commandMap.get("MEMBER_NO"));
+                map1.put("CART_PRODUCT_AMOUNT", Amount[j]);
+                map1.put("IDX", product_NUM[j]);
+                map1.put("MEMBER_NUM", commandMap.get("MEMBER_NUM"));
                 map1.put("GUBUN", "1");
                 System.out.println("Size1111=" + Size[j]);
-                productService.insertBasket(map1, request);
+                productService.insertCart(map1, request);
             }
         }
 
-        List<Map<String, Object>> list0 = productService.selectBasketNo(commandMap.getMap()); // 장바구니 PK값 가져오기
-        System.out.println("장바구니넘버111111" + list0.get(0).get("BASKET_NO"));
+        List<Map<String, Object>> list0 = productService.selectCartNo(commandMap.getMap()); // 장바구니 PK값 가져오기
+        System.out.println("장바구니넘버111111" + list0.get(0).get("CART_NUM"));
 
-        commandMap.remove("SELECT_BASKET_NO");
-        commandMap.put("SELECT_BASKET_NO", list0.get(0).get("BASKET_NO"));
+        commandMap.remove("SELECT_CART_NUM");
+        commandMap.put("SELECT_CART_NUM", list0.get(0).get("CART_NUM"));
 
-        List<Map<String, Object>> list = basketService.basketSelectList(commandMap, request); // 장바구니에 있는 정보들
+        List<Map<String, Object>> list = cartService.cartSelectList(commandMap, request); // 장바구니에 있는 정보들
 
         Map<String, Object> map = orderService.orderMemberInfo(commandMap, request); // 회원의 정보
 
@@ -520,7 +520,7 @@ public class ProductController {
         System.out.println("상품 QNA 답변등록=" + commandMap.getMap());
         productService.updateProductQna(commandMap.getMap(), request);
 
-        mv.addObject("PRODUCT_QNA_NO", commandMap.get("PRODUCT_QNA_NO"));
+        mv.addObject("PRODUCT_QNA_NUM", commandMap.get("PRODUCT_QNA_NUM"));
 
         return mv;
 

@@ -16,7 +16,7 @@ import java.util.Map;
 public class AdminMainController {
 
 	
-	@Resource (name="adminMainService")
+	@Resource(name="adminMainService")
 	private AdminMainService adminMainService;
 	
 	/* mvc:annotation-driven을 선언하면 HandlerMethodArgumentResolver가 Map형식일때 동작을 못함 해서

@@ -32,7 +32,11 @@ public class OrderServiceImp implements OrderService {
         return (Map<String, Object>) orderDAO.selectOrder(commandMap);
     }
 
-    /*public void orderModify(CommandMap commandMap, HttpServletRequest request) throws Exception{orderDao.orderModify(commandMap);}
+    /*public void orderModify(CommandMap commandMap, HttpServletRequest request) throws Exception{orderDao.orderModify(commandMap);}*/
 
-    public void updateMember(CommandMap commandMap, HttpServletRequest request) throws Exception{orderDao.updateMember(commandMap);}*/
+    @Override
+    public void updateMember(CommandMap commandMap, HttpServletRequest request) throws Exception {
+        orderDAO.updateMember(commandMap);
+
+    }
 }
