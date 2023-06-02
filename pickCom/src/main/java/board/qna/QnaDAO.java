@@ -1,32 +1,39 @@
 package board.qna;
 
-import board.BoardDTO;
+import org.springframework.stereotype.Repository;
+import stu.common.dao.AbstractDao;
+
 import java.util.List;
 import java.util.Map;
 
-public interface QnaDAO {
-    // 검색 조건에 맞는 게시물의 개수를 반환합니다.
-    public int selectCount(Map<String, Object> map);
+@Repository("qnaDAO")
+public class QnaDAO extends AbstractDao{
 
-    // 검색 조건에 맞는 게시물 목록을 반환합니다.
-    public List<BoardDTO> selectList(Map<String, Object> map) ;
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectQnaList(Map<String, Object> map) throws Exception{
+		return (List<Map<String, Object>>)selectPagingList("qna.selectQnaList", map);
+	}
 
-    // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
-    public List<BoardDTO> selectListPage(Map<String, Object> map);
+	public void insertQna(Map<String, Object> map) throws Exception{
+		insert("qna.insertQna", map);
+	}
 
-    // 게시글 데이터를 받아 DB에 추가합니다.
-    public int insertWrite(BoardDTO dto);
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectQnaDetail(Map<String, Object> map) throws Exception{
+		return (Map<String, Object>) selectOne("qna.selectQnaDetail", map);
+	}
 
+	public void updateQna(Map<String, Object> map) throws Exception{
+		update("qna.updateQna", map);
+	}
 
-    // 지정한 게시물을 찾아 내용을 반환합니다.
-    public BoardDTO selectView(String num);
+	public void deleteQna(Map<String, Object> map) throws Exception{
+		update("qna.deleteQna", map);
+	}
 
-    // 지정한 게시물의 조회수를 1 증가시킵니다.
-    public void updateVisitCount(String num);
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectQnaPassword(Map<String, Object> map) {
+		return (Map<String, Object>) selectOne("qna.selectQnaPassword", map);
+	}
 
-    // 지정한 게시물을 수정합니다.
-    public int updateEdit(BoardDTO dto);
-
-    // 지정한 게시물을 삭제합니다.
-    public int deletePost(BoardDTO dto);
 }
