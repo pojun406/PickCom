@@ -27,7 +27,10 @@ public interface ProductService{
     public List<Map<String, Object>> selectCartNo(Map<String, Object> map) throws Exception;
 
     // 제품 디테일 데이터 가져옴
-    public Map<String, Object> selectProductDetail(Map<String, Object> map) throws Exception;
+    public Map<String, Object> selectProductDetail(Map<String, Object> map, HttpServletRequest request) throws Exception;
+
+    // 제품속성 디테일
+    public Map<String, Object> selectProductAtt(Map<String, Object> map) throws Exception;
 
     // 제품 qna리스트 가져옴
     public List<Map<String, Object>> selectProductQna(Map<String, Object> map) throws Exception;

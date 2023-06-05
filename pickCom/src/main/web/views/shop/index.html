@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>PickCom:대한민국 1등 PC 쇼핑몰</title>
@@ -10,31 +11,39 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/product.css">
 </head>
 <body>
     <div id="wrapper">
         <header>
             <div class="top">
-                <form>
                 <div>
-                    <a href="">로그인</a>
-                    <a href="">회원가입</a>
-                    <a href="">마이페이지</a>
+                    <!-- 로그인 상태에 따라 버튼 표시 -->
+                    <c:choose>
+                        <!-- 로그인하지 않은 상태 -->
+                        <c:when test="${not loggedIn}">
+                            <a href="">로그인</a>
+                            <a href="">회원가입</a>
+                        </c:when>
+                        <!-- 로그인한 상태 -->
+                        <c:otherwise>
+                            <a href="">로그아웃</a>
+                            <a href="">마이페이지</a>
+                        </c:otherwise>
+                    </c:choose>
                     <a href="">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         장바구니
                     </a>
                 </div>
-                </form>
             </div>
             <div class="logo">
                 <div>
                     <a href="#">
-                        <img src="../img/header_logo.png" alt="헤더로고">
+                        <img src="../../img/header_logo.png" alt="헤더로고">
                     </a>
-                    <form action="/shop/openMainSearch.do" method="get">
+                    <form action="#">
                         <input type="text" name="keyword">
                         <button>
                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -366,7 +375,7 @@
             </ul>
             <div>
                 <p>
-                    <img src="../cs/img/footer_logo.png" alt="로고">
+                    <img src="../../cs/img/footer_logo.png" alt="로고">
                 </p>
                 <p>
                     <strong>(주) PICKCOM</strong>

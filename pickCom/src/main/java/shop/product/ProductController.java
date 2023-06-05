@@ -454,13 +454,10 @@ public class ProductController {
 
         Map<String, Object> map = orderService.orderMemberInfo(commandMap, request); // 회원의 정보
 
-        List<Map<String, Object>> list2 = orderService.memberCoupon(commandMap); // 회원의 쿠폰
         mv.addObject("list", list);
         mv.addObject("map", map);
-        mv.addObject("list2", list2);
         System.out.println(list);
         System.out.println(map);
-        System.out.println(list2);
         return mv;
     }
 

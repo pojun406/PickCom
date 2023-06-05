@@ -36,13 +36,13 @@ public class LoginController {
     public ModelAndView loginAction(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView();
         HttpSession session = request.getSession();
+        boolean loggedIn = false;
 
         Map<String, Object> chk = loginService.memberLogin(commandMap.getMap());
 
         if (chk == null) {
             mv.setViewName("login/loginForm");
             mv.addObject("message", "해당 아이디 혹은 비밀번호가 일치하지 않습니다.");
-            return mv;
         } else {
             if (chk.get("MEMBER_DELETE").equals(true)) {
                 mv.setViewName("login/loginForm");
@@ -54,12 +54,14 @@ public class LoginController {
 
                     mv = new ModelAndView("redirect:/index.do");
                     mv.addObject("MEMBER", chk);
+                    mv.addObject("loggedIn", loggedIn);
 
                     session.getMaxInactiveInterval();
                 }
             }
-            return mv;
         }
+
+        return mv;
     }
 
     // 로그아웃

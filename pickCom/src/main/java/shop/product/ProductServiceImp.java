@@ -48,7 +48,7 @@ public class ProductServiceImp implements ProductService{
 
     // 제품 디테일 데이터 가져옴
     @Override
-    public Map<String, Object> selectProductDetail(Map<String, Object> map) throws Exception{
+    public Map<String, Object> selectProductDetail(Map<String, Object> map, HttpServletRequest request) throws Exception{
         System.out.println("map1111111="+map.get("IDX"));
 
 
@@ -64,6 +64,13 @@ public class ProductServiceImp implements ProductService{
 
         System.out.println("map="+map);
         Map<String, Object> resultMap = productDAO.selectProductDetail(map);
+
+        return resultMap;
+    }
+
+    // 제품속성 디테일
+    public Map<String, Object> selectProductAtt(Map<String, Object> map) throws Exception{
+        Map<String, Object> resultMap = productDAO.selectProductAtt(map);
 
         return resultMap;
     }

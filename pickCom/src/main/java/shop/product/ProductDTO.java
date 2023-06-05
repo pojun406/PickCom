@@ -6,6 +6,7 @@ public class ProductDTO {
     private String product_name;
     private int product_salePrice;
     private int product_originalPrice;
+    private int product_shippingFee;
     private int product_quantity;
     private String product_classification;
     private String product_description;
@@ -49,6 +50,14 @@ public class ProductDTO {
 
     public void setProduct_originalPrice(int product_originalPrice) {
         this.product_originalPrice = product_originalPrice;
+    }
+
+    public int getProduct_shippingFee() {
+        return product_shippingFee;
+    }
+
+    public void setProduct_shippingFee(int product_shippingFee) {
+        this.product_shippingFee = product_shippingFee;
     }
 
     public int getProduct_quantity() {
