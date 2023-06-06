@@ -7,15 +7,21 @@
     <select id="cartList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
         SELECT DISTINCT
-            CART_NUM,
-            MEMBER_NUM,
-            PRODUCT_NUM,
-            CART_QUANTITY,
-			TO_CHAR(CART_REGDATE, 'YYYY/MM/DD') CART_REGDATE
+            C.CART_NUM,
+            C.MEMBER_NUM,
+            C.PRODUCT_NUM,
+            C.CART_QUANTITY,
+			TO_CHAR(C.CART_REGDATE, 'YYYY/MM/DD') AS CART_REGDATE,
+			P.PRODUCT_IMG,
+			P.PRODUCT_NAME,
+			P.PRODUCT_DESCRIPTION,
+			P.PRODUCT_SALEPRICE,
+			P.PRODUCT_SHIPPINGFEE
         FROM
-            CART
+            CART C, PRODUCT P
         WHERE
-            MEMBER_NUM= #{MEMBER_NO}
+            C.MEMBER_NUM= #{MEMBER_NO}
+        	AND C.PRODUCT_NUM = P.PRODUCT_NUM
         ]]>
 	</select>
 
@@ -50,17 +56,22 @@
     <select id="cartSelectList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
         SELECT DISTINCT
-            CART_NUM,
-            MEMBER_NUM,
-            PRODUCT_NUM,
-            CART_QUANTITY,
-			TO_CHAR(CART_REGDATE, 'YYYY/MM/DD') CART_REGDATE
+			C.CART_NUM,
+			C.MEMBER_NUM,
+			C.PRODUCT_NUM,
+			C.CART_QUANTITY,
+			TO_CHAR(C.CART_REGDATE, 'YYYY/MM/DD') AS CART_REGDATE,
+			P.PRODUCT_IMG,
+			P.PRODUCT_NAME,
+			P.PRODUCT_DESCRIPTION,
+			P.PRODUCT_SALEPRICE,
+			P.PRODUCT_SHIPPINGFEE
         FROM
-            CART
+			CART C, PRODUCT P
         WHERE
-            MEMBER_NUM = #{MEMBER_NUM}
-          AND CART_NUM IN (${SELECT_CART_NUM})
-
+            C.MEMBER_NUM = #{MEMBER_NUM}
+          AND C.CART_NUM IN (${SELECT_CART_NUM})
+		  AND C.PRODUCT_NUM = P.PRODUCT_NUM
         ]]>
 	</select>
 

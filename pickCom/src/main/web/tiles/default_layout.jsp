@@ -19,9 +19,10 @@
 <div id="wrapper">
     <%@ include file="header.jsp" %>
 
+    <%@ include file="aside.jsp" %>
+
     <%@ include file="footer.jsp" %>
 </div>
-<form id="commonForm" name="commonForm"></form>
 </body>
 
 </html>

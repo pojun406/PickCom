@@ -10,12 +10,20 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProductService{
+    // 히트상품 리스트
+    public List<Map<String, Object>> hitProductList(Map<String, Object> map) throws Exception;
 
-    // 신제품 리스트 * 기능 추가 예정
+    // 추천상품 리스트
+    public List<Map<String, Object>> recommendedProductList(Map<String, Object> map) throws Exception;
+
+    // 최신상품 리스트
     public List<Map<String, Object>> newProductList(Map<String, Object> map) throws Exception;
 
-    // 베스트제품 리스트
+    // 베스트상품 리스트
     public List<Map<String, Object>> bestProductList(Map<String, Object> map) throws Exception;
+
+    // 할인상품 리스트
+    public List<Map<String, Object>> saleProductList(Map<String, Object> map) throws Exception;
 
     // 카테고리별 제품 리스트
     public List<Map<String, Object>> cateProductList(Map<String, Object> map, String keyword) throws Exception;

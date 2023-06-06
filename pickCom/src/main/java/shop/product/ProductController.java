@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import shop.cart.CartService;
 import shop.order.OrderService;
 import shop.review.ReviewService;
+import utils.Paging;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,43 +31,137 @@ public class ProductController {
     @Resource(name="reviewService")
     private ReviewService reviewService;
 
-    // NewItem 리스트 출력
-    @RequestMapping(value = "/shop/newProductList.do")
-    public ModelAndView newProductList(CommandMap commandMap) throws Exception {
+    // 히트상품 리스트 출력
+    @RequestMapping(value = "/shop/hitProductList.do")
+    public ModelAndView hitProductList(CommandMap commandMap, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                       @RequestParam(value = "pageSize", defaultValue = "10") int pageSize, HttpServletRequest request) throws Exception {
+        ModelAndView mv = new ModelAndView("shop/productList");
+
+        List<Map<String, Object>> list = productService.hitProductList(commandMap.getMap());
+
+        mv.addObject("cate1", "컴퓨터");
+        mv.addObject("cate2", "컴퓨터 전체");
+        mv.addObject("list", list);
+        mv.addObject("titleMain", "새상품");
+
+        int totalCount = list.size();
+        int blockPage = 5; // 한 블록에 표시할 페이지 수
+        String reqUrl = request.getRequestURI(); // 현재 요청 URL
+
+        String pagingStr = Paging.pagingStr(totalCount, pageSize, blockPage, pageNum, reqUrl);
+        mv.addObject("pagingStr", pagingStr);
+
+        return mv;
+    }
+
+    // 추천상품 리스트 출력
+    @RequestMapping(value = "/shop/recommendedProductList.do")
+    public ModelAndView recommendedProductList(CommandMap commandMap, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                               @RequestParam(value = "pageSize", defaultValue = "10") int pageSize, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/productList");
 
-        List<Map<String, Object>> list = productService.newProductList(commandMap.getMap());
+        List<Map<String, Object>> list = productService.recommendedProductList(commandMap.getMap());
 
+        mv.addObject("cate1", "컴퓨터");
+        mv.addObject("cate2", "컴퓨터 전체");
         mv.addObject("list", list);
         mv.addObject("titleMain", "새상품");
+
+        int totalCount = list.size();
+        int blockPage = 5; // 한 블록에 표시할 페이지 수
+        String reqUrl = request.getRequestURI(); // 현재 요청 URL
+
+        String pagingStr = Paging.pagingStr(totalCount, pageSize, blockPage, pageNum, reqUrl);
+        mv.addObject("pagingStr", pagingStr);
 
         return mv;
 
     }
 
-    // BEST 리스트 출력
+    // 최신상품 리스트 출력
+    @RequestMapping(value = "/shop/newProductList.do")
+    public ModelAndView newProductList(CommandMap commandMap, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                       @RequestParam(value = "pageSize", defaultValue = "10") int pageSize, HttpServletRequest request) throws Exception {
+
+        ModelAndView mv = new ModelAndView("shop/productList");
+
+        List<Map<String, Object>> list = productService.newProductList(commandMap.getMap());
+
+        mv.addObject("cate1", "컴퓨터");
+        mv.addObject("cate2", "컴퓨터 전체");
+        mv.addObject("list", list);
+        mv.addObject("titleMain", "새상품");
+
+        int totalCount = list.size();
+        int blockPage = 5; // 한 블록에 표시할 페이지 수
+        String reqUrl = request.getRequestURI(); // 현재 요청 URL
+
+        String pagingStr = Paging.pagingStr(totalCount, pageSize, blockPage, pageNum, reqUrl);
+        mv.addObject("pagingStr", pagingStr);
+
+        return mv;
+
+    }
+
+    // 인기상품 리스트 출력
     @RequestMapping(value = "/shop/bestProductList.do")
-    public ModelAndView bestproductList(CommandMap commandMap) throws Exception {
+    public ModelAndView bestProductList(CommandMap commandMap, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/productList");
 
         List<Map<String, Object>> list = productService.bestProductList(commandMap.getMap());
 
+        mv.addObject("cate1", "컴퓨터");
+        mv.addObject("cate2", "컴퓨터 전체");
         mv.addObject("list", list);
         mv.addObject("titleMain", "베스트");
+
+        int totalCount = list.size();
+        int blockPage = 5; // 한 블록에 표시할 페이지 수
+        String reqUrl = request.getRequestURI(); // 현재 요청 URL
+
+        String pagingStr = Paging.pagingStr(totalCount, pageSize, blockPage, pageNum, reqUrl);
+        mv.addObject("pagingStr", pagingStr);
+
+        return mv;
+
+    }
+
+    // 할인상품 리스트 출력
+    @RequestMapping(value = "/shop/saleProductList.do")
+    public ModelAndView saleProductList(CommandMap commandMap, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize, HttpServletRequest request) throws Exception {
+
+        ModelAndView mv = new ModelAndView("shop/productList");
+
+        List<Map<String, Object>> list = productService.saleProductList(commandMap.getMap());
+
+        mv.addObject("cate1", "컴퓨터");
+        mv.addObject("cate2", "컴퓨터 전체");
+        mv.addObject("list", list);
+        mv.addObject("titleMain", "새상품");
+
+        int totalCount = list.size();
+        int blockPage = 5; // 한 블록에 표시할 페이지 수
+        String reqUrl = request.getRequestURI(); // 현재 요청 URL
+
+        String pagingStr = Paging.pagingStr(totalCount, pageSize, blockPage, pageNum, reqUrl);
+        mv.addObject("pagingStr", pagingStr);
 
         return mv;
 
     }
 
     // 카테고리별 상품리스트
-    @RequestMapping(value = "/shop/productList/{cate}/{orderBy}.do")
-    public ModelAndView openBoardList(@PathVariable String cate, @PathVariable String orderBy, CommandMap commandMap,
+    @RequestMapping(value = "/shop/productList/{cate1}/{cate2}/{orderBy}.do")
+    public ModelAndView openBoardList(@PathVariable String cate1, @PathVariable String cate2, @PathVariable String orderBy, CommandMap commandMap,
                                       @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)
             throws Exception {
         ModelAndView mv = new ModelAndView("/shop/cateProductList");
-        commandMap.put("cate", cate);
+        commandMap.put("cate1", cate1);
+        commandMap.put("cate2", cate2);
         request.setAttribute("keyword", keyword);
         System.out.println("카테고리 검색확인=" + commandMap.getMap());
         System.out.println("검색키워드=" + keyword);
@@ -84,7 +179,8 @@ public class ProductController {
             commandMap.put("orderBy", "PRODUCT_SELL_PRICE");
             commandMap.put("orderSort", "DESC");
         }
-        mv.addObject("category", cate);
+        mv.addObject("cate1", cate1);
+        mv.addObject("cate2", cate2);
         String filePath_temp = request.getContextPath() + "/file/";
         mv.addObject("path", filePath_temp);
         request.setAttribute("path", filePath_temp);
@@ -205,7 +301,7 @@ public class ProductController {
 
         System.out.println("map1=" + map1);
 
-        String Size = map1.get("product_ATT_SIZE").toString();
+        /*String Size = map1.get("product_ATT_SIZE").toString();
         String[] SizeList = Size.split(",");
         String Color = map1.get("product_ATT_COLOR").toString();
         String[] ColorList = Color.split(",");
@@ -232,7 +328,7 @@ public class ProductController {
         mv.addObject("Color", arrColor); // 컬러 총 갯수
         mv.addObject("ColorSize", ColorSize); // 컬러 종류
         mv.addObject("Size", arrSize); // 사이즈 종류
-        mv.addObject("Sizecnt", Sizecnt);
+        mv.addObject("Sizecnt", Sizecnt);*/
         return mv;
 
     }
@@ -341,7 +437,7 @@ public class ProductController {
 
 
     // 상품디테일에서 장바구니 추가
-    @RequestMapping(value = "/shop/insertcart.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/shop/insertCart.do", method = RequestMethod.POST)
     public ModelAndView insertcart(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do");
 
@@ -461,8 +557,9 @@ public class ProductController {
         return mv;
     }
 
+    // 상품 수정폼(관리자)
     @RequestMapping(value = "/shop/productModifyForm.do")
-    public ModelAndView productModifyForm(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품 수정폼(관리자)
+    public ModelAndView productModifyForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("shop/productWrite");
 
         Map<String, Object> map = productService.selectProductDetail(commandMap.getMap(), request);
@@ -476,8 +573,9 @@ public class ProductController {
         return mv;
     }
 
+    // 상품 수정완료(관리자)
     @RequestMapping(value = "/shop/productModify.do")
-    public ModelAndView productModify(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품 수정완료(관리자)
+    public ModelAndView productModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/main.do");
 
         productService.updateProduct(commandMap.getMap(), request);
@@ -488,8 +586,9 @@ public class ProductController {
         return mv;
     }
 
+    // QNA 등록 폼
     @RequestMapping(value = "/shop/openQnaForm.do")
-    public ModelAndView openProductQna(CommandMap commandMap) throws Exception { // QNA 등록 폼
+    public ModelAndView openProductQna(CommandMap commandMap) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/productQnaForm");
         mv.addObject("IDX", commandMap.get("IDX"));
@@ -497,8 +596,10 @@ public class ProductController {
 
     }
 
-    @RequestMapping(value = "/shop/productQnaInsert.do", method = RequestMethod.POST) // QNA 등록
-    public ModelAndView insertProductQna(CommandMap commandMap, HttpServletRequest request) throws Exception { // QNA 등록완료
+    // QNA 등록
+    // QNA 등록완료
+    @RequestMapping(value = "/shop/productQnaInsert.do", method = RequestMethod.POST)
+    public ModelAndView insertProductQna(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do");
 
@@ -510,8 +611,9 @@ public class ProductController {
 
     }
 
+    // QNA 답변 수정 및 등록
     @RequestMapping(value = "/shop/updateProductQna.do", method = RequestMethod.POST)
-    public ModelAndView updateProductQna(CommandMap commandMap, HttpServletRequest request) throws Exception { // QNA 답변 수정 및 등록
+    public ModelAndView updateProductQna(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do"); // 보낼 url
         System.out.println("상품 QNA 답변등록=" + commandMap.getMap());
@@ -523,8 +625,9 @@ public class ProductController {
 
     }
 
+    // Review 등록 폼
     @RequestMapping(value = "/shop/openReviewForm.do")
-    public ModelAndView reviewForm(CommandMap commandMap) throws Exception { // Review 등록 폼
+    public ModelAndView reviewForm(CommandMap commandMap) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/reviewForm");
         System.out.println("111111111리뷰폼11111111=" + commandMap.getMap());
@@ -536,8 +639,9 @@ public class ProductController {
 
     }
 
+    // Review 등록완료
     @RequestMapping(value = "/shop/insertReview.do", method = RequestMethod.POST)
-    public ModelAndView insertProductReview(CommandMap commandMap, HttpServletRequest request) throws Exception { // Review 등록완료
+    public ModelAndView insertProductReview(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do"); // 보낼 url
         System.out.println("리뷰등록=" + commandMap.getMap());
@@ -549,9 +653,9 @@ public class ProductController {
 
     }
 
-
+    // Review 수정
     @RequestMapping(value = "/shop/openReviewUpdateForm.do")
-    public ModelAndView reviewUpdateForm(CommandMap commandMap) throws Exception { // Review 수정
+    public ModelAndView reviewUpdateForm(CommandMap commandMap) throws Exception {
 
         ModelAndView mv = new ModelAndView("shop/reviewForm");
         System.out.println("111111111리뷰폼11111111=" + commandMap.getMap());
@@ -563,8 +667,9 @@ public class ProductController {
 
     }
 
+    // Review 수정완료
     @RequestMapping(value = "/shop/updateReview.do", method = RequestMethod.POST)
-    public ModelAndView updateReview(CommandMap commandMap, HttpServletRequest request) throws Exception { // Review 수정완료
+    public ModelAndView updateReview(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
         ModelAndView mv = new ModelAndView("redirect:/shop/productDetail.do"); // 보낼 url
         System.out.println("리뷰등록=" + commandMap.getMap());

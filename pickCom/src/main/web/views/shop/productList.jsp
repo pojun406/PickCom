@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../tiles/default_layout.jsp" %>
 <!DOCTYPE html>
@@ -19,131 +20,14 @@
 <body>
 <div id="wrapper">
     <main id="product">
-        <aside>
-            <ul class="category">
-                <li>
-                    <i class="fa fa-bars" aria-hidden="true"></i>카테고리
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-star-o" aria-hidden="true">컴퓨터
-                        </i>
-                    </a>
-                    <ol>
-                        <li>
-                            <a href="#">컴퓨터 전체</a>
-                        </li>
-                        <li>
-                            <a href="#">PC견적</a>
-                        </li>
-                        <li>
-                            <a href="#">병목현상 계산기</a>
-                        </li>
-                        <li>
-                            <a href="#">PC 파워 계산기</a>
-                        </li>
-                        <li>
-                            <a href="#">게시판</a>
-                        </li>
-                        <li>
-                            <a href="#">새 소식</a>
-                        </li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-laptop" aria-hidden="true">브랜드PC/조립PC
-                        </i>
-                    </a>
-                    <ol>
-                        <li>
-                            <a href="#">데스크탑 전체</a>
-                        </li>
-                        <li>
-                            <a href="#">브랜드</a>
-                        </li>
-                        <li>
-                            <a href="#">사무/작업용PC</a>
-                        </li>
-                        <li>
-                            <a href="#">게이밍 PC</a>
-                        </li>
-                        <li>
-                            <a href="#">일체형PC</a>
-                        </li>
-                        <li>
-                            <a href="#">서버/워크스테이션</a>
-                        </li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-gears" aria-hidden="true">PC 주요부품
-                        </i>
-                    </a>
-                    <ol>
-                        <li>
-                            <a href="#">CPU</a>
-                        </li>
-                        <li>
-                            <a href="#">메인보드</a>
-                        </li>
-                        <li>
-                            <a href="#">RAM</a>
-                        </li>
-                        <li>
-                            <a href="#">그래픽카드(VGA)</a>
-                        </li>
-                        <li>
-                            <a href="#">SSD</a>
-                        </li>
-                        <li>
-                            <a href="#">HDD</a>
-                        </li>
-                        <li>
-                            <a href="#">케이스</a>
-                        </li>
-                        <li>
-                            <a href="#">파워</a>
-                        </li>
-                        <li>
-                            <a href="#">쿨러/튜닝</a>
-                        </li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-home" aria-hidden="true">PC 저장장치
-                        </i>
-                    </a>
-                    <ol>
-                        <li>
-                            <a href="#">SSD</a>
-                        </li>
-                        <li>
-                            <a href="#">HDD</a>
-                        </li>
-                        <li>
-                            <a href="#">외장 SSD</a>
-                        </li>
-                        <li>
-                            <a href="#">외장 하드</a>
-                        </li>
-                        <li>
-                            <a href="#">외장 케이스</a>
-                        </li>
-                    </ol>
-                </li>
-            </ul>
-        </aside>
         <section class="list">
             <nav>
                 <h1>${titleMain}</h1>
                 <p>
                     HOME >
-                    <span>컴퓨터</span>
+                    <span>${cate1}</span>
                     >
-                    <strong>컴퓨터 전체</strong>
+                    <strong>${cate2}</strong>
                 </p>
             </nav>
             <ul class="sort">
@@ -169,10 +53,11 @@
             <table>
                 <c:forEach var="item" items="${list}">
                     <tr>
-                        <td><a href="#" class="thumb" name="title">
-                            <img src="	https://via.placeholder.com/120x120" alt="상품이미지">
+                        <td><a href="<c:url value="/shop/productDetail.do"/>" class="thumb" name="title">
+                            <img src="${item.product_img}" alt="상품이미지">
                         </a></td>
                         <td>
+                            <input type="hidden" id="IDX" name="IDX" value="${item.product_num}">
                             <h3 class="name">${item.product_name}</h3>
                             <a href="#" class="desc">${item.product_description}</a>
                         </td>
@@ -185,34 +70,20 @@
                                     <del class="org-price">${item.originalPrice}</del>
                                     <span class="discount">10%</span>
                                 </li>
-                                <li><span class="free-delivery">무료배송</span></li>
+                                <li><span class="free-delivery">${item.product_shippingFee}</span></li>
                             </ul>
                         </td>
                         <td>
-                            <h4 class="seller"><i class="fas fa-home" aria-hidden="true"></i> ${item.manufacturer_name}
+                            <h4 class="seller"><i class="fas fa-home" aria-hidden="true"></i> ${item.seller_name}
                             </h4>
-                            <h5 class="badge power">판매자등급</h5>
-                            <h6 class="rating star1">상품평</h6>
+                            <h5 class="badge power">${item.seller_rank}</h5>
+                            <h6 class="rating star1">${item.grade_score}</h6>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
             <div class="paging">
-                    <span class="prev">
-                        <a href="#">< 이전</a>
-                    </span>
-                <span class="num">
-                        <a href="#" class="on">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">7</a>
-                    </span>
-                <span class="next">
-                        <a href="#">다음 ></a>
-                    </span>
+                ${pagingStr}
             </div>
         </section>
     </main>
@@ -232,8 +103,7 @@
 
     function fn_openBoardDetail(obj) {
         var comSubmit = new ComSubmit();
-        var url = '<c:url value="/shop/productDetail.do" />';
-        comSubmit.setUrl(url);
+        comSubmit.setUrl("<c:url value='/shop/productDetail.do' />");
         comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
         comSubmit.submit();
     }

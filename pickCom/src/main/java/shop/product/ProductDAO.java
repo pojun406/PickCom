@@ -8,14 +8,29 @@ import java.util.Map;
 
 @Repository("productDAO")
 public class ProductDAO extends AbstractDAO {
-    // 신제품 리스트
+    // 히트상품 리스트
+    public List<Map<String, Object>> hitProductList(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>) hitProductList("product.hitProductList", map);
+    }
+
+    // 추천상품 리스트
+    public List<Map<String, Object>> recommendedProductList(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>) recommendedProductList("product.recommendedProductList", map);
+    }
+
+    // 최신상품 리스트
     public List<Map<String, Object>> newProductList(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>) newProductList("product.newProductList", map);
     }
 
-    // 베스트제품 리스트
+    // 인기상품 리스트
     public List<Map<String, Object>> bestProductList(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>) bestProductList("product.bestProductList", map);
+    }
+
+    // 할인상품 리스트
+    public List<Map<String, Object>> saleProductList(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>) saleProductList("product.saleProductList", map);
     }
 
     // 카테고리별 제품 리스트

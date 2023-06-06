@@ -24,12 +24,12 @@
         <c:choose>
           <!-- 로그인하지 않은 상태 -->
           <c:when test="${not loggedIn}">
-            <a href="">로그인</a>
+            <a href="<c:url value="/loginForm.do"/>">로그인</a>
             <a href="">회원가입</a>
           </c:when>
           <!-- 로그인한 상태 -->
           <c:otherwise>
-            <a href="">로그아웃</a>
+            <a href="<c:url value="/logout.do"/>">로그아웃</a>
             <a href="">마이페이지</a>
           </c:otherwise>
         </c:choose>
@@ -41,7 +41,7 @@
     </div>
     <div class="logo">
       <div>
-        <a href="/shop/bestProductList.do">
+        <a href="<c:url value="/shop/bestProductList.do"/>">
           <img src="../../img/header_logo.png" alt="헤더로고">
         </a>
         <form action="#">
@@ -55,11 +55,11 @@
     <div class="menu">
       <div>
         <ul>
-          <li><a href="#">히트상품</a></li>
-          <li><a href="#">추천상품</a></li>
-          <li><a href="/shop/newProductList.do">최신상품</a></li>
-          <li><a href="/shop/bestProductList.do">인기상품</a></li>
-          <li><a href="#">할인상품</a></li>
+          <li><a href="<c:url value="/shop/hitProductList.do"/>">히트상품</a></li>
+          <li><a href="<c:url value="/shop/recommendedProductList.do"/>">추천상품</a></li>
+          <li><a href="<c:url value="/shop/newProductList.do"/>">최신상품</a></li>
+          <li><a href="<c:url value="/shop/bestProductList.do"/>">인기상품</a></li>
+          <li><a href="<c:url value="/shop/saleProductList.do"/>">할인상품</a></li>
         </ul>
         <ul>
           <li><a href="#">쿠폰존</a></li>

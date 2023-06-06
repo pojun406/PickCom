@@ -3,13 +3,20 @@ package shop.product;
 public class ProductDTO {
     private int product_num;
     private String manufacturer_name;
+    private int seller_num;
     private String product_name;
     private int product_salePrice;
     private int product_originalPrice;
     private int product_shippingFee;
     private int product_quantity;
-    private String product_classification;
+    private String product_category1;
+    private String product_category2;
     private String product_description;
+    private String product_img;
+    private boolean product_soldOut;
+    private int product_sales;
+    private String product_regDate;
+    private int product_visitCount;
     private boolean product_stat;
 
     public int getProduct_num() {
@@ -68,12 +75,68 @@ public class ProductDTO {
         this.product_quantity = product_quantity;
     }
 
-    public String getProduct_classification() {
-        return product_classification;
+    public String getProduct_category1() {
+        return product_category1;
     }
 
-    public void setProduct_classification(String product_classification) {
-        this.product_classification = product_classification;
+    public void setProduct_category1(String product_category1) {
+        this.product_category1 = product_category1;
+    }
+
+    public String getProduct_category2() {
+        return product_category2;
+    }
+
+    public void setProduct_category2(String product_category2) {
+        this.product_category2 = product_category2;
+    }
+
+    public int getSeller_num() {
+        return seller_num;
+    }
+
+    public void setSeller_num(int seller_num) {
+        this.seller_num = seller_num;
+    }
+
+    public String getProduct_img() {
+        return product_img;
+    }
+
+    public void setProduct_img(String product_img) {
+        this.product_img = product_img;
+    }
+
+    public boolean isProduct_soldOut() {
+        return product_soldOut;
+    }
+
+    public void setProduct_soldOut(boolean product_soldOut) {
+        this.product_soldOut = product_soldOut;
+    }
+
+    public int getProduct_sales() {
+        return product_sales;
+    }
+
+    public void setProduct_sales(int product_sales) {
+        this.product_sales = product_sales;
+    }
+
+    public String getProduct_regDate() {
+        return product_regDate;
+    }
+
+    public void setProduct_regDate(String product_regDate) {
+        this.product_regDate = product_regDate;
+    }
+
+    public int getProduct_visitCount() {
+        return product_visitCount;
+    }
+
+    public void setProduct_visitCount(int product_visitCount) {
+        this.product_visitCount = product_visitCount;
     }
 
     public String getProduct_description() {

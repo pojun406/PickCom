@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../tiles/default_layout.jsp" %>
 
@@ -386,131 +387,14 @@
 <body>
 <div id="wrapper">
     <main id="product">
-        <aside>
-            <ul class="category">
-                <li>
-                    <i class="fa fa-bars" aria-hidden="true"></i>카테고리
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-star-o" aria-hidden="true"></i>컴퓨터
-                        </i>
-                    </a>
-                    <ol>
-                        <li>
-                            <a href="#">컴퓨터 전체</a>
-                        </li>
-                        <li>
-                            <a href="#">PC견적</a>
-                        </li>
-                        <li>
-                            <a href="#">병목현상 계산기</a>
-                        </li>
-                        <li>
-                            <a href="#">PC 파워 계산기</a>
-                        </li>
-                        <li>
-                            <a href="#">게시판</a>
-                        </li>
-                        <li>
-                            <a href="#">새 소식</a>
-                        </li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-laptop" aria-hidden="true"></i>브랜드PC/조립PC
-                        </i>
-                    </a>
-                    <ol>
-                        <li>
-                            <a href="#">데스크탑 전체</a>
-                        </li>
-                        <li>
-                            <a href="#">브랜드</a>
-                        </li>
-                        <li>
-                            <a href="#">사무/작업용PC</a>
-                        </li>
-                        <li>
-                            <a href="#">게이밍 PC</a>
-                        </li>
-                        <li>
-                            <a href="#">일체형PC</a>
-                        </li>
-                        <li>
-                            <a href="#">서버/워크스테이션</a>
-                        </li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-gears" aria-hidden="true"></i>PC 주요부품
-                        </i>
-                    </a>
-                    <ol>
-                        <li>
-                            <a href="#">CPU</a>
-                        </li>
-                        <li>
-                            <a href="#">메인보드</a>
-                        </li>
-                        <li>
-                            <a href="#">RAM</a>
-                        </li>
-                        <li>
-                            <a href="#">그래픽카드(VGA)</a>
-                        </li>
-                        <li>
-                            <a href="#">SSD</a>
-                        </li>
-                        <li>
-                            <a href="#">HDD</a>
-                        </li>
-                        <li>
-                            <a href="#">케이스</a>
-                        </li>
-                        <li>
-                            <a href="#">파워</a>
-                        </li>
-                        <li>
-                            <a href="#">쿨러/튜닝</a>
-                        </li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-home" aria-hidden="true"></i>PC 저장장치
-                        </i>
-                    </a>
-                    <ol>
-                        <li>
-                            <a href="#">SSD</a>
-                        </li>
-                        <li>
-                            <a href="#">HDD</a>
-                        </li>
-                        <li>
-                            <a href="#">외장 SSD</a>
-                        </li>
-                        <li>
-                            <a href="#">외장 하드</a>
-                        </li>
-                        <li>
-                            <a href="#">외장 케이스</a>
-                        </li>
-                    </ol>
-                </li>
-            </ul>
-        </aside>
         <section class="view">
             <nav>
                 <h1>상품보기</h1>
                 <p>
                     HOME >
-                    <span>컴퓨터·브랜드PC·조립PC</span>
+                    <span>${cate1}</span>
                     >
-                    <strong>CPU</strong>
+                    <strong>${cate2}</strong>
                 </p>
             </nav>
             <article class="info">
@@ -519,30 +403,30 @@
                 </div>
                 <div class="summary">
                     <nav>
-                        <h1>(주)판매자명</h1>
+                        <h1>${list.seller_name}</h1>
                         <h2>
                             상품번호 :
-                            <span>11111111111</span>
+                            <span>${list.product_num}</span>
                         </h2>
                     </nav>
                     <nav>
-                        <h3>상품명</h3>
-                        <p>상품설명 출력</p>
-                        <h5 class="rating star4">
+                        <h3>${list.product_name}}</h3>
+                        <p>${list.product_description}</p>
+                        <h5 class="rating star'${list.garde_score}'}">
                             <a href="#">상품평보기</a>
                         </h5>
                     </nav>
                     <nav>
                         <div class="org_price">
-                            <del>30,000</del>
+                            <del>${list.product_originalPrice}</del>
                             <span>10%</span>
                         </div>
                         <div class="dis_price">
-                            <ins>27,000</ins>
+                            <ins>${list.product_salePrice}</ins>
                         </div>
                     </nav>
                     <nav>
-                        <span class="delivery">무료배송</span>
+                        <span class="delivery">${list.product_shippingFee}</span>
                         <span class="arrival">모레(금) 7/8 도착예정</span>
                         <span class="desc">본 상품은 국내배송만 가능합니다.</span>
                     </nav>
@@ -568,8 +452,8 @@
                         <em>총 상품금액</em>
                     </div>
                     <div class="button">
-                        <input type="button" class="cart" value="장바구니">
-                        <input type="button" class="order" value="구매하기">
+                        <input type="button" class="cart" value="장바구니" onclick="location.href='/shop/insertCart.do'">
+                        <input type="button" class="order" value="구매하기" onclick="location.href='/shop/productOrder.do'">
                     </div>
                 </div>
             </article>
@@ -673,78 +557,20 @@
             <article class="review">
                 <nav><h1>상품리뷰</h1></nav>
                 <ul>
+                    <c:forEach var="item" items="${reviewList}">
                     <li>
                         <div>
-                            <h5 class="rating star4">상품평</h5>
-                            <span>seo****** 2018-07-10</span>
+                            <h5 class="rating star'${item.reviewScore}'">상품평</h5>
+                            <span>${item.member_name} ${item.review_regDate}</span>
                         </div>
-                        <h3>상품명1/BLUE/L</h3>
-                        <p> 가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                            아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                            제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
+                        <h3>${item.product_name}</h3>
+                        <p> ${item.review_content}
                         </p>
                     </li>
-                    <li>
-                        <div>
-                            <h5 class="rating star4">상품평</h5>
-                            <span>seo****** 2018-07-10</span>
-                        </div>
-                        <h3>상품명1/BLUE/L</h3>
-                        <p> 가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                            아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                            제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                        </p>
-                    </li>
-                    <li>
-                        <div>
-                            <h5 class="rating star4">상품평</h5>
-                            <span>seo****** 2018-07-10</span>
-                        </div>
-                        <h3>상품명1/BLUE/L</h3>
-                        <p> 가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                            아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                            제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                        </p>
-                    </li>
-                    <li>
-                        <div>
-                            <h5 class="rating star4">상품평</h5>
-                            <span>seo****** 2018-07-10</span>
-                        </div>
-                        <h3>상품명1/BLUE/L</h3>
-                        <p> 가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                            아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                            제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                        </p>
-                    </li>
-                    <li>
-                        <div>
-                            <h5 class="rating star4">상품평</h5>
-                            <span>seo****** 2018-07-10</span>
-                        </div>
-                        <h3>상품명1/BLUE/L</h3>
-                        <p> 가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                            아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                            제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                        </p>
-                    </li>
+                    </c:forEach>
                 </ul>
                 <div class="paging">
-                        <span class="prev">
-                            <a href="#">< 이전</a>
-                        </span>
-                    <span class="num">
-                            <a href="#" class="on">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">7</a>
-                        </span>
-                    <span class="next">
-                            <a href="#">다음 ></a>
-                        </span>
+                    ${pagingStr}
                 </div>
             </article>
         </section>
@@ -753,3 +579,7 @@
 </div>
 </body>
 </html>
+
+<script>
+
+</script>

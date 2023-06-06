@@ -22,17 +22,17 @@ public class CartController {
 
         ModelAndView mv = new ModelAndView("cart/cartList");
 
-        Object MEMBER_NO = "";
+        Object MEMBER_NUM = "";
         //세션값 가져오기
         HttpSession session = request.getSession();
-        MEMBER_NO = (Object)session.getAttribute("SESSION_NO");
+        MEMBER_NUM = (Object)session.getAttribute("SESSION_NO");
         commandMap.remove("MEMBER_NUM");
         // 기존 회원번호 데이터 삭제
-        commandMap.put("MEMBER_NUM", MEMBER_NO);
+        commandMap.put("MEMBER_NUM", MEMBER_NUM);
         // 세션 값으로 적용
 
         List<Map<String,Object>> list = cartService.cartList(commandMap);
-        //GOODS_NO, cart_NO, MEMBER_NO, cart_GOODS_AMOUNT, GOODS_ATT_NO, GOODS_ATT_SIZE,
+        //GOODS_NUM, cart_NUM, MEMBER_NUM, cart_GOODS_AMOUNT, GOODS_ATT_NUM, GOODS_ATT_SIZE,
         //GOODS_ATT_COLOR, GOODS_NAME, GOODS_SELL_PRICE, GOODS_SALE_PRICE, UPLOAD_SAVE_NAME, MEMBER_GRADE
 
         mv.addObject("list", list);
@@ -66,14 +66,14 @@ public class CartController {
     @RequestMapping(value="/cart/cartAllDelete.do")
     public ModelAndView cartAllDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
 
-        Object MEMBER_NO = "";
+        Object MEMBER_NUM = "";
         //세션값 가져오기
         HttpSession session = request.getSession();
-        MEMBER_NO = (Object)session.getAttribute("SESSION_NO");
+        MEMBER_NUM = (Object)session.getAttribute("SESSION_NO");
         // 기존 회원번호 데이터 삭제
         commandMap.remove("MEMBER_NUM");
         // 세션 값으로 적용
-        commandMap.put("MEMBER_NUM", MEMBER_NO);
+        commandMap.put("MEMBER_NUM", MEMBER_NUM);
 
         ModelAndView mv = new ModelAndView("redirect:/cart/cartList.do");
         System.out.println(commandMap.get("MEMBER_NUM"));
@@ -86,14 +86,14 @@ public class CartController {
     public ModelAndView goodsLike(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("redirect:/cart/cartList.do");
 
-        Object MEMBER_NO = "";
+        Object MEMBER_NUM = "";
         //세션값 가져오기
         HttpSession session = request.getSession();
-        MEMBER_NO = (Object)session.getAttribute("SESSION_NO");
+        MEMBER_NUM = (Object)session.getAttribute("SESSION_NO");
         // 기존 회원번호 데이터 삭제
-        commandMap.remove("MEMBER_NO");
+        commandMap.remove("MEMBER_NUM");
         // 세션 값으로 적용
-        commandMap.put("MEMBER_NO", MEMBER_NO);
+        commandMap.put("MEMBER_NUM", MEMBER_NUM);
 
         //해당제품 찜하기 여부 확인
         Map<String,Object> map = cartService.selectProductLike(commandMap, request);

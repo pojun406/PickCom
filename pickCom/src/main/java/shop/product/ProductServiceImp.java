@@ -14,16 +14,34 @@ public class ProductServiceImp implements ProductService{
     @Resource(name="productDAO")
     private ProductDAO productDAO;
 
-    // 신제품 리스트 * 기능 추가 예정
+    // 히트상품 리스트
+    @Override
+    public List<Map<String, Object>> hitProductList(Map<String, Object> map) throws Exception{
+        return productDAO.hitProductList(map);
+    }
+
+    // 추천상품 리스트
+    @Override
+    public List<Map<String, Object>> recommendedProductList(Map<String, Object> map) throws Exception{
+        return productDAO.recommendedProductList(map);
+    }
+
+    // 최신상품 리스트
     @Override
     public List<Map<String, Object>> newProductList(Map<String, Object> map) throws Exception{
         return productDAO.newProductList(map);
     }
 
-    // 베스트제품 리스트
+    // 인기상품 리스트
     @Override
     public List<Map<String, Object>> bestProductList(Map<String, Object> map) throws Exception{
         return productDAO.bestProductList(map);
+    }
+
+    // 할인상품 리스트
+    @Override
+    public List<Map<String, Object>> saleProductList(Map<String, Object> map) throws Exception{
+        return productDAO.saleProductList(map);
     }
 
     // 카테고리별 제품 리스트

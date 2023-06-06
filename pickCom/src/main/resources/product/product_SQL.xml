@@ -3,90 +3,266 @@
 
 <mapper namespace="product">
 
+    <!-- 히트 상품 리스트 -->
+    <select id="hitProductList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+        SELECT
+            P.PRODUCT_NUM,
+            P.MANUFACTURER_NAME,
+            P.SELLER_NUM,
+            P.PRODUCT_NAME,
+            P.PRODUCT_SALEPRICE,
+            P.PRODUCT_ORIGINALPRICE,
+            (P.PRODUCT_ORIGINALPRICE - P.PRODUCT_SALEPRICE) AS DISCOUNT_AMOUNT,
+            P.PRODUCT_SHIPPINGFEE,
+            P.PRODUCT_QUANTITY,
+            P.PRODUCT_CATEGORY1,
+            P.PRODUCT_CATEGORY2,
+            P.PRODUCT_DESCRIPTION,
+            P.PRODUCT_IMG,
+            P.PRODUCT_SOLDOUT,
+            P.PRODUCT_SALES,
+            TO_CHAR(P.PRODUCT_REGDATE, 'YYYY.MM.DD') AS PRODUCT_DATE,
+            P.PRODUCT_VISITCOUNT,
+            P.PRODUCT_STAT,
+            S.SELLER_NAME,
+            S.SELLER_RANK,
+            SG.GRADE_SCORE
+        FROM
+            PRODUCT P
+                INNER JOIN SELLER S ON P.SELLER_NUM = S.SELLER_NUM
+                LEFT JOIN (
+                SELECT
+                    PRODUCT_NUM,
+                    AVG(GRADE_SCORE) AS GRADE_SCORE
+                FROM
+                    PRODUCT_GRADE
+                WHERE
+                    GRADE_STAT = 1
+                GROUP BY
+                    PRODUCT_NUM
+            ) SG ON P.PRODUCT_NUM = SG.PRODUCT_NUM
+        WHERE
+            P.PRODUCT_SOLDOUT = 0
+          AND P.PRODUCT_STAT = 1
+          AND P.PRODUCT_REGDATE >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
+        ORDER BY
+            P.PRODUCT_SALES DESC
+        ]]>
+    </select>
+
+    <!-- 추천 상품 리스트 -->
+    <select id="recommendedProductList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+        SELECT
+            P.PRODUCT_NUM,
+            P.MANUFACTURER_NAME,
+            P.SELLER_NUM,
+            P.PRODUCT_NAME,
+            P.PRODUCT_SALEPRICE,
+            P.PRODUCT_ORIGINALPRICE,
+            (P.PRODUCT_ORIGINALPRICE - P.PRODUCT_SALEPRICE) AS DISCOUNT_AMOUNT,
+            P.PRODUCT_SHIPPINGFEE,
+            P.PRODUCT_QUANTITY,
+            P.PRODUCT_CATEGORY1,
+            P.PRODUCT_CATEGORY2,
+            P.PRODUCT_DESCRIPTION,
+            P.PRODUCT_IMG,
+            P.PRODUCT_SOLDOUT,
+            P.PRODUCT_SALES,
+            TO_CHAR(P.PRODUCT_REGDATE, 'YYYY.MM.DD') AS PRODUCT_DATE,
+            P.PRODUCT_VISITCOUNT,
+            P.PRODUCT_STAT,
+            S.SELLER_NAME,
+            S.SELLER_RANK,
+            SG.GRADE_SCORE
+        FROM
+            PRODUCT P
+                INNER JOIN SELLER S ON P.SELLER_NUM = S.SELLER_NUM
+                LEFT JOIN (
+                SELECT
+                    PRODUCT_NUM,
+                    AVG(GRADE_SCORE) AS GRADE_SCORE
+                FROM
+                    PRODUCT_GRADE
+                WHERE
+                    GRADE_STAT = 1
+                GROUP BY
+                    PRODUCT_NUM
+            ) SG ON P.PRODUCT_NUM = SG.PRODUCT_NUM
+        WHERE
+            P.PRODUCT_SOLDOUT = 0
+          AND P.PRODUCT_STAT = 1
+          AND P.PRODUCT_REGDATE >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+        ORDER BY
+            P.PRODUCT_SALES DESC
+        ]]>
+    </select>
+
     <!-- 최신 상품 리스트 -->
     <select id="newProductList" parameterType="hashmap" resultType="hashmap">
-        <![CDATA[
-			SELECT
-				AAA.* 
-			FROM( select count(*) over() as total_count, AA.*
-			FROM(
-				select ROW_NUMBER() OVER (ORDER BY PRODUCT_DATE desc) RNUM,
-				GS.PRODUCT_NO,
-				GS.PRODUCT_CATEGORY,
-				GS.PRODUCT_NAME,
-				GS.PRODUCT_CONTENT,
-				GS.PRODUCT_ORIGIN_PRICE,
-				GS.PRODUCT_SELL_PRICE,
-				GS.PRODUCT_SALE_PRICE,
-				GS.PRODUCT_DATE,
-				GS.PRODUCT_KEYWORD,
-				GS.PRODUCT_READCNT,
-                GS.PRODUCT_PICK,
-                GS.PRODUCT_THUMBNAIL,
-                GI.PRODUCT_image_std
-			FROM
-				PRODUCT GS, PRODUCT_IMAGE GI
-			WHERE 
-				GS.PRODUCT_NO = GI.PRODUCT_NO
-			AND GUBUN = '0'
-				) AA
-		      ) AAA
-		      WHERE AAA.RNUM BETWEEN 0 AND 12 
-		]]>
+
+        SELECT
+            P.PRODUCT_NUM,
+            P.MANUFACTURER_NAME,
+            P.SELLER_NUM,
+            P.PRODUCT_NAME,
+            P.PRODUCT_SALEPRICE,
+            P.PRODUCT_ORIGINALPRICE,
+            (P.PRODUCT_ORIGINALPRICE - P.PRODUCT_SALEPRICE) AS DISCOUNT_AMOUNT,
+            P.PRODUCT_SHIPPINGFEE,
+            P.PRODUCT_QUANTITY,
+            P.PRODUCT_CATEGORY1,
+            P.PRODUCT_CATEGORY2,
+            P.PRODUCT_DESCRIPTION,
+            P.PRODUCT_IMG,
+            P.PRODUCT_SOLDOUT,
+            P.PRODUCT_SALES,
+            TO_CHAR(P.PRODUCT_REGDATE, &#39;YYYY.MM.DD&#39;) AS PRODUCT_DATE,
+            P.PRODUCT_VISITCOUNT,
+            P.PRODUCT_STAT,
+            S.SELLER_NAME,
+            S.SELLER_RANK,
+            SG.GRADE_SCORE
+        FROM
+            PRODUCT P
+                INNER JOIN SELLER S ON P.SELLER_NUM = S.SELLER_NUM
+                LEFT JOIN (
+                SELECT
+                    PRODUCT_NUM,
+                    AVG(GRADE_SCORE) AS GRADE_SCORE
+                FROM
+                    PRODUCT_GRADE
+                WHERE
+                    GRADE_STAT = 1
+                GROUP BY
+                    PRODUCT_NUM
+            ) SG ON P.PRODUCT_NUM = SG.PRODUCT_NUM
+        WHERE
+            P.PRODUCT_SOLDOUT = 0
+          AND P.PRODUCT_STAT = 1
+          AND P.PRODUCT_REGDATE &gt;= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+
     </select>
 
     <!-- 베스트 상품 리스트 -->
     <select id="bestProductList" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
-			SELECT
-			AAA.* 
-			FROM( select count(*) over() as total_count, AA.*
-			FROM(
-				select ROW_NUMBER() OVER (ORDER BY PRODUCT_READCNT desc) RNUM,
-				GS.PRODUCT_NO,
-				GS.PRODUCT_CATEGORY,
-				GS.PRODUCT_NAME,
-				GS.PRODUCT_CONTENT,
-				GS.PRODUCT_ORIGIN_PRICE,
-				GS.PRODUCT_SELL_PRICE,
-				GS.PRODUCT_SALE_PRICE,
-				GS.PRODUCT_DATE,
-				GS.PRODUCT_KEYWORD,
-				GS.PRODUCT_READCNT,
-                GS.PRODUCT_PICK,
-                GS.PRODUCT_THUMBNAIL,
-                GI.PRODUCT_image_std
-			FROM
-				PRODUCT GS, PRODUCT_IMAGE GI 
-			WHERE 
-				GS.PRODUCT_NO = GI.PRODUCT_NO
-			AND GUBUN = '0'	
-			) AA
-		      ) AAA
-		      WHERE AAA.RNUM BETWEEN 0 AND 12
-		       
+        SELECT
+            P.PRODUCT_NUM,
+            P.MANUFACTURER_NAME,
+            P.SELLER_NUM,
+            P.PRODUCT_NAME,
+            P.PRODUCT_SALEPRICE,
+            P.PRODUCT_ORIGINALPRICE,
+            (P.PRODUCT_ORIGINALPRICE - P.PRODUCT_SALEPRICE) AS DISCOUNT_AMOUNT,
+            P.PRODUCT_SHIPPINGFEE,
+            P.PRODUCT_QUANTITY,
+            P.PRODUCT_CATEGORY1,
+            P.PRODUCT_CATEGORY2,
+            P.PRODUCT_DESCRIPTION,
+            P.PRODUCT_IMG,
+            P.PRODUCT_SOLDOUT,
+            P.PRODUCT_SALES,
+            TO_CHAR(P.PRODUCT_REGDATE, 'YYYY.MM.DD') AS PRODUCT_DATE,
+            P.PRODUCT_VISITCOUNT,
+            P.PRODUCT_STAT,
+            S.SELLER_NAME,
+            S.SELLER_RANK,
+            SG.GRADE_SCORE
+        FROM
+            PRODUCT P
+                INNER JOIN SELLER S ON P.SELLER_NUM = S.SELLER_NUM
+                LEFT JOIN (
+                SELECT
+                    PRODUCT_NUM,
+                    AVG(GRADE_SCORE) AS GRADE_SCORE
+                FROM
+                    PRODUCT_GRADE
+                WHERE
+                    GRADE_STAT = 1
+                GROUP BY
+                    PRODUCT_NUM
+            ) SG ON P.PRODUCT_NUM = SG.PRODUCT_NUM
+        WHERE
+            P.PRODUCT_SOLDOUT = 0
+          AND P.PRODUCT_STAT = 1
+          AND P.PRODUCT_REGDATE >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+        ORDER BY
+            P.PRODUCT_SALES DESC
 		]]>
+    </select>
+
+    <!-- 할인 상품 리스트 -->
+    <select id="saleProductList" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+        SELECT
+            P.PRODUCT_NUM,
+            P.MANUFACTURER_NAME,
+            P.SELLER_NUM,
+            P.PRODUCT_NAME,
+            P.PRODUCT_SALEPRICE,
+            P.PRODUCT_ORIGINALPRICE,
+            (P.PRODUCT_ORIGINALPRICE - P.PRODUCT_SALEPRICE) AS DISCOUNT_AMOUNT,
+            P.PRODUCT_SHIPPINGFEE,
+            P.PRODUCT_QUANTITY,
+            P.PRODUCT_CATEGORY1,
+            P.PRODUCT_CATEGORY2,
+            P.PRODUCT_DESCRIPTION,
+            P.PRODUCT_IMG,
+            P.PRODUCT_SOLDOUT,
+            P.PRODUCT_SALES,
+            TO_CHAR(P.PRODUCT_REGDATE, 'YYYY.MM.DD') AS PRODUCT_DATE,
+            P.PRODUCT_VISITCOUNT,
+            P.PRODUCT_STAT,
+            S.SELLER_NAME,
+            S.SELLER_RANK,
+            SG.GRADE_SCORE
+        FROM
+            PRODUCT P
+                INNER JOIN SELLER S ON P.SELLER_NUM = S.SELLER_NUM
+                LEFT JOIN (
+                SELECT
+                    PRODUCT_NUM,
+                    AVG(GRADE_SCORE) AS GRADE_SCORE
+                FROM
+                    PRODUCT_GRADE
+                WHERE
+                    GRADE_STAT = 1
+                GROUP BY
+                    PRODUCT_NUM
+            ) SG ON P.PRODUCT_NUM = SG.PRODUCT_NUM
+        WHERE
+            P.PRODUCT_SOLDOUT = 0
+          AND P.PRODUCT_STAT = 1
+        ORDER BY
+            DISCOUNT_AMOUNT DESC
+        ]]>
     </select>
 
     <!-- 상품 카테고리별 검색 순서 페이징 리스트  -->
     <select id="cateProductList" parameterType="hashmap" resultType="hashmap">
-        <include refid="common.pagingPre2"/>
 
-        SELECT GS.PRODUCT_NO,
-        GS.PRODUCT_CATEGORY,
-        GS.PRODUCT_NAME,
-        GS.PRODUCT_CONTENT,
-        GS.PRODUCT_ORIGIN_PRICE,
-        GS.PRODUCT_SELL_PRICE,
-        GS.PRODUCT_SALE_PRICE,
-        GS.PRODUCT_DATE,
-        GS.PRODUCT_KEYWORD,
-        GS.PRODUCT_READCNT,
-        GS.PRODUCT_PICK,
-        GS.PRODUCT_THUMBNAIL,
-        GS.GUBUN,
-        GI.PRODUCT_IMAGE_STD
-        FROM PRODUCT GS, PRODUCT_IMAGE GI
+        SELECT
+        PRODUCT_NUM,
+        MANUFACTURER_NAME,
+        SELLER_NUM,
+        PRODUCT_NAME,
+        PRODUCT_SALEPRICE,
+        PRODUCT_ORIGINALPRICE,
+        (PRODUCT_ORIGINALPRICE - PRODUCT_SALEPRICE) AS DISCOUNT_AMOUNT,
+        PRODUCT_SHIPPINGFEE,
+        PRODUCT_QUANTITY,
+        PRODUCT_CATEGORY1,
+        PRODUCT_CATEGORY2,
+        PRODUCT_DESCRIPTION,
+        PRODUCT_IMG,
+        PRODUCT_SOLDOUT,
+        PRODUCT_SALES,
+        TO_CHAR(PRODUCT_REGDATE, 'YYYY.MM.DD') AS PRODUCT_DATE,
+        PRODUCT_VISITCOUNT,
+        PRODUCT_STAT
+        FROM PRODUCT
         WHERE GS.PRODUCT_NO = GI.PRODUCT_NO
         AND PRODUCT_CATEGORY = #{cate}
         <if test="keyword != null">
@@ -96,7 +272,6 @@
         <if test="orderBy != '' and orderBy != 'null'">
             ORDER BY ${orderBy} ${orderSort}
         </if>
-        <include refid="common.pagingPost2"/>
 
     </select>
 
@@ -108,7 +283,8 @@
                PRODUCT_SALEPRICE,
                PRODUCT_ORIGINALPRICE,
                PRODUCT_QUANTITY,
-               PRODUCT_CLASSIFICATION,
+               PRODUCT_CATEGORY1,
+               PRODUCT_CATEGORY2,
                PRODUCT_DESCRIPTION,
                PRODUCT_STAT,
                PRODUCT_IMG,
@@ -134,7 +310,8 @@
                 PRODUCT_SALEPRICE,
                 PRODUCT_ORIGINALPRICE,
                 PRODUCT_QUANTITY,
-                PRODUCT_CLASSIFICATION,
+                PRODUCT_CATEGORY1,
+                PRODUCT_CATEGORY2,
                 PRODUCT_DESCRIPTION,
                 PRODUCT_STAT,
                 PRODUCT_IMG,
@@ -194,7 +371,8 @@
                 PRODUCT_SALEPRICE,
                 PRODUCT_ORIGINALPRICE,
                 PRODUCT_QUANTITY,
-                PRODUCT_CLASSIFICATION,
+                PRODUCT_CATEGORY1,
+                PRODUCT_CATEGORY2,
                 PRODUCT_DESCRIPTION,
                 PRODUCT_STAT,
                 PRODUCT_IMG,
@@ -205,7 +383,8 @@
                                   #{PRODUCT_SALEPRICE},
                                   #{PRODUCT_ORIGINALPRICE},
                                   #{PRODUCT_QUANTITY},
-                                  #{PRODUCT_CLASSIFICATION},
+                                  #{PRODUCT_CATEGORY1},
+                                  #{PRODUCT_CATEGORY2},
                                   #{PRODUCT_DESCRIPTION},
                                   #{PRODUCT_STAT},
                                   #{PRODUCT_IMG},
@@ -222,7 +401,8 @@
                     PRODUCT_SALEPRICE = #{PRODUCT_SALEPRICE},
                     PRODUCT_ORIGINALPRICE = #{PRODUCT_ORIGINALPRICE},
                     PRODUCT_QUANTITY = #{PRODUCT_QUANTITY},
-                    PRODUCT_CLASSIFICATION = #{PRODUCT_CLASSIFICATION},
+                    PRODUCT_CATEGORY1 = #{PRODUCT_CATEGORY1},
+                    PRODUCT_CATEGORY2 = #{PRODUCT_CATEGORY2},
                     PRODUCT_DESCRIPTION = #{PRODUCT_DESCRIPTION},
                     PRODUCT_STAT = #{PRODUCT_STAT},
                     PRODUCT_IMG = #{PRODUCT_IMG},

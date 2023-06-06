@@ -46,12 +46,27 @@ public class AbstractDAO {
         return sqlSession.selectList(queryId, map);
     }
 
+    public List<Map<String,Object>> hitProductList(String queryId, Object params) {
+        printQueryId(queryId);
+        return sqlSession.selectList(queryId,params);
+    }
+
+    public List<Map<String,Object>> recommendedProductList(String queryId, Object params) {
+        printQueryId(queryId);
+        return sqlSession.selectList(queryId,params);
+    }
+
     public List<Map<String,Object>> bestProductList(String queryId, Object params) {
         printQueryId(queryId);
         return sqlSession.selectList(queryId,params);
     }
 
     public List<Map<String,Object>> newProductList(String queryId, Object params) {
+        printQueryId(queryId);
+        return sqlSession.selectList(queryId,params);
+    }
+
+    public List<Map<String,Object>> saleProductList(String queryId, Object params) {
         printQueryId(queryId);
         return sqlSession.selectList(queryId,params);
     }

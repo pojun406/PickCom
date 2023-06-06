@@ -20,16 +20,16 @@ public class JoinController {
     private JoinService joinService;
 
     // 회원가입 폼
-    @RequestMapping(value="/signup01_first.do")
+    @RequestMapping(value="/join_main.do")
     public ModelAndView joinForm(CommandMap commandMap) throws Exception {
-        ModelAndView mv = new ModelAndView("login/signup01_first");
+        ModelAndView mv = new ModelAndView("login/join_main");
 
 
         return mv;
     }
 
     // 회원가입 처리
-    @RequestMapping(value="/signup03_main.do", method= RequestMethod.POST)
+    @RequestMapping(value="/joinAction.do", method= RequestMethod.POST)
     public ModelAndView insertMember(CommandMap commandMap, HttpServletRequest request) throws Exception {
         ModelAndView mv = new ModelAndView("login/joinAction");
 
