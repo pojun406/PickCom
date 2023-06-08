@@ -62,7 +62,7 @@ public class JoinController {
     }
 
     //이메일 인증-회원가입
-    @RequestMapping(value = "/signup03_main.do", produces = "application/json")
+    @RequestMapping(value = "/join_main.do", produces = "application/json")
     @ResponseBody
     public boolean sendMailAuth(HttpSession session, @RequestParam String user_email) {
         int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
