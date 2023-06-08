@@ -1,7 +1,6 @@
-package shop.order;
+package main.java.shop.order;
 
-import common.CommandMap;
-
+import main.java.common.CommandMap;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 

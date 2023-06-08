@@ -1,4 +1,4 @@
-package board.notice;
+package main.java.board.notice;
 
 import java.util.List;
 import java.util.Map;

@@ -1,12 +1,10 @@
-package shop.cart;
+package main.java.shop.cart;
 
-import common.CommandMap;
-import common.JDBConnection;
+import main.java.common.CommandMap;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.*;
 import java.util.List;
 import java.util.Map;
 

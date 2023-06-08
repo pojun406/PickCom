@@ -1,7 +1,6 @@
-package member.my;
+package main.java.member.my;
 
-import common.CommandMap;
-
+import main.java.common.CommandMap;
 import java.util.List;
 import java.util.Map;
 

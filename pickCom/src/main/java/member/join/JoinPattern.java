@@ -1,4 +1,4 @@
-package member.join;
+package main.java.member.join;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

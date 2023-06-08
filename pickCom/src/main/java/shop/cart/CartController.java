@@ -1,6 +1,6 @@
-package shop.cart;
+package main.java.shop.cart;
 
-import common.CommandMap;
+import main.java.common.CommandMap;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,7 +1,8 @@
-package member.my;
+package main.java.member.my;
 
-import common.AbstractDAO;
-import common.CommandMap;
+
+import main.java.common.AbstractDAO;
+import main.java.common.CommandMap;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

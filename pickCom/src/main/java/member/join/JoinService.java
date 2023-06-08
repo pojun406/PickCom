@@ -1,6 +1,4 @@
-package member.join;
-
-import member.MemberDTO;
+package main.java.member.join;
 
 import java.util.Map;
 

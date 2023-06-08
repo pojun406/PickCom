@@ -293,7 +293,9 @@
                 <table border="0">
                     <tr>
                         <th>상품명</th>
-                        <th>총수량</th>
+                        <th>수량</th>
+                        <th>상품가</th>
+                        <th>할인가</th>
                         <th>판매가</th>
                         <th>배송비</th>
                         <th>소계</th>
@@ -301,27 +303,32 @@
                     <c:choose>
                         <c:when test="${fn:length(list) > 0}">
                             <c:forEach var="item" items="${list}" varStatus="status">
-                                <input type="hidden" name="product_num" value="${item.product_num}">
+                                <input type="hidden" name="product_num" value="${item.PRODUCT_NUM}">
+                                <input type="hidden" name="product_discount" value="${item.DISCOUNT_AMOUNT}">
                                 <tr>
                                     <td>
                                         <article>
                                             <a href="#">
-                                                <img src="${item.product_img}" alt="1">
+                                                <img src="${item.PRODUCT_IMG}" alt="1">
                                             </a>
                                             <div>
-                                                <h2><a href="#">${item.product_name}</a></h2>
-                                                <p>${item.product_description}</p>
+                                                <h2><a href="#">${item.PRODUCT_NAME}</a></h2>
+                                                <p>${item.PRODUCT_DESCRIPTION}</p>
                                             </div>
                                         </article>
                                     </td>
-                                    <td><input type="text" name="" value="${item.cart_quantity}" style="border:none;">
+                                    <td><input type="text" name=product_amount" value="${item.cart_quantity}" style="border:none;">
                                     </td>
-                                    <td><input type="text" name="" value="${item.product_salePrice}"
+                                    <td><input type="text" name=product_origianl_price" value="${item.PRODUCT_ORIGINALPRICE}" style="border:none;">
+                                    </td>
+                                    <td><input type="text" name=product_discount" value="${item.DISCOUNT_AMOUNT}" style="border:none;">
+                                    </td>
+                                    <td><input type="text" name="product_sale_price" value="${item.PRODUCT_SALEPRICE}"
                                                style="border:none;"></td>
-                                    <td><input type="text" name="" value="${item.product_shippingFee}"
+                                    <td><input type="text" name="product_fee" value="${item.PRODUCT_SHIPPINGFEE}"
                                                style="border:none;"></td>
-                                    <td><input type="text" name=""
-                                               value="${item.cart_quantity * item.product_salePrice}"
+                                    <td><input type="text" name="product_amount_price"
+                                               value="${item.CART_QUANTITY * item.PRODUCT_SALEPRICE}"
                                                style="border:none;"></td>
                                 </tr>
                             </c:forEach>
@@ -339,28 +346,24 @@
                         <c:when test="${fn:length(list) > 0}">
                             <table>
                                 <tr>
-                                    <td>총</td>
-                                    <td><input type="text" name="" value="" style="border:none;"></td>
+                                    <td>총계</td>
+                                    <td><input type="text" name="order_all_amount" id="order_all_amount" value="" style="border:none;"></td>
                                 </tr>
                                 <tr>
                                     <td>상품금액</td>
-                                    <td><input type="text" name="" value="" style="border:none;"></td>
+                                    <td><input type="text" name="order_price" id="order_price" value="" style="border:none;"></td>
                                 </tr>
                                 <tr>
                                     <td>할인금액</td>
-                                    <td>-1,000</td>
+                                    <td><input type="text" name="order_discount" id="order_discount" value="" style="border:none;"></td>
                                 </tr>
                                 <tr>
                                     <td>배송비</td>
-                                    <td><input type="text" name="" value="" style="border:none;"></td>
-                                </tr>
-                                <tr>
-                                    <td>포인트 할인</td>
-                                    <td>-1,000</td>
+                                    <td><input type="text" name="order_fee" id="order_fee" value="" style="border:none;"></td>
                                 </tr>
                                 <tr>
                                     <td>전체주문금액</td>
-                                    <td><input type="text" name="" value="" style="border:none;"></td>
+                                    <td><input type="text" name="order_all_price" id="order_all_price" value="" style="border:none;"></td>
                                 </tr>
                             </table>
                             <input type="submit" value="결제하기">
@@ -383,13 +386,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>우편번호</td>
-                            <td>
-                                <input type="text" name="zip">
-                                <input type="button" value="검색">
-                            </td>
-                        </tr>
-                        <tr>
                             <td>기본주소</td>
                             <td>
                                 <input type="text" name="addr1">
@@ -401,7 +397,7 @@
                         </tr>
                     </table>
                 </article>
-                <!-- 할인정보 -->
+                <%--<!-- 할인정보 -->
                 <article class="discount">
                     <h1>할인정보</h1>
                     <div>
@@ -416,7 +412,7 @@
                         </label>
                         <span>포인트 5,000점 이상이면 현금처럼 사용 가능합니다.</span>
                     </div>
-                </article>
+                </article>--%>
                 <!-- 결제방법 -->
                 <article class="payment">
                     <h1>결제방법</h1>
@@ -479,29 +475,31 @@
     //기본 주문금액 계산
     function fn_allPrice() {
 
-        var array1 = document.getElementsByName("product_sell_price");
-        var array2 = document.getElementsByName("cart_product_amount");
-        var array3 = document.getElementsByName("ORDER_DETAIL_PRICE");
-        var array4 = document.getElementsByName("ORDER_DISCOUNT_APPLY");
-
+        var arrayAmount = document.getElementsByName("product_amount"); // 장바구니 수량
+        var arrayOrigianl = document.getElementsByName("product_original_price"); // 상품가격
+        var arrayDiscount = document.getElementsByName("product_discount_amount"); // 할인가
+        var arrayAllPrice = document.getElementsByName("product_amount_price"); // 주문 가격
+        var arrayFee = document.getElementsByName("product_fee"); // 배송비
         var len = array2.length;
-        var hap = 0;
+        var amount = 0;
+        var original = 0;
+        var discount = 0;
+        var allPrice = 0;
+        var fee = 0;
         for (var i = 0; i < len; i++) {
-            var sell = array1[i].value;
-            var amt = array2[i].value;
-            var pri = Number(sell) * Number(amt); //각 상품별 주문금액
-            hap = Number(hap) + Number(pri); //주문금액 총합 구하기
-            array3[i].value = pri;
-            array4[i].value = pri;
+            amount += Number(arrayAmount[i].value);
+            original += Number(arrayOrigianl[i].value);
+            allPrice += Number(arrayAllPrice[i].value);
+            fee += Number(arrayFee[i].value);
+            discount += Number(arrayDiscount[i].value);
         }
-        var fee = document.getElementById("ORDER_FEE").value;
-        pay = Number(hap) + Number(fee);
+        document.getElementById("order_all_amount").value = amount;
+        document.getElementById("order_price").value = original;
+        document.getElementById("order_discount").value = discount;
+        document.getElementById("order_fee").value = fee;
+        document.getElementById("order_all_price").value = allPrice;
 
-        document.getElementById("ORDER_TOTAL_ORDER_PRICE").value = hap; //총주문금액
-        document.getElementById("ORDER_TOTAL_PAY_PRICE").value = pay; //(최초,할인들어가기전)최종결제금액
-        document.getElementById("pay_price1").value = pay; //결제예정금액(바꿔야됨)
-
-        var array7 = document.getElementsByName("member_grade");
+        /*var array7 = document.getElementsByName("member_grade");
         var grade = array7[0].value;
         var val = 0;
         if ("NOMAL" == grade) {
@@ -512,7 +510,7 @@
             val = 0.1;
         }
         var point = Number(hap) * Number(val); //등급별 적립율
-        document.getElementById("ORDER_SAVE_POINT").value = point; //할인과 상관없이 주문금액별 적립
+        document.getElementById("ORDER_SAVE_POINT").value = point; //할인과 상관없이 주문금액별 적립*/
     }
 
     //주문자정보와 동일
@@ -533,7 +531,7 @@
         }
     }
 
-    //쿠폰, 포인트 사용
+    /*//쿠폰, 포인트 사용
     function fn_price() {
         var f = document.orderWrite;
         var hap_buy = Number(f.ORDER_TOTAL_ORDER_PRICE.value);  //총 주문금액
@@ -574,7 +572,7 @@
         var array11 = document.getElementsByName("COUPON_NO");
         f.COUPON_STATUS_NO_1.value = array9[index].value;
         f.COUPON_NO_1.value = array11[index].value;
-    }
+    }*/
 
     //주문완료
     function fn_order_pay() {
@@ -597,20 +595,6 @@
         }
         if (document.getElementById("OPTION1").checked == false && document.getElementById("OPTION2").checked == false) {
             alert("결제방법을 선택해주세요.");
-            return false;
-        }
-        if (f.ORDER_PAY_BANK.value == "") {
-            alert("결제은행을 입력해주세요.");
-            f.ORDER_PAY_BANK.focus();
-            return false;
-        }
-        if (f.ORDER_PAY_NAME.value == "") {
-            alert("결제자명을 입력해주세요.");
-            f.ORDER_PAY_NAME.focus(); //커서자동클릭
-            return false;
-        }
-        if (document.getElementById("orderChk").checked == false) {
-            alert("서비스 약관에 동의해주세요.");
             return false;
         }
 

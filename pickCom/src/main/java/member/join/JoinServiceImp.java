@@ -1,19 +1,13 @@
-package member.join;
+package main.java.member.join;
 
-import common.JDBConnection;
 import jakarta.annotation.Resource;
-import member.MemberDTO;
 import org.springframework.stereotype.Service;
-
-import java.sql.*;
 import java.util.Map;
 
 @Service("joinService")
-public class JoinServiceImp extends JDBConnection implements JoinService {
+public class JoinServiceImp implements JoinService {
     @Resource(name="joinDAO")
     private JoinDAO joinDAO;
-
-
 
     // 회원가입
     @Override

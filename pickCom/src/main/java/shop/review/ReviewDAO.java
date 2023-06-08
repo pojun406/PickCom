@@ -1,6 +1,6 @@
-package shop.review;
+package main.java.shop.review;
 
-import common.AbstractDAO;
+import main.java.common.AbstractDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

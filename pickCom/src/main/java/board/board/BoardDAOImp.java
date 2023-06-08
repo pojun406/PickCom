@@ -1,16 +1,14 @@
-package board.board;
+package main.java.board.board;
 
-import board.BoardDTO;
-import common.JDBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-public class BoardDAOImp extends JDBConnection implements BoardDAO {
+public class BoardDAOImp implements BoardDAO {
+   /*
     // 검색 조건에 맞는 게시물의 개수를 반환합니다.
     public int selectCount(Map<String, Object> map) {
         return 0;
@@ -134,4 +132,5 @@ public class BoardDAOImp extends JDBConnection implements BoardDAO {
         }
         return result;
     }
+    */
 }

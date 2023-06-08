@@ -1,13 +1,14 @@
-package board.qna;
+package main.java.board.qna;
 
+import main.java.common.AbstractDAO;
+import main.java.common.CommandMap;
 import org.springframework.stereotype.Repository;
-import stu.common.dao.AbstractDao;
 
 import java.util.List;
 import java.util.Map;
 
 @Repository("qnaDAO")
-public class QnaDAO extends AbstractDao{
+public class QnaDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectQnaList(Map<String, Object> map) throws Exception{

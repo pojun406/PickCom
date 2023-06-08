@@ -1,4 +1,4 @@
-package shop.order;
+package main.java.shop.order;
 
 
 public class OrderDTO {

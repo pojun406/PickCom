@@ -1,6 +1,6 @@
-package member.my;
+package main.java.member.my;
 
-import common.CommandMap;
+import main.java.common.CommandMap;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("myService")
-public class MyServiceImp implements MyService{
+public class MyServiceImp implements MyService {
     @Resource(name = "myDAO")
     private MyDAO myDAO;
 

@@ -1,4 +1,4 @@
-package member.join;
+package main.java.member.join;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

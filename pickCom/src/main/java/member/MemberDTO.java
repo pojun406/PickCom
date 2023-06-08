@@ -1,4 +1,4 @@
-package member;
+package main.java.member;
 
 public class MemberDTO {
     private int member_num;

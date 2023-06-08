@@ -1,6 +1,7 @@
-package member.join;
+package main.java.member.join;
 
-import common.AbstractDAO;
+
+import main.java.common.AbstractDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;

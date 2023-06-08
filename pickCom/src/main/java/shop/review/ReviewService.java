@@ -1,4 +1,4 @@
-package shop.review;
+package main.java.shop.review;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

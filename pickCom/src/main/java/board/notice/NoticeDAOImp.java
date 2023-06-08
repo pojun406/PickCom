@@ -1,10 +1,10 @@
-package board.notice;
+package main.java.board.notice;
 
-import common.JDBConnection;
+import main.java.common.CommandMap;
 import java.util.List;
 import java.util.Map;
 
-public class NoticeDAOImp extends JDBConnection implements NoticeDAO {
+public class NoticeDAOImp implements NoticeDAO {
     // 공지 리스트 출력
     public List<Map<String, Object>> selectNoticeList(Map<String, Object> map) {
         return (List<Map<String, Object>>) map;

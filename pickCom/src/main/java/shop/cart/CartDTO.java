@@ -1,4 +1,4 @@
-package shop.cart;
+package main.java.shop.cart;
 
 public class CartDTO {
     private int cart_num;

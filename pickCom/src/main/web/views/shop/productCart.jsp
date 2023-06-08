@@ -188,9 +188,9 @@
                         <th><input type="checkbox" name="allchk" id="allchk" onclick="fn_allchk()"></th>
                         <th>상품명</th>
                         <th>총수량</th>
-                        <th>판매가</th>
+                        <th>상품가</th>
                         <th>할인</th>
-                        <th>포인트</th>
+                        <th>판매가</th>
                         <th>배송비</th>
                         <th>소계</th>
                     </tr>
@@ -211,9 +211,9 @@
                                         </article>
                                     </td>
                                     <td><input type="text" name="cart_product_amount" value="${item.CART_QUANTITY}" style="border:none;"></td>
-                                    <td><input type="text" name="product_sell_price" value="${item.PRODUCT_SALEPRICE}" style="border:none;"></td>
-                                    <td>5%</td>
-                                    <td>270</td>
+                                    <td><input type="text" name="product_original_price" value="${item.PRODUCT_ORIGINALPRICE}" style="border:none;"></td>
+                                    <td><input type="text" name="product_discount_amount" value="${item.DISCOUNT_AMOUNT}" style="border:none;"></td>
+                                    <td><input type="text" name="product_sale_price" value="${item.PRODUCT_SALEPRICE}" style="border:none;"></td>
                                     <td><input type="text" name="order_fee" value="${item.PRODUCT_SHIPPINGFEE}" style="border:none;"></td>
                                     <td><input type="text" name="product_price" value="${item.CART_QUANTITY * item.PRODUCT_SALEPRICE}" style="border:none;"></td>
                                 </tr>
@@ -242,15 +242,11 @@
                                 </tr>
                                 <tr>
                                     <td>할인금액</td>
-                                    <td>-1,000</td>
+                                    <td><input type="text" id="discount_amount" style="border:none;"></td>
                                 </tr>
                                 <tr>
                                     <td>배송비</td>
                                     <td><input type="text" id="all_order_fee" style="border:none;"></td>
-                                </tr>
-                                <tr>
-                                    <td>주문금액</td>
-                                    <td><input type="text" id="pay_price" style="border:none;"></td>
                                 </tr>
                                 <tr>
                                     <td>전체주문금액</td>
@@ -337,29 +333,29 @@
     }
 
     function fn_allPrice() { //전체주문금액구하기
-        var array1 = document.getElementsByName("product_sell_price"); //상품가격
-        var array2 = document.getElementsByName("cart_product_amount"); //장바구니 수량
-        var array3 = document.getElementsByName("order_price"); //주문 가격
-        var arrayFee = document.getElementsByName("order_fee");
+        var arrayAmount = document.getElementsByName("cart_product_amount"); // 장바구니 수량
+        var arrayOrigianl = document.getElementsByName("cart_original_price"); // 상품가격
+        var arrayDiscount = document.getElementsByName("product_discount_amount"); // 할인가
+        var arrayAllPrice = document.getElementsByName("order_price"); // 주문 가격
+        var arrayFee = document.getElementsByName("order_fee"); // 배송비
         var len = array2.length;
-        var hap = 0;
-        var fee = 0;
         var amount = 0;
+        var original = 0;
+        var discount = 0;
+        var allPrice = 0;
+        var fee = 0;
         for (var i = 0; i < len; i++) {
-            var sell = array1[i].value;
-            var amt = array2[i].value;
-            var pri = Number(sell) * Number(amt); //각 상품별 주문금액
-            hap = Number(hap) + Number(pri); //주문금액 총합 구하기
-            array3[i].value = pri;
+            amount += Number(arrayAmount[i].value);
+            original += Number(arrayOrigianl[i].value);
+            allPrice += Number(arrayAllPrice[i].value);
             fee += Number(arrayFee[i].value);
-            amount += amt;
+            discount += Number(arrayDiscount[i].value);
         }
         document.getElementById("all_order_amount").value = amount;
+        document.getElementById("all_price").value = original;
+        document.getElementById("discount_amount").value = discount;
         document.getElementById("all_order_fee").value = fee;
-        pay = Number(hap) + Number(fee);
-        document.getElementById("all_price").value = hap; //상품금액
-        document.getElementById("pay_price").value = pay; //상품금액+배송비
-        document.getElementById("all_order_price").value = pay;
+        document.getElementById("all_order_price").value = allPrice;
 
         /*var array7 = document.getElementsByName("member_grade");
         var grade = array7[0].value;

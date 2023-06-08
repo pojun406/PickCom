@@ -1,22 +1,20 @@
-package board.qna;
+package main.java.board.qna;
 
-import org.apache.log4j.Logger;
+import main.java.common.CommandMap;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import stu.common.common.CommandMap;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 public class QnaController {
-	Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource(name="qnaService")
 	private QnaService qnaService;

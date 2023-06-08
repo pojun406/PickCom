@@ -1,11 +1,11 @@
-package shop.order;
+package main.java.shop.order;
 
-import common.CommandMap;
+import main.java.common.CommandMap;
 import jakarta.annotation.Resource;
+import main.java.shop.cart.CartService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import shop.cart.CartService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

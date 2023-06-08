@@ -1,6 +1,6 @@
-package admin.main;
+package main.java.admin.main;
 
-import common.CommandMap;
+import main.java.common.CommandMap;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -99,7 +99,7 @@ public class AdminMainServiceImpl implements AdminMainService {
 		adminDao.change_detail_state(commandMap);
 	}
 
-	@Override
+	/*@Override
 	public void change_goods_att_plus(CommandMap commandMap) throws Exception { //goods_attribute에서 (반품)상품속성번호에 수량 증가
 		// TODO Auto-generated method stub
 		adminDao.change_goods_att_plus(commandMap);
@@ -109,7 +109,7 @@ public class AdminMainServiceImpl implements AdminMainService {
 	public void change_goods_att_minus(CommandMap commandMap) throws Exception { //goods_attribute에서 (출고)상품속성번호에 수량 감소
 		// TODO Auto-generated method stub
 		adminDao.change_goods_att_minus(commandMap);
-	}
+	}*/
 
 	@Override
 	public void as_ok_b(CommandMap commandMap) throws Exception { // AS_LIST에서 state = 3, edate=update

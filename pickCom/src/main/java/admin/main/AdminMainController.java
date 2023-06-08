@@ -1,7 +1,7 @@
-package admin.main;
+package main.java.admin.main;
 
-import common.CommandMap;
 import jakarta.annotation.Resource;
+import main.java.common.CommandMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -326,8 +326,8 @@ public class AdminMainController {
 		
 		
 		adminMainService.change_detail_insert(commandMap);
-		adminMainService.change_goods_att_plus(commandMap);
-		adminMainService.change_goods_att_minus(commandMap);
+		/*adminMainService.change_goods_att_plus(commandMap);
+		adminMainService.change_goods_att_minus(commandMap);*/
 		adminMainService.as_ok_b(commandMap);
 
 		String as_state = "1";
@@ -388,7 +388,7 @@ public class AdminMainController {
 		commandMap.put("total", total);
 		adminMainService.point_chagam(commandMap); //point에서 적립포인트 차감
 		
-		adminMainService.change_goods_att_plus(commandMap);//goods_attribute에서 상품속성번호 만큼 수량 증가
+		//adminMainService.change_goods_att_plus(commandMap);//goods_attribute에서 상품속성번호 만큼 수량 증가
 		commandMap.put("order_state", order_state);
 		adminMainService.as_ok_c(commandMap);
 		//mv.addObject("as_change_form_a", as_change_form_a);
@@ -436,7 +436,7 @@ public class AdminMainController {
 		commandMap.put("order_detail_save_point", order_detail_save_point);
 		commandMap.put("order_detail_amount", order_detail_amount);
 		
-		adminMainService.change_goods_att_minus(commandMap);//goods_attribute에서 상품속성번호 만큼 수량 차감
+		//adminMainService.change_goods_att_minus(commandMap);//goods_attribute에서 상품속성번호 만큼 수량 차감
 		commandMap.put("order_state", order_state);
 		adminMainService.as_ok_b(commandMap);
 		//mv.addObject("as_change_form_a", as_change_form_a);

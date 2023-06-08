@@ -1,10 +1,8 @@
-package admin.main;
-
-import common.CommandMap;
-import common.CommandMap;
+package main.java.admin.main;
 
 import java.util.List;
 import java.util.Map;
+import main.java.common.CommandMap;
 
 public interface AdminMainService {
 	
@@ -36,9 +34,11 @@ public interface AdminMainService {
 
 	void change_detail_state(CommandMap commandMap) throws Exception; //order_detail에서 detail_state 20(반품)
 
+/*
 	void change_goods_att_plus(CommandMap commandMap) throws Exception; //goods_attribute에서 (반품)상품속성번호에 수량 증가
 
 	void change_goods_att_minus(CommandMap commandMap) throws Exception; //goods_attribute에서 (출고)상품속성번호에 수량 감소
+*/
 
 	void as_ok_b(CommandMap commandMap) throws Exception; // AS_LIST에서 state = 3, edate=update
 

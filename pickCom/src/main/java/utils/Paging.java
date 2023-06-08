@@ -1,4 +1,4 @@
-package utils;
+package main.java.utils;
 
 public class Paging {
     public static String pagingStr(int totalCount, int pageSize, int blockPage, int pageNum, String reqUrl) {

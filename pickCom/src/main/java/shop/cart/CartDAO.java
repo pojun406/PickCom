@@ -1,7 +1,7 @@
-package shop.cart;
+package main.java.shop.cart;
 
-import common.AbstractDAO;
-import common.CommandMap;
+import main.java.common.AbstractDAO;
+import main.java.common.CommandMap;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

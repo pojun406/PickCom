@@ -1,7 +1,7 @@
-package admin.main;
+package main.java.admin.main;
 
-import common.AbstractDAO;
-import common.CommandMap;
+import main.java.common.AbstractDAO;
+import main.java.common.CommandMap;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Map;
 public class AdminDao extends AbstractDAO {
 	// 로그값을 받기 위해 AbstractDao를 상속한다 AbstractDao에서 MyBatis와 로그, 커넥션을 가져와 처리한다
 	// 굳이 따로 빼서 처리가 필요없다면 adminDao에서 커넥션을 받아와 바로 처리한다
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Map<String,Object>> dashBoard(CommandMap map) throws Exception { //adminMain대쉬보드
 		
@@ -93,7 +93,7 @@ public class AdminDao extends AbstractDAO {
 		change_detail_state("admin.change_detail_state",commandMap.getMap());
 	}
 
-	public void change_goods_att_plus(CommandMap commandMap) throws Exception {
+	/*public void change_goods_att_plus(CommandMap commandMap) throws Exception {
 		// TODO Auto-generated method stub
 		change_goods_att_plus("admin.change_goods_att_plus",commandMap.getMap());
 	}
@@ -101,7 +101,7 @@ public class AdminDao extends AbstractDAO {
 	public void change_goods_att_minus(CommandMap commandMap) throws Exception {
 		// TODO Auto-generated method stub
 		change_goods_att_minus("admin.change_goods_att_minus",commandMap.getMap());
-	}
+	}*/
 
 	public void as_final_state(CommandMap commandMap) throws Exception {
 		// TODO Auto-generated method stub
@@ -138,6 +138,5 @@ public class AdminDao extends AbstractDAO {
 		System.out.println("맵,,.: "+map);
 		return (List<Map<String, Object>>) selectPagingList("admin.selectMemberList", map);
 	}
-	
-	
+
 }

@@ -1,6 +1,6 @@
-package shop.product;
+package main.java.shop.product;
 
-import common.AbstractDAO;
+import main.java.common.AbstractDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

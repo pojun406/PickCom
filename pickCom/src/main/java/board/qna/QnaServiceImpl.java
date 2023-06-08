@@ -1,9 +1,8 @@
-package board.qna;
+package main.java.board.qna;
 
-import org.apache.log4j.Logger;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +10,6 @@ import java.util.Map;
 
 @Service("qnaService")
 public class QnaServiceImpl implements QnaService{
-	Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource(name="qnaDAO")
 	private QnaDAO qnaDAO;

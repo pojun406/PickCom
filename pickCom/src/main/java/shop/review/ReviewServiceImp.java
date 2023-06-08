@@ -1,6 +1,5 @@
-package shop.review;
+package main.java.shop.review;
 
-import common.JDBConnection;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

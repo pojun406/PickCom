@@ -1,4 +1,4 @@
-package board;
+package main.java.board;
 
 public class BoardDTO {
     private int board_num;

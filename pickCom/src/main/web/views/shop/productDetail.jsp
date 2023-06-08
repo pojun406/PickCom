@@ -392,9 +392,9 @@
                 <h1>상품보기</h1>
                 <p>
                     HOME >
-                    <span>${cate1}</span>
+                    <span>컴퓨터</span>
                     >
-                    <strong>${cate2}</strong>
+                    <strong>${cate}</strong>
                 </p>
             </nav>
             <article class="info">

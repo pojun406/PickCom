@@ -1,4 +1,4 @@
-package board.qna;
+package main.java.board.qna;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

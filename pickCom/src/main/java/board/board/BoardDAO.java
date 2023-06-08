@@ -1,12 +1,13 @@
-package board.board;
+package main.java.board.board;
 
-import board.BoardDTO;
+
+import main.java.board.BoardDTO;
 
 import java.util.List;
 import java.util.Map;
 
 public interface BoardDAO {
-    // 검색 조건에 맞는 게시물의 개수를 반환합니다.
+    /*// 검색 조건에 맞는 게시물의 개수를 반환합니다.
     public int selectCount(Map<String, Object> map);
 
     // 검색 조건에 맞는 게시물 목록을 반환합니다.
@@ -29,5 +30,5 @@ public interface BoardDAO {
     public int updateEdit(BoardDTO dto);
 
     // 지정한 게시물을 삭제합니다.
-    public int deletePost(BoardDTO dto);
+    public int deletePost(BoardDTO dto);*/
 }

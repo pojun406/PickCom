@@ -1,14 +1,11 @@
-package member.login;
+package main.java.member.login;
 
-import common.JDBConnection;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-
-import java.sql.*;
 import java.util.Map;
 
 @Service("loginService")
-public class LoginServiceImp extends JDBConnection implements LoginService {
+public class LoginServiceImp implements LoginService {
     @Resource(name="loginDAO")
     private LoginDAO loginDAO;
 

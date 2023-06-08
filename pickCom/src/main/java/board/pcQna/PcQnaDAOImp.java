@@ -1,7 +1,6 @@
-package board.pcQna;
+package main.java.board.pcQna;
 
-import board.BoardDTO;
-import common.JDBConnection;
+import main.java.common.CommandMap;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PcQnaDAOImp extends JDBConnection implements PcQnaDAO{
-    // 검색 조건에 맞는 게시물의 개수를 반환합니다.
+public class PcQnaDAOImp implements PcQnaDAO{
+    /*// 검색 조건에 맞는 게시물의 개수를 반환합니다.
     public int selectCount(Map<String, Object> map) {
         return 0;
     }
@@ -133,5 +132,5 @@ public class PcQnaDAOImp extends JDBConnection implements PcQnaDAO{
     public int deletePost(BoardDTO dto) {
 
         return 0;
-    }
+    }*/
 }

@@ -1,6 +1,6 @@
-package member.my;
+package main.java.member.my;
 
-import common.CommandMap;
+import main.java.common.CommandMap;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +15,7 @@ import java.util.Map;
 
 @Controller
 public class MyController {
+    /*
     @Resource(name = "myService")
     private MyService myService;
 
@@ -105,7 +106,7 @@ public class MyController {
         commandMap.remove("MEMBER_BIRTH"); // 기존 MEMBER_BIRTH 데이터 삭제
         commandMap.put("MEMBER_BIRTH", birth); // 위에 정의한 birth로 put
 
-        myService.memberModify(commandMap.getMap());
+        //myService.memberModify(commandMap.getMap());
 
         return mv;
     }
@@ -259,4 +260,5 @@ public class MyController {
         }
         return mv;
     }
+    */
 }

@@ -1,6 +1,6 @@
-package member.login;
+package main.java.member.login;
 
-import common.AbstractDAO;
+import main.java.common.AbstractDAO;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;

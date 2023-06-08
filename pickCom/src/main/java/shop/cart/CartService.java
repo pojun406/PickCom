@@ -1,7 +1,6 @@
-package shop.cart;
+package main.java.shop.cart;
 
-import common.CommandMap;
-
+import main.java.common.CommandMap;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;

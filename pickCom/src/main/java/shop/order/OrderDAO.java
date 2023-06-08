@@ -1,7 +1,7 @@
-package shop.order;
+package main.java.shop.order;
 
-import common.AbstractDAO;
-import common.CommandMap;
+import main.java.common.AbstractDAO;
+import main.java.common.CommandMap;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

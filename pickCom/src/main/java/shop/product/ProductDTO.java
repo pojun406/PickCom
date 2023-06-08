@@ -1,4 +1,4 @@
-package shop.product;
+package main.java.shop.product;
 
 public class ProductDTO {
     private int product_num;

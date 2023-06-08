@@ -1,17 +1,17 @@
-package shop.product;
+package main.java.shop.product;
 
-import common.CommandMap;
+import main.java.common.CommandMap;
 import jakarta.annotation.Resource;
+import main.java.shop.cart.CartService;
+import main.java.shop.order.OrderService;
+import main.java.shop.review.ReviewService;
+import main.java.utils.Paging;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import shop.cart.CartService;
-import shop.order.OrderService;
-import shop.review.ReviewService;
-import utils.Paging;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -39,8 +39,7 @@ public class ProductController {
 
         List<Map<String, Object>> list = productService.hitProductList(commandMap.getMap());
 
-        mv.addObject("cate1", "컴퓨터");
-        mv.addObject("cate2", "컴퓨터 전체");
+        mv.addObject("cate", "컴퓨터 전체");
         mv.addObject("list", list);
         mv.addObject("titleMain", "새상품");
 
@@ -63,8 +62,7 @@ public class ProductController {
 
         List<Map<String, Object>> list = productService.recommendedProductList(commandMap.getMap());
 
-        mv.addObject("cate1", "컴퓨터");
-        mv.addObject("cate2", "컴퓨터 전체");
+        mv.addObject("cate", "컴퓨터 전체");
         mv.addObject("list", list);
         mv.addObject("titleMain", "새상품");
 
@@ -88,8 +86,7 @@ public class ProductController {
 
         List<Map<String, Object>> list = productService.newProductList(commandMap.getMap());
 
-        mv.addObject("cate1", "컴퓨터");
-        mv.addObject("cate2", "컴퓨터 전체");
+        mv.addObject("cate", "컴퓨터 전체");
         mv.addObject("list", list);
         mv.addObject("titleMain", "새상품");
 
@@ -113,8 +110,7 @@ public class ProductController {
 
         List<Map<String, Object>> list = productService.bestProductList(commandMap.getMap());
 
-        mv.addObject("cate1", "컴퓨터");
-        mv.addObject("cate2", "컴퓨터 전체");
+        mv.addObject("cate", "컴퓨터 전체");
         mv.addObject("list", list);
         mv.addObject("titleMain", "베스트");
 
@@ -138,8 +134,7 @@ public class ProductController {
 
         List<Map<String, Object>> list = productService.saleProductList(commandMap.getMap());
 
-        mv.addObject("cate1", "컴퓨터");
-        mv.addObject("cate2", "컴퓨터 전체");
+        mv.addObject("cate", "컴퓨터 전체");
         mv.addObject("list", list);
         mv.addObject("titleMain", "새상품");
 
@@ -155,13 +150,12 @@ public class ProductController {
     }
 
     // 카테고리별 상품리스트
-    @RequestMapping(value = "/shop/productList/{cate1}/{cate2}/{orderBy}.do")
-    public ModelAndView openBoardList(@PathVariable String cate1, @PathVariable String cate2, @PathVariable String orderBy, CommandMap commandMap,
+    @RequestMapping(value = "/shop/productList/{cate}/{orderBy}.do")
+    public ModelAndView openBoardList(@PathVariable String cate, @PathVariable String orderBy, CommandMap commandMap,
                                       @RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)
             throws Exception {
         ModelAndView mv = new ModelAndView("/shop/cateProductList");
-        commandMap.put("cate1", cate1);
-        commandMap.put("cate2", cate2);
+        commandMap.put("cate", cate);
         request.setAttribute("keyword", keyword);
         System.out.println("카테고리 검색확인=" + commandMap.getMap());
         System.out.println("검색키워드=" + keyword);
@@ -179,8 +173,7 @@ public class ProductController {
             commandMap.put("orderBy", "PRODUCT_SELL_PRICE");
             commandMap.put("orderSort", "DESC");
         }
-        mv.addObject("cate1", cate1);
-        mv.addObject("cate2", cate2);
+        mv.addObject("cate", cate);
         String filePath_temp = request.getContextPath() + "/file/";
         mv.addObject("path", filePath_temp);
         request.setAttribute("path", filePath_temp);

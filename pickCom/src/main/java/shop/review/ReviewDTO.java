@@ -1,4 +1,4 @@
-package shop.review;
+package main.java.shop.review;
 
 public class ReviewDTO {
     private int review_num;

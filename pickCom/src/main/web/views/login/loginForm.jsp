@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <title>PickCom:대한민국 1등 PC 쇼핑몰</title>
-  <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="../../img/favicon.png" />
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -20,7 +20,7 @@
 </head>
 <body>
 <div id="wrapper">
-  <form action="login.do" method="post">
+  <form action="<c:url value="/loginAction.do"/>" method="post">
     <main id="member">
 
       <div class="login">
@@ -56,19 +56,16 @@
           </table>
           <input type="submit" name="memberLogin" value="로그인">
           <span>
-                        <label>
-                            <input type="checkbox" name="auto">자동 로그인
-                        </label>
-                        <a href="#">아이디찾기</a>
-                        <a href="#">비밀번호찾기</a>
-                        <a href="/stu/signup01_first.do" name="memberJoin">회원가입</a>
-                    </span>
-          <a href="#" class="banner">
-            <img src="./img/member_login_banner.jpg" alt="로그인 옆 이미지 배너">
-          </a>
+            <label>
+              <input type="checkbox" name="auto">자동 로그인
+            </label>
+            <a href="#">아이디찾기</a>
+            <a href="#">비밀번호찾기</a>
+            <a href="<c:url value="/joinForm.do"/>">회원가입</a>
+          </span>
         </form>
-        <img src="./img/member_certifi_logo.gif" alt="banner">
       </div>
+
     </main>
   </form>
 </div>

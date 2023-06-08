@@ -1,11 +1,6 @@
-package shop.product;
-
-import org.springframework.stereotype.Service;
-
-import common.JDBConnection;
+package main.java.shop.product;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.*;
 import java.util.List;
 import java.util.Map;
 
