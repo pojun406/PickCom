@@ -44,17 +44,24 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Spring Web MVC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
         <!-- spring-core -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>6.0.8</version>
+            <version>${org.springframework-version}</version>
         </dependency>
         <!-- spring-context -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>6.0.8</version>
+            <version>${org.springframework-version}</version>
         </dependency>
 
 		<!-- maria bd -->
@@ -82,13 +89,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-
-		<!-- Spring MVC -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 
@@ -139,6 +139,26 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.zipkin.brave</groupId>
+			<artifactId>brave-spring-web-servlet-interceptor</artifactId>
+			<version>4.13.6</version>
+		</dependency>
+		<dependency>
+			<groupId>io.zipkin.brave</groupId>
+			<artifactId>brave-spring-web-servlet-interceptor</artifactId>
+			<version>4.13.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.kristofa</groupId>
+			<artifactId>brave-spring-web-servlet-interceptor</artifactId>
+			<version>3.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.kristofa</groupId>
+			<artifactId>brave-spring-web-servlet-interceptor</artifactId>
+			<version>3.7.0</version>
 		</dependency>
 	</dependencies>
 
@@ -194,7 +214,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 
 </project>

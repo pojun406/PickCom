@@ -1,25 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="AdditionalModuleElements">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/pickCom/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pickCom/src/main/resources" type="java-resource" />
+    </content>
   </component>
   <component name="FacetManager">
-    <facet type="web" name="Web">
+    <facet type="web" name="Web3">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/pickCom/web/WEB-INF/web.xml" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/manager/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/pickCom/web/WEB-INF" relative="/" />
+          <root url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/manager" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web2">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/host-manager/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/host-manager" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web5">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/conf/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/conf" relative="/WEB-INF" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web4">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/docs/appdev/sample/web/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/docs/appdev/sample/web" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web7">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/examples/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/examples" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web6">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/docs/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/docs" relative="/" />
         </webroots>
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring 애플리케이션 컨텍스트" removed="false">
-          <file>file://$MODULE_DIR$/pickCom/src/main/webapp/WEB-INF/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/pickCom/src/main/webapp/WEB-INF/config/action-servlet.xml</file>
           <file>file://$MODULE_DIR$/pickCom/src/main/webapp/WEB-INF/dispatcher-servlet.xml</file>
         </fileset>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web8">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/ROOT/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/server/apache-tomcat-10.1.9/webapps/ROOT" relative="/" />
+        </webroots>
       </configuration>
     </facet>
   </component>
