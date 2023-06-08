@@ -53,7 +53,7 @@
             <table>
                 <c:forEach var="item" items="${list}">
                     <tr>
-                        <td><a href="<c:url value="/shop/productDetail.do"/>" class="thumb" name="title">
+                        <td><a href="<c:url value="/pcom/shop/productDetail.do"/>" class="thumb" name="title">
                             <img src="${item.product_img}" alt="상품이미지">
                         </a></td>
                         <td>
@@ -103,7 +103,7 @@
 
     function fn_openBoardDetail(obj) {
         var comSubmit = new ComSubmit();
-        comSubmit.setUrl("<c:url value='/shop/productDetail.do' />");
+        comSubmit.setUrl("<c:url value='/pcom/shop/productDetail.do' />");
         comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
         comSubmit.submit();
     }

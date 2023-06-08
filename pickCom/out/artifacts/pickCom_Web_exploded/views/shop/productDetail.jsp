@@ -452,8 +452,8 @@
                         <em>총 상품금액</em>
                     </div>
                     <div class="button">
-                        <input type="button" class="cart" value="장바구니" onclick="location.href='/shop/insertCart.do'">
-                        <input type="button" class="order" value="구매하기" onclick="location.href='/shop/productOrder.do'">
+                        <input type="button" class="cart" value="장바구니" onclick="location.href='../../../java/pcom/shop/insertCart.do'">
+                        <input type="button" class="order" value="구매하기" onclick="location.href='../../../java/pcom/shop/productOrder.do'">
                     </div>
                 </div>
             </article>

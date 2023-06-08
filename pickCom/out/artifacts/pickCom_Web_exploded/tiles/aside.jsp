@@ -27,7 +27,7 @@
             </a>
             <ol>
                 <li>
-                    <a href="<c:url value="/shop/bestProductList.do"/>">컴퓨터 전체</a>
+                    <a href="<c:url value="/pcom/shop/bestProductList.do"/>">컴퓨터 전체</a>
                 </li>
                 <li>
                     <a href="#">PC견적</a>
@@ -53,22 +53,22 @@
             </a>
             <ol>
                 <li>
-                    <a href="<c:url value="/shop/productList/allPC/newItem.do"/>">데스크탑 전체</a>
+                    <a href="<c:url value="/pcom/shop/productList/allPC/newItem.do"/>">데스크탑 전체</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/brandPC/newItem.do"/>">브랜드</a>
+                    <a href="<c:url value="/pcom/shop/productList/brandPC/newItem.do"/>">브랜드</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/officePC/newItem.do"/>">사무/작업용PC</a>
+                    <a href="<c:url value="/pcom/shop/productList/officePC/newItem.do"/>">사무/작업용PC</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/gamingPC/newItem.do"/>">게이밍 PC</a>
+                    <a href="<c:url value="/pcom/shop/productList/gamingPC/newItem.do"/>">게이밍 PC</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/AIOPC/newItem.do"/>">일체형PC</a>
+                    <a href="<c:url value="/pcom/shop/productList/AIOPC/newItem.do"/>">일체형PC</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/server/newItem.do"/>">서버/워크스테이션</a>
+                    <a href="<c:url value="/pcom/shop/productList/server/newItem.do"/>">서버/워크스테이션</a>
                 </li>
             </ol>
         </li>
@@ -79,31 +79,31 @@
             </a>
             <ol>
                 <li>
-                    <a href="<c:url value="/shop/productList/CPU/newItem.do"/>">CPU</a>
+                    <a href="<c:url value="/pcom/shop/productList/CPU/newItem.do"/>">CPU</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/mainBoard/newItem.do"/>">메인보드</a>
+                    <a href="<c:url value="/pcom/shop/productList/mainBoard/newItem.do"/>">메인보드</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/RAM/newItem.do"/>">RAM</a>
+                    <a href="<c:url value="/pcom/shop/productList/RAM/newItem.do"/>">RAM</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/GPU/newItem.do"/>">그래픽카드(VGA)</a>
+                    <a href="<c:url value="/pcom/shop/productList/GPU/newItem.do"/>">그래픽카드(VGA)</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/SSD/newItem.do"/>">SSD</a>
+                    <a href="<c:url value="/pcom/shop/productList/SSD/newItem.do"/>">SSD</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/HDD/newItem.do"/>">HDD</a>
+                    <a href="<c:url value="/pcom/shop/productList/HDD/newItem.do"/>">HDD</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/case/newItem.do"/>">케이스</a>
+                    <a href="<c:url value="/pcom/shop/productList/case/newItem.do"/>">케이스</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/power/newItem.do"/>">파워</a>
+                    <a href="<c:url value="/pcom/shop/productList/power/newItem.do"/>">파워</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/cooler/newItem.do"/>">쿨러/튜닝</a>
+                    <a href="<c:url value="/pcom/shop/productList/cooler/newItem.do"/>">쿨러/튜닝</a>
                 </li>
             </ol>
         </li>
@@ -114,19 +114,19 @@
             </a>
             <ol>
                 <li>
-                    <a href="<c:url value="/shop/productList/SSD/newItem.do"/>">SSD</a>
+                    <a href="<c:url value="/pcom/shop/productList/SSD/newItem.do"/>">SSD</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/HDD/newItem.do"/>">HDD</a>
+                    <a href="<c:url value="/pcom/shop/productList/HDD/newItem.do"/>">HDD</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/externalSSD/newItem.do"/>">외장 SSD</a>
+                    <a href="<c:url value="/pcom/shop/productList/externalSSD/newItem.do"/>">외장 SSD</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/externalHDD/newItem.do"/>">외장 하드</a>
+                    <a href="<c:url value="/pcom/shop/productList/externalHDD/newItem.do"/>">외장 하드</a>
                 </li>
                 <li>
-                    <a href="<c:url value="/shop/productList/externalCase/newItem.do"/>">외장 케이스</a>
+                    <a href="<c:url value="/pcom/shop/productList/externalCase/newItem.do"/>">외장 케이스</a>
                 </li>
             </ol>
         </li>

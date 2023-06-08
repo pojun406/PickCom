@@ -9,14 +9,14 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
        
    <!-- 자동스캔 first들어간 패키지를 다 찾음 -->
-   <context:component-scan base-package="java" >
+   <context:component-scan base-package="pcom" >
    
    </context:component-scan>
    
    <mvc:annotation-driven>
    <!-- 전송된 데이터를 commandMap으로 다 받을수 있음 -->
    		<mvc:argument-resolvers>
-   			<bean class="common.resolver.CustomMapArgumentResolver"/>
+   			<bean class="pcom.common.resolver.CustomMapArgumentResolver"/>
    		</mvc:argument-resolvers>
    </mvc:annotation-driven>
    
@@ -24,7 +24,7 @@
    <mvc:interceptors>
    		<mvc:interceptor>
    			<mvc:mapping path="/**/"/>
-   			<bean id="loggerInterceptor" class="common.logger.LoggerInterceptor" />
+   			<bean id="loggerInterceptor" class="pcom.common.logger.LoggerInterceptor" />
    		</mvc:interceptor>
    </mvc:interceptors>
    

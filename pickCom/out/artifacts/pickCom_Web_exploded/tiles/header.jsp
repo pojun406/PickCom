@@ -41,7 +41,7 @@
     </div>
     <div class="logo">
       <div>
-        <a href="<c:url value="/shop/bestProductList.do"/>">
+        <a href="<c:url value="/pcom/shop/bestProductList.do"/>">
           <img src="../img/header_logo.png" alt="헤더로고">
         </a>
         <form action="#">
@@ -55,11 +55,11 @@
     <div class="menu">
       <div>
         <ul>
-          <li><a href="<c:url value="/shop/hitProductList.do"/>">히트상품</a></li>
-          <li><a href="<c:url value="/shop/recommendedProductList.do"/>">추천상품</a></li>
-          <li><a href="<c:url value="/shop/newProductList.do"/>">최신상품</a></li>
-          <li><a href="<c:url value="/shop/bestProductList.do"/>">인기상품</a></li>
-          <li><a href="<c:url value="/shop/saleProductList.do"/>">할인상품</a></li>
+          <li><a href="<c:url value="/pcom/shop/hitProductList.do"/>">히트상품</a></li>
+          <li><a href="<c:url value="/pcom/shop/recommendedProductList.do"/>">추천상품</a></li>
+          <li><a href="<c:url value="/pcom/shop/newProductList.do"/>">최신상품</a></li>
+          <li><a href="<c:url value="/pcom/shop/bestProductList.do"/>">인기상품</a></li>
+          <li><a href="<c:url value="/pcom/shop/saleProductList.do"/>">할인상품</a></li>
         </ul>
         <ul>
           <li><a href="#">쿠폰존</a></li>

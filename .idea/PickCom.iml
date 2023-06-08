@@ -72,6 +72,8 @@
         <fileset id="fileset" name="Spring 애플리케이션 컨텍스트" removed="false">
           <file>file://$MODULE_DIR$/pickCom/src/main/webapp/WEB-INF/config/action-servlet.xml</file>
           <file>file://$MODULE_DIR$/pickCom/src/main/webapp/WEB-INF/dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/pickCom/src/main/webapp/WEB-INF/config/dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/pickCom/src/main/webapp/WEB-INF/config/applicationContext.xml</file>
         </fileset>
       </configuration>
     </facet>

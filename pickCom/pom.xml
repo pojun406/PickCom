@@ -128,6 +128,14 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- TLD 라이브러리 의존성 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- jstl-api -->
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
@@ -144,16 +152,6 @@
 			<groupId>io.zipkin.brave</groupId>
 			<artifactId>brave-spring-web-servlet-interceptor</artifactId>
 			<version>4.13.6</version>
-		</dependency>
-		<dependency>
-			<groupId>io.zipkin.brave</groupId>
-			<artifactId>brave-spring-web-servlet-interceptor</artifactId>
-			<version>4.13.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.kristofa</groupId>
-			<artifactId>brave-spring-web-servlet-interceptor</artifactId>
-			<version>3.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.kristofa</groupId>
@@ -186,9 +184,20 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.1</version>
+				<version>3.8.1</version>
 				<configuration>
 					<release>11</release>
+				</configuration>
+			</plugin>
+			<!-- Maven 컴파일 플러그인 설정 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<!-- 소스 및 대상 버전 설정 -->
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
