@@ -1,0 +1,44 @@
+10-Jun-2023 11:29:34.869 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/9.0.76
+10-Jun-2023 11:29:34.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Jun 5 2023 07:17:04 UTC
+10-Jun-2023 11:29:34.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  9.0.76.0
+10-Jun-2023 11:29:34.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Windows 10
+10-Jun-2023 11:29:34.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     10.0
+10-Jun-2023 11:29:34.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          amd64
+10-Jun-2023 11:29:34.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           C:\Program Files\Java\jdk-11
+10-Jun-2023 11:29:34.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          11.0.18+9-LTS-195
+10-Jun-2023 11:29:34.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Oracle Corporation
+10-Jun-2023 11:29:34.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\Users\roozi\apache-tomcat-9.0.76
+10-Jun-2023 11:29:34.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\Users\roozi\apache-tomcat-9.0.76
+10-Jun-2023 11:29:34.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+10-Jun-2023 11:29:34.881 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+10-Jun-2023 11:29:34.882 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+10-Jun-2023 11:29:34.882 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+10-Jun-2023 11:29:34.883 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+10-Jun-2023 11:29:34.883 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=C:\Users\roozi\apache-tomcat-9.0.76\conf\logging.properties
+10-Jun-2023 11:29:34.884 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Jun-2023 11:29:34.884 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djdk.tls.ephemeralDHKeySize=2048
+10-Jun-2023 11:29:34.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+10-Jun-2023 11:29:34.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dignore.endorsed.dirs=
+10-Jun-2023 11:29:34.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=C:\Users\roozi\apache-tomcat-9.0.76
+10-Jun-2023 11:29:34.886 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=C:\Users\roozi\apache-tomcat-9.0.76
+10-Jun-2023 11:29:34.887 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=C:\Users\roozi\apache-tomcat-9.0.76\temp
+10-Jun-2023 11:29:34.891 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 버전 [1.7.4]을(를) 사용한, APR 기반 Apache Tomcat Native 라이브러리 [1.2.37]을(를) 로드했습니다.
+10-Jun-2023 11:29:34.892 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 용량정보들: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+10-Jun-2023 11:29:34.893 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL 설정: useAprConnector [false], useOpenSSL [true]
+10-Jun-2023 11:29:34.896 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL이 성공적으로 초기화되었습니다: [OpenSSL 1.1.1u  30 May 2023]
+10-Jun-2023 11:29:35.060 INFO [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+10-Jun-2023 11:29:35.076 INFO [main] org.apache.catalina.startup.Catalina.load [341] 밀리초 내에 서버가 초기화되었습니다.
+10-Jun-2023 11:29:35.117 INFO [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+10-Jun-2023 11:29:35.119 INFO [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/9.0.76]
+10-Jun-2023 11:29:35.125 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\docs]을(를) 배치합니다.
+10-Jun-2023 11:29:35.343 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\docs]에 대한 배치가 [217] 밀리초에 완료되었습니다.
+10-Jun-2023 11:29:35.346 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\examples]을(를) 배치합니다.
+10-Jun-2023 11:29:35.578 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\examples]에 대한 배치가 [231] 밀리초에 완료되었습니다.
+10-Jun-2023 11:29:35.579 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\host-manager]을(를) 배치합니다.
+10-Jun-2023 11:29:35.601 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\host-manager]에 대한 배치가 [22] 밀리초에 완료되었습니다.
+10-Jun-2023 11:29:35.602 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\manager]을(를) 배치합니다.
+10-Jun-2023 11:29:35.621 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\manager]에 대한 배치가 [19] 밀리초에 완료되었습니다.
+10-Jun-2023 11:29:35.622 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\ROOT]을(를) 배치합니다.
+10-Jun-2023 11:29:35.636 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory 웹 애플리케이션 디렉토리 [C:\Users\roozi\apache-tomcat-9.0.76\webapps\ROOT]에 대한 배치가 [14] 밀리초에 완료되었습니다.
+10-Jun-2023 11:29:35.640 INFO [main] org.apache.coyote.AbstractProtocol.start 프로토콜 핸들러 ["http-nio-8080"]을(를) 시작합니다.
+10-Jun-2023 11:29:35.680 INFO [main] org.apache.catalina.startup.Catalina.start 서버가 [603] 밀리초 내에 시작되었습니다.
