@@ -1,13 +1,15 @@
 package pcom.common;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
+import org.apache.ibatis.logging.Log;
+import org.apache.ibatis.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Map;
+
 
 public class AbstractDAO {
     protected Log log = LogFactory.getLog(AbstractDAO.class);
