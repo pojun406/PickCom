@@ -1,12 +1,13 @@
 package pcom.member.login;
 
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Map;
 
 @Service("loginService")
 public class LoginServiceImp implements LoginService {
-    @Resource(name="loginDAO")
+    @Autowired
     private LoginDAO loginDAO;
 
     // 로그인

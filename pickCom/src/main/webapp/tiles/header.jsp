@@ -1,6 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -24,12 +24,12 @@
         <c:choose>
           <!-- 로그인하지 않은 상태 -->
           <c:when test="${not loggedIn}">
-            <a href="<c:url value="/loginForm.do"/>">로그인</a>
+            <a href="/loginForm.do">로그인</a>
             <a href="">회원가입</a>
           </c:when>
           <!-- 로그인한 상태 -->
           <c:otherwise>
-            <a href="<c:url value="/logout.do"/>">로그아웃</a>
+            <a href="/logout.do">로그아웃</a>
             <a href="">마이페이지</a>
           </c:otherwise>
         </c:choose>
@@ -41,7 +41,7 @@
     </div>
     <div class="logo">
       <div>
-        <a href="<c:url value="/pcom/shop/bestProductList.do"/>">
+        <a href="/pcom/shop/bestProductList.do">
           <img src="../img/header_logo.png" alt="헤더로고">
         </a>
         <form action="#">
@@ -55,11 +55,11 @@
     <div class="menu">
       <div>
         <ul>
-          <li><a href="<c:url value="/pcom/shop/hitProductList.do"/>">히트상품</a></li>
-          <li><a href="<c:url value="/pcom/shop/recommendedProductList.do"/>">추천상품</a></li>
-          <li><a href="<c:url value="/pcom/shop/newProductList.do"/>">최신상품</a></li>
-          <li><a href="<c:url value="/pcom/shop/bestProductList.do"/>">인기상품</a></li>
-          <li><a href="<c:url value="/pcom/shop/saleProductList.do"/>">할인상품</a></li>
+          <li><a href="/pcom/shop/hitProductList.do">히트상품</a></li>
+          <li><a href="/pcom/shop/recommendedProductList.do">추천상품</a></li>
+          <li><a href="/pcom/shop/newProductList.do">최신상품</a></li>
+          <li><a href="/pcom/shop/bestProductList.do">인기상품</a></li>
+          <li><a href="/pcom/shop/saleProductList.do">할인상품</a></li>
         </ul>
         <ul>
           <li><a href="#">쿠폰존</a></li>

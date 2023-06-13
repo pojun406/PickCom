@@ -1,7 +1,7 @@
 package pcom.shop.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Service("orderService")
 public class OrderServiceImp implements OrderService {
-    @Resource(name="orderDAO")
+    @Autowired
     private OrderDAO orderDAO;
 
     // 주문페이지에서 필요한 정보 검색

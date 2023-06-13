@@ -1,6 +1,6 @@
 package pcom.board.qna;
 
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +10,8 @@ import java.util.Map;
 
 @Service("qnaService")
 public class QnaServiceImpl implements QnaService{
-	
-	@Resource(name="qnaDAO")
+
+	@Autowired
 	private QnaDAO qnaDAO;
 	
 	@Override

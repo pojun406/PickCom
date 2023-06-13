@@ -1,7 +1,7 @@
 package pcom.shop.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,10 +14,10 @@ import java.util.Map;
 
 @Controller
 public class OrderController {
-    @Resource(name="cartService")
+    @Autowired
     private CartService cartService;
 
-    @Resource(name="orderService")
+    @Autowired
     private OrderService orderService;
 
     //장바구니 모두구매

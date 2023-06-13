@@ -1,7 +1,7 @@
 package pcom.shop.cart;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service("cartService")
 public class CartServiceImp implements CartService {
-    @Resource(name="cartDAO")
+    @Autowired
     private CartDAO cartDAO;
 
     // 장바구니 리스트 출력

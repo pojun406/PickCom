@@ -1,15 +1,15 @@
 package pcom.member.my;
 
-import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pcom.common.CommandMap;
 
 import java.util.List;
 import java.util.Map;
 
 @Service("myService")
 public class MyServiceImp implements MyService {
-    @Resource(name = "myDAO")
+    @Autowired
     private MyDAO myDAO;
 
     // 구매 목록

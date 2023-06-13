@@ -1,7 +1,7 @@
 package pcom.admin.main;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +9,8 @@ import java.util.Map;
 
 @Service("adminMainService")
 public class AdminMainServiceImpl implements AdminMainService {
-	
-	@Resource(name="adminDao")
+
+	@Autowired
 	private AdminDao adminDao;
 
 	@Override

@@ -1,6 +1,6 @@
 package pcom.shop.review;
 
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Service("reviewService")
 public class ReviewServiceImp implements ReviewService {
-    @Resource(name="reviewDAO")
+    @Autowired
     private ReviewDAO reviewDAO;
 
     // 제품 리뷰 등록

@@ -1,8 +1,6 @@
 package pcom.member.login;
 
-import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
-import pcom.member.join.JoinService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pcom.common.CommandMap;
+import pcom.member.join.JoinService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,15 +17,15 @@ import java.util.Map;
 
 @Controller
 public class LoginController {
-    @Resource(name = "loginService")
+    @Autowired
     private LoginService loginService;
 
-    @Resource(name="joinService")
+    @Autowired
     private JoinService joinService;
 
     @RequestMapping(value = "/loginForm.do")
     public ModelAndView loginForm(CommandMap commandMap) throws Exception {
-        ModelAndView mv = new ModelAndView("login/loginForm");
+        ModelAndView mv = new ModelAndView("views/login/loginForm");
 
         return mv;
     }

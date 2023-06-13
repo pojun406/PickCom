@@ -1,7 +1,7 @@
 package pcom.board.qna;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +15,8 @@ import java.util.Map;
 
 @Controller
 public class QnaController {
-	
-	@Resource(name="qnaService")
+
+	@Autowired
 	private QnaService qnaService;
 	
 	@RequestMapping(value="/qna/openQnaList.do")

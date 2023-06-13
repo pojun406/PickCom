@@ -1,7 +1,7 @@
 package pcom.admin.main;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,9 +15,9 @@ import java.util.Map;
 @Controller
 public class AdminMainController {
 
-	
-	@Resource(name="adminMainService")
-	private AdminMainService adminMainService;
+
+	@Autowired
+	private pcom.admin.main.AdminMainService adminMainService;
 	
 	/* mvc:annotation-driven을 선언하면 HandlerMethodArgumentResolver가 Map형식일때 동작을 못함 해서
 	 * 기본 Map형식이 아닌 map을 가지는 클래스를 만들어 사용 commandMap */

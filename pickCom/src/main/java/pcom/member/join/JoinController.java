@@ -1,13 +1,13 @@
 package pcom.member.join;
 
-import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import pcom.common.CommandMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,13 +15,13 @@ import java.util.Random;
 
 @Controller
 public class JoinController {
-    @Resource(name="joinService")
+    @Autowired
     private JoinService joinService;
 
     // 회원가입 폼
-    @RequestMapping(value="/join_main.do")
+    @RequestMapping(value="/joinMain.do")
     public ModelAndView joinForm(CommandMap commandMap) throws Exception {
-        ModelAndView mv = new ModelAndView("login/join_main");
+        ModelAndView mv = new ModelAndView("views/login/join_main");
 
 
         return mv;
@@ -30,7 +30,7 @@ public class JoinController {
     // 회원가입 처리
     @RequestMapping(value="/joinAction.do", method= RequestMethod.POST)
     public ModelAndView insertMember(CommandMap commandMap, HttpServletRequest request) throws Exception {
-        ModelAndView mv = new ModelAndView("login/joinAction");
+        ModelAndView mv = new ModelAndView("/views/login/joinAction");
 
         /*// 이메일
         String email = request.getParameter("MEMBER_EMAIL") + "@" + request.getParameter("MEMBER_EMAIL2");

@@ -1,6 +1,6 @@
 package pcom.shop.product;
 
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service("productService")
 public class ProductServiceImp implements ProductService{
-    @Resource(name="productDAO")
+    @Autowired
     private ProductDAO productDAO;
 
     // 히트상품 리스트

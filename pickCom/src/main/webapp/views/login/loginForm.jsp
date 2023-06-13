@@ -1,7 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../../tiles/loginHeader.jsp" %>
-<%@ include file="../../tiles/footer.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +18,8 @@
 </head>
 <body>
 <div id="wrapper">
-  <form action="<c:url value="/loginAction.do"/>" method="post">
+  <%@ include file="../../tiles/loginHeader.jsp" %>
+  <form action="/loginAction.do" method="post">
     <main id="member">
 
       <div class="login">
@@ -61,13 +60,14 @@
             </label>
             <a href="#">아이디찾기</a>
             <a href="#">비밀번호찾기</a>
-            <a href="<c:url value="/joinForm.do"/>">회원가입</a>
+            <a href="/joinForm.do">회원가입</a>
           </span>
         </form>
       </div>
 
     </main>
   </form>
+  <%@ include file="../../tiles/footer.jsp" %>
 </div>
 </body>
 </html>

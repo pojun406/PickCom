@@ -1,7 +1,7 @@
 package pcom.shop.product;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,16 +21,16 @@ import java.util.Map;
 
 @Controller
 public class ProductController {
-    @Resource(name="cartService")
+    @Autowired
     private CartService cartService;
 
-    @Resource(name="orderService")
+    @Autowired
     private OrderService orderService;
 
-    @Resource(name="productService")
+    @Autowired
     private ProductService productService;
 
-    @Resource(name="reviewService")
+    @Autowired
     private ReviewService reviewService;
 
     // 히트상품 리스트 출력

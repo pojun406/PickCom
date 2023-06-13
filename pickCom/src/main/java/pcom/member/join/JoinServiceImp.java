@@ -1,12 +1,13 @@
 package pcom.member.join;
 
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Map;
 
 @Service("joinService")
 public class JoinServiceImp implements JoinService {
-    @Resource(name="joinDAO")
+    @Autowired
     private JoinDAO joinDAO;
 
     // 회원가입

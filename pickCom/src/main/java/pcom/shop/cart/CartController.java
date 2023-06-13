@@ -1,7 +1,7 @@
 package pcom.shop.cart;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import pcom.common.CommandMap;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Controller
 public class CartController {
-    @Resource(name="cartService")
+    @Autowired
     private CartService cartService;
 
     //세션값으로 장바구니 전체리스트

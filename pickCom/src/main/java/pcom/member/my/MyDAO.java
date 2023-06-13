@@ -1,8 +1,8 @@
 package pcom.member.my;
 
-import pcom.common.CommandMap;
-import pcom.common.AbstractDAO;
 import org.springframework.stereotype.Repository;
+import pcom.common.AbstractDAO;
+import pcom.common.CommandMap;
 
 import java.util.List;
 import java.util.Map;
