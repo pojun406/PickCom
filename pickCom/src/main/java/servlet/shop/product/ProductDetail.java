@@ -14,7 +14,7 @@ public class ProductDetail extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        int idx = (int) req.getAttribute("idx");
+        int idx = Integer.parseInt(req.getParameter("idx"));
 
         ProductDAO dao = new ProductDAO();
         ProductDTO dto = dao.selectProductDetail(idx);

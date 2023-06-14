@@ -10,7 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b49094fd-12be-4c79-bda5-8a9badeebce6" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pickCom/src/main/java/servlet/common/DBConnPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/java/servlet/common/DBConnPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/java/servlet/member/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/java/servlet/member/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/java/servlet/shop/product/ProductDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/java/servlet/shop/product/ProductDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/java/servlet/shop/product/ProductList.java" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/java/servlet/shop/product/ProductList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productList.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +64,7 @@
     "project.structure.last.edited": "아티팩트",
     "project.structure.proportion": "0.1484375",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "File.Encoding",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "spring.configuration.checksum": "54f27fd00411c78fa999fedbbbcd36a6",
     "vue.rearranger.settings.migration": "true"
   }
@@ -177,7 +183,7 @@
       <workItem from="1686726106905" duration="4880000" />
       <workItem from="1686731069951" duration="233000" />
       <workItem from="1686739900769" duration="8838000" />
-      <workItem from="1686754062784" duration="3413000" />
+      <workItem from="1686754062784" duration="4605000" />
     </task>
     <servers />
   </component>

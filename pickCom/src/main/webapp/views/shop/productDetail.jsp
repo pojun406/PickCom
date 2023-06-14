@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../../tiles/default_layout.jsp" %>
-
+<%@ include file="../../tiles/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -387,6 +386,9 @@
 <body>
 <div id="wrapper">
     <main id="product">
+        <aside>
+            <%@ include file="../../tiles/aside.jsp" %>
+        </aside>
         <section class="view">
             <nav>
                 <h1>상품보기</h1>
@@ -576,6 +578,7 @@
         </section>
     </main>
     <button type="button" id="top">상단이동</button>
+    <%@ include file="../../tiles/footer.jsp" %>
 </div>
 </body>
 </html>

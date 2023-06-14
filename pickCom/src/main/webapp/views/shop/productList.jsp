@@ -73,7 +73,7 @@
             <table>
                 <c:forEach var="item" items="${list}">
                     <tr>
-                        <td><a href="/shop/productDetail.do?idx=${item.product_num}" class="thumb" name="title">
+                        <td><a href="/shop/productDetail.do?idx=${item.product_num}" class="thumb">
                             <img src="${item.product_img}" alt="상품이미지">
                         </a></td>
                         <td>

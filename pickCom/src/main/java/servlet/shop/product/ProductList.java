@@ -60,7 +60,7 @@ public class ProductList extends HttpServlet {
         map.put("pageNum", pageNum);
 
         // 전달할 데이터를 request 영역에 저장 후 List.jsp로 포워드
-        req.setAttribute("boardLists", boardLists);
+        req.setAttribute("list", boardLists);
         req.setAttribute("map", map);
         req.setAttribute("cate", "전체");
         req.getRequestDispatcher("/views/shop/productList.jsp").forward(req, resp);
