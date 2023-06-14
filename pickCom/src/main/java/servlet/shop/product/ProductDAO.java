@@ -1,7 +1,7 @@
 package servlet.shop.product;
 
 import servlet.common.DBConnPool;
-import servlet.member.MemberDTO;
+import servlet.shop.product.ProductDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -48,6 +48,25 @@
                     <a href="#">최근등록순</a>
                 </li>
             </ul>
+            <!-- 검색 폼 -->
+            <form action="search" method="get">
+                <div class="row mb-4">
+                    <div class="col-2">
+                        <select name="searchField" class="form-select">
+                            <option value="userId">아이디</option>
+                            <option value="userName">닉네임</option>
+                            <option value="email">이메일</option>
+                            <option value="stat">상태</option>
+                        </select>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" name="searchWord" />
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary w-100">검색</button>
+                    </div>
+                </div>
+            </form>
             <table>
                 <c:forEach var="item" items="${list}">
                     <tr>
