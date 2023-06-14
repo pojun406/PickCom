@@ -22,15 +22,13 @@
       <div>
         <!-- 로그인 상태에 따라 버튼 표시 -->
         <c:choose>
-<<<<<<< HEAD
           <c:when test="${ sessionScope.num != null }">
             <a href="/login/login.do">로그인</a>
             <a href="/views/login/join_first.jsp">회원가입</a>
-=======
+          </c:when>
           <c:when test="${not loggedIn}">
             <a href="/loginForm.do">로그인</a>
             <a href="">회원가입</a>
->>>>>>> e6cee99886d833f664dc16a77eaa131fffc5ac3a
           </c:when>
           <c:otherwise>
             <a href="/login/logout.do">로그아웃</a>
