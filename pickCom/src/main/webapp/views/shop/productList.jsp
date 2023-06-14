@@ -20,12 +20,12 @@
     <main id="product">
         <section class="list">
             <nav>
-                <h1>${titleMain}</h1>
+                <h1>새상품</h1>
                 <p>
                     HOME >
                     <span>컴퓨터</span>
                     >
-                    <strong>${cate}</strong>
+                    <strong>케이스</strong>
                 </p>
             </nav>
             <ul class="sort">
@@ -51,37 +51,38 @@
             <table>
                 <c:forEach var="item" items="${list}">
                     <tr>
-                        <td><a href="/pcom/shop/productDetail.do" class="thumb" name="title">
+                        <td><a href="/shop/productDetail.do?idx=${item.product_num}" class="thumb" name="title">
                             <img src="${item.product_img}" alt="상품이미지">
                         </a></td>
                         <td>
-                            <input type="hidden" id="IDX" name="IDX" value="${item.product_num}">
                             <h3 class="name">${item.product_name}</h3>
                             <a href="#" class="desc">${item.product_description}</a>
+                            <input type="hidden" id="IDX" name="IDX" value="${item.product_num}">
+                            <input type="hidden" value="${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}" />
                         </td>
                         <td>
                             <ul>
                                 <li>
-                                    <ins class="dis-price">${item.salePrice}</ins>
+                                    <ins class="dis-price">${item.product_salePrice}</ins>
                                 </li>
                                 <li>
-                                    <del class="org-price">${item.originalPrice}</del>
+                                    <del class="org-price">${item.product_originalPrice}</del>
                                     <span class="discount">10%</span>
                                 </li>
                                 <li><span class="free-delivery">${item.product_shippingFee}</span></li>
                             </ul>
                         </td>
                         <td>
-                            <h4 class="seller"><i class="fas fa-home" aria-hidden="true"></i> ${item.seller_name}
+                            <h4 class="seller"><i class="fas fa-home" aria-hidden="true"></i> 판매자
                             </h4>
-                            <h5 class="badge power">${item.seller_rank}</h5>
-                            <h6 class="rating star1">${item.grade_score}</h6>
+                            <h5 class="badge power">판매자등급</h5>
+                            <h6 class="rating star5">상품평</h6>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
             <div class="paging">
-                ${pagingStr}
+                ${ map.pagingImg }
             </div>
         </section>
     </main>
@@ -91,6 +92,7 @@
 </body>
 
 </html>
+<%--
 <script type="text/javascript">
     $(document).ready(function () {
         $("a[name='title']").on("click", function (e) {
@@ -105,4 +107,4 @@
         comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
         comSubmit.submit();
     }
-</script>
+</script>--%>

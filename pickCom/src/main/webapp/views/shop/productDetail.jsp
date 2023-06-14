@@ -3,7 +3,6 @@
 <%@ include file="../../tiles/default_layout.jsp" %>
 
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>PickCom:대한민국 1등 PC 쇼핑몰</title>
@@ -394,7 +393,7 @@
                     HOME >
                     <span>컴퓨터</span>
                     >
-                    <strong>${cate}</strong>
+                    <strong>${item.product_category}</strong>
                 </p>
             </nav>
             <article class="info">
@@ -403,30 +402,30 @@
                 </div>
                 <div class="summary">
                     <nav>
-                        <h1>${list.seller_name}</h1>
+                        <h1>(주)PickCom</h1>
                         <h2>
                             상품번호 :
-                            <span>${list.product_num}</span>
+                            <span>${item.product_num}</span>
                         </h2>
                     </nav>
                     <nav>
-                        <h3>${list.product_name}}</h3>
-                        <p>${list.product_description}</p>
-                        <h5 class="rating star'${list.garde_score}'}">
+                        <h3>${item.product_name}}</h3>
+                        <p>${item.product_description}</p>
+                        <h5 class="rating star5}">
                             <a href="#">상품평보기</a>
                         </h5>
                     </nav>
                     <nav>
                         <div class="org_price">
-                            <del>${list.product_originalPrice}</del>
+                            <del>${item.product_originalPrice}</del>
                             <span>10%</span>
                         </div>
                         <div class="dis_price">
-                            <ins>${list.product_salePrice}</ins>
+                            <ins>${item.product_salePrice}</ins>
                         </div>
                     </nav>
                     <nav>
-                        <span class="delivery">${list.product_shippingFee}</span>
+                        <span class="delivery">${item.product_shippingFee}</span>
                         <span class="arrival">모레(금) 7/8 도착예정</span>
                         <span class="desc">본 상품은 국내배송만 가능합니다.</span>
                     </nav>
@@ -443,17 +442,17 @@
                     </nav>
                     <img src="../../img/vip_plcc_banner.png" alt="적립!" class="banner">
                     <div class="count">
-                        <button class="decrease">-</button>
-                        <input type="text" name="num" value="1" readonly>
-                        <button class="increase">+</button>
+                        <button class="decrease" onclick="decreaseNumber()">-</button>
+                        <input id="numberInput" type="text" name="num" value="1" readonly onchange="updateTotalAmount()">
+                        <button class="increase" onclick="increaseNumber()">+</button>
                     </div>
                     <div class="total">
-                        <span>35,000</span>
+                        <span id="productPrice">${item.product_salePrice}</span>
                         <em>총 상품금액</em>
                     </div>
                     <div class="button">
-                        <input type="button" class="cart" value="장바구니" onclick="location.href='../../../java/pcom/shop/insertCart.do'">
-                        <input type="button" class="order" value="구매하기" onclick="location.href='../../../java/pcom/shop/productOrder.do'">
+                        <input type="button" class="cart" value="장바구니" onclick="location.href='/shop/productCart.do'">
+                        <input type="button" class="order" value="구매하기" onclick="location.href='/shop/productOrder.do'">
                     </div>
                 </div>
             </article>
@@ -554,7 +553,7 @@
                     환급신청은 [나의쇼핑정보]에서 하실 수 있으며, 자세한 문의는 개별 판매자에게 연락하여 주시기 바랍니다.
                 </p>
             </article>
-            <article class="review">
+            <%--<article class="review">
                 <nav><h1>상품리뷰</h1></nav>
                 <ul>
                     <c:forEach var="item" items="${reviewList}">
@@ -572,7 +571,7 @@
                 <div class="paging">
                     ${pagingStr}
                 </div>
-            </article>
+            </article>--%>
         </section>
     </main>
     <button type="button" id="top">상단이동</button>
@@ -581,5 +580,28 @@
 </html>
 
 <script>
+    function decreaseNumber() {
+        var inputElement = document.getElementById("numberInput");
+        var currentValue = parseInt(inputElement.value);
+        if (currentValue > 1) {
+            inputElement.value = currentValue - 1;
+            updateTotalAmount();
+        }
+    }
 
+    function increaseNumber() {
+        var inputElement = document.getElementById("numberInput");
+        var currentValue = parseInt(inputElement.value);
+        inputElement.value = currentValue + 1;
+        updateTotalAmount();
+    }
+
+    function updateTotalAmount() {
+        var inputElement = document.getElementById("numberInput");
+        var productPriceElement = document.getElementById("productPrice");
+        var num = parseInt(inputElement.value);
+        var productPrice = parseInt(productPriceElement.textContent);
+        var totalPrice = productPrice * num;
+        document.getElementById("totalAmount").textContent = totalPrice;
+    }
 </script>
