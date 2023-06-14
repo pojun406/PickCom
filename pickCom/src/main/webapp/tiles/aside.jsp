@@ -26,7 +26,7 @@
             </a>
             <ol>
                 <li>
-                    <a href="/pcom/shop/bestProductList.do">컴퓨터 전체</a>
+                    <a href="shop/bestProductList.do">컴퓨터 전체</a>
                 </li>
                 <li>
                     <a href="#">PC견적</a>

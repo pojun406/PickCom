@@ -41,7 +41,7 @@
     </div>
     <div class="logo">
       <div>
-        <a href="/pcom/shop/bestProductList.do">
+        <a href="/shop/bestProductList.do">
           <img src="../img/header_logo.png" alt="헤더로고">
         </a>
         <form action="#">
@@ -55,11 +55,11 @@
     <div class="menu">
       <div>
         <ul>
-          <li><a href="/pcom/shop/hitProductList.do">히트상품</a></li>
-          <li><a href="/pcom/shop/recommendedProductList.do">추천상품</a></li>
-          <li><a href="/pcom/shop/newProductList.do">최신상품</a></li>
-          <li><a href="/pcom/shop/bestProductList.do">인기상품</a></li>
-          <li><a href="/pcom/shop/saleProductList.do">할인상품</a></li>
+          <li><a href="/shop/hitProductList.do">히트상품</a></li>
+          <li><a href="/shop/recommendedProductList.do">추천상품</a></li>
+          <li><a href="/shop/newProductList.do">최신상품</a></li>
+          <li><a href="/shop/bestProductList.do">인기상품</a></li>
+          <li><a href="/shop/saleProductList.do">할인상품</a></li>
         </ul>
         <ul>
           <li><a href="#">쿠폰존</a></li>

@@ -9,7 +9,7 @@
   <h1>hi</h1>
   <script>
     window.onload = function() {
-      location.href = "/views/login/join_main.jsp";
+      location.href = "/views/login/loginForm.jsp";
     };
   </script>
 </body>

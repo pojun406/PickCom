@@ -19,7 +19,7 @@
 <body>
 <div id="wrapper">
   <%@ include file="../../tiles/loginHeader.jsp" %>
-  <form action="/loginAction.do" method="post">
+  <form action="/login/login.do" method="post">
     <main id="member">
 
       <div class="login">
@@ -32,14 +32,6 @@
         </nav>
         <form action="#">
           <table border="0">
-            <input type="hidden" name="MEMBER_NAME">
-            <input type="hidden" name="MEMBER_NICKNAME">
-            <input type="hidden" name="MEMBER_EMAIL">
-            <input type="hidden" name="MEMBER_RANK">
-            <input type="hidden" name="MEMBER_REGDATE">
-            <input type="hidden" name="MEMBER_LASTDATE">
-            <input type="hidden" name="MEMBER_DELETE">
-            <input type="hidden" name="MEMBER_VISITCOUNT">
             <tr>
               <td>아이디<td>
               <td>
@@ -60,7 +52,7 @@
             </label>
             <a href="#">아이디찾기</a>
             <a href="#">비밀번호찾기</a>
-            <a href="/joinForm.do">회원가입</a>
+            <a href="join_first.jsp">회원가입</a>
           </span>
         </form>
       </div>

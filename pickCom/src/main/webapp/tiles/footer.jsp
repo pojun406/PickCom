@@ -25,7 +25,7 @@
         </ul>
         <div>
             <p>
-                <img src="../../cs/img/footer_logo.png" alt="로고">
+                <img src="../../img/footer_logo.png" alt="로고">
             </p>
             <p>
                 <strong>(주) PICKCOM</strong>

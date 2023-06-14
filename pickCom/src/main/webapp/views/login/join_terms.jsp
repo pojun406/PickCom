@@ -487,7 +487,7 @@
                 <div id=”banner”> 여기에 내용 삽입(혹은 광고 삽입)</div>
             </section>
             <div>
-                <input type="button" class="agree" value="동의하기" onclick="location.href='/join_main.do'">
+                <input type="button" class="agree" value="동의하기" onclick="location.href='join_main.jsp'">
             </div>
         </div>
     </main>
