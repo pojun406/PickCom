@@ -52,7 +52,6 @@
                     <a href="#">최근등록순</a>
                 </li>
             </ul>
-            <!-- 검색 폼 -->
             <form action="search" method="get">
                 <div class="row mb-4">
                     <div class="col-2">

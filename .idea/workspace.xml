@@ -54,6 +54,13 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -83,15 +90,25 @@
   }
 }]]></component>
   <component name="RecentsManager">
+<<<<<<< HEAD
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\roozi\Documents\GitHub\PickCom\pickCom" />
+=======
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\byung\Desktop\PickCom\pickCom\src\main\webapp" />
+      <recent name="C:\Users\byung\Desktop\PickCom\pickCom\src\main\webapp\views" />
+>>>>>>> e6cee99886d833f664dc16a77eaa131fffc5ac3a
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="servlet.shop.product" />
     </key>
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
     <configuration name="Tomcat 9.0.76" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.76" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+=======
+    <configuration name="Tomcat 9.0.39" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.39" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+>>>>>>> e6cee99886d833f664dc16a77eaa131fffc5ac3a
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="PickCom:war exploded">
@@ -101,7 +118,11 @@
         </artifact>
       </deployment>
       <server-settings>
+<<<<<<< HEAD
         <option name="BASE_DIRECTORY_NAME" value="60f80fb1-ef8e-4393-96a7-852320db119c" />
+=======
+        <option name="BASE_DIRECTORY_NAME" value="f71a5c77-f249-4db8-9199-e420afcf7fa9" />
+>>>>>>> e6cee99886d833f664dc16a77eaa131fffc5ac3a
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -109,7 +130,11 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
+<<<<<<< HEAD
         <option name="DEBUG_PORT" value="50965" />
+=======
+        <option name="DEBUG_PORT" value="6917" />
+>>>>>>> e6cee99886d833f664dc16a77eaa131fffc5ac3a
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -174,8 +199,11 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
+<<<<<<< HEAD
           <artifact name="pickCom:war exploded" />
           <artifact name="pcomTest:war exploded" />
+=======
+>>>>>>> e6cee99886d833f664dc16a77eaa131fffc5ac3a
           <artifact name="PickCom:war exploded" />
         </option>
       </method>
@@ -188,6 +216,7 @@
       <created>1686641050775</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1686641050775</updated>
       <workItem from="1686641052107" duration="2938000" />
       <workItem from="1686646796927" duration="760000" />
@@ -197,6 +226,11 @@
       <workItem from="1686731069951" duration="233000" />
       <workItem from="1686739900769" duration="8838000" />
       <workItem from="1686754062784" duration="2996000" />
+=======
+      <updated>1686748888296</updated>
+      <workItem from="1686748890179" duration="104000" />
+      <workItem from="1686749078346" duration="6613000" />
+>>>>>>> e6cee99886d833f664dc16a77eaa131fffc5ac3a
     </task>
     <servers />
   </component>
