@@ -30,7 +30,7 @@ public class JoinController {
     // 회원가입 처리
     @RequestMapping(value="/joinAction.do", method= RequestMethod.POST)
     public ModelAndView insertMember(CommandMap commandMap, HttpServletRequest request) throws Exception {
-        ModelAndView mv = new ModelAndView("/views/login/joinAction");
+        ModelAndView mv = new ModelAndView();
 
         /*// 이메일
         String email = request.getParameter("MEMBER_EMAIL") + "@" + request.getParameter("MEMBER_EMAIL2");
@@ -57,6 +57,7 @@ public class JoinController {
             joinService.memberInsert(commandMap.getMap());
 
             mv.addObject("MEMBER_NAME", commandMap.get("MEMBER_NAME"));
+            mv.setViewName("/views/login/joinAction");
         }
         return mv;
     }

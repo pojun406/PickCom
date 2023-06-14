@@ -26,7 +26,7 @@
             </a>
             <ol>
                 <li>
-                    <a href="<c:url value="/pcom/shop/bestProductList.do"/>">컴퓨터 전체</a>
+                    <a href="/pcom/shop/bestProductList.do">컴퓨터 전체</a>
                 </li>
                 <li>
                     <a href="#">PC견적</a>
@@ -52,7 +52,7 @@
             </a>
             <ol>
                 <li>
-                    <a href="<c:url value="/pcom/shop/productList/allPC/newItem.do"/>">데스크탑 전체</a>
+                    <a href="/pcom/shop/productList/allPC/newItem.do">데스크탑 전체</a>
                 </li>
                 <li>
                     <a href="<c:url value="/pcom/shop/productList/brandPC/newItem.do"/>">브랜드</a>
