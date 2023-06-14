@@ -22,12 +22,10 @@
       <div>
         <!-- 로그인 상태에 따라 버튼 표시 -->
         <c:choose>
-          <!-- 로그인하지 않은 상태 -->
           <c:when test="${not loggedIn}">
             <a href="/loginForm.do">로그인</a>
             <a href="">회원가입</a>
           </c:when>
-          <!-- 로그인한 상태 -->
           <c:otherwise>
             <a href="/logout.do">로그아웃</a>
             <a href="">마이페이지</a>
