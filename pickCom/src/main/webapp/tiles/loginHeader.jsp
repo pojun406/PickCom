@@ -20,21 +20,16 @@
   <header>
     <div class="top">
       <div>
-        <a href="<c:url value="/loginForm.do"/>">로그인</a>
-        <a href="../login/join_first.jsp">회원가입</a>
-        <a href="#">마이페이지</a>
-        <a href="#">
-          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-          장바구니</a>
+        <a href="/login/login.do">로그인</a>
+        <a href="/views/login/join_first.jsp">회원가입</a>
       </div>
     </div>
     <div class="logo">
       <div>
-        <a href="<c:url value="../shop/bestProductList.do"/>">
-          <img src="../../cs/img/header_logo.png" alt="로고">
+        <a href="/shop/bestProductList.do">
+          <img src="../../img/header_logo.png" alt="로고">
         </a>
       </div>
-
     </div>
   </header>
 </div>

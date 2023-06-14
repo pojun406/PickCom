@@ -40,7 +40,7 @@
                                 <span class="msgId">&nbsp;&nbsp;영문, 숫자로 4~12자까지 설정해 주세요.</span>
                             </td>
                             <td>
-                                <button type="button" id="idCheckBtn">아이디중복확인</button>
+                                <button type="button" class="btn btn-secondary" id="idCheckBtn">아이디중복확인</button>
                             </td>
                         </tr>
                         <tr>
@@ -112,7 +112,7 @@
                                     <input type="email" id="email" name="MEMBER_EMAIL" placeholder="이메일 입력" required>
                                 </td>
                                 <td>
-                                    <button type="button" id="sendBtn" onclick="sendEmailVerificationCode()">인증번호 전송</button>
+                                    <button type="button" class="btn btn-secondary" id="sendBtn" onclick="sendEmailVerificationCode()">인증번호 전송</button>
                                 </td>
                             </tr>
                             <tr>
@@ -124,7 +124,7 @@
                                     <input type="text" id="authCode" placeholder="인증번호 입력" required>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-secondary w-100" id="codeBtn" onclick="verifyEmailCode()">인증번호 확인</button>
+                                    <button type="button" class="btn btn-secondary" id="codeBtn" onclick="verifyEmailCode()">인증번호 확인</button>
                                 </td>
                             </tr>
                             <%--<tr>
