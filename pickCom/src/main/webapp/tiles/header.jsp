@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-
+<html>
 <head>
   <meta charset="UTF-8">
   <title>PickCom:대한민국 1등 PC 쇼핑몰</title>
@@ -22,14 +22,12 @@
       <div>
         <!-- 로그인 상태에 따라 버튼 표시 -->
         <c:choose>
-          <!-- 로그인하지 않은 상태 -->
-          <c:when test="${not loggedIn}">
-            <a href="/loginForm.do">로그인</a>
-            <a href="">회원가입</a>
+          <c:when test="${ sessionScope.num != null }">
+            <a href="/login/login.do">로그인</a>
+            <a href="/views/login/join_first.jsp">회원가입</a>
           </c:when>
-          <!-- 로그인한 상태 -->
           <c:otherwise>
-            <a href="/logout.do">로그아웃</a>
+            <a href="/login/logout.do">로그아웃</a>
             <a href="">마이페이지</a>
           </c:otherwise>
         </c:choose>
@@ -71,7 +69,6 @@
       </div>
     </div>
   </header>
-</div>>
+</div>
 </body>
-
 </html>

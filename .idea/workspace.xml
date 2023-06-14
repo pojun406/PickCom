@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PickCom:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa494018-bb7d-47a5-b93b-39329e8fca7f" name="변경" comment="" />
+    <list default="true" id="b49094fd-12be-4c79-bda5-8a9badeebce6" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PickCom_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PickCom_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/java/servlet/common/DBConnPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/java/servlet/common/DBConnPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/java/servlet/member/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/java/servlet/member/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/aside.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/aside.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/default_layout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/default_layout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/loginHeader.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/tiles/loginHeader.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/login/join_first.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/login/join_first.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/login/join_main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/login/join_main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/login/join_terms.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/login/join_terms.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/login/loginForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/login/loginForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productCart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productOrder.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productOrderDone.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/pickCom/src/main/webapp/views/shop/productOrderDone.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CodeStyleSettingsInfer">
-    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -22,21 +45,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="2" />
-  </component>
-  <component name="ProjectId" id="2RCKzqSz1EVgfX4rfXpNdcsKEbV" />
+  <component name="ProjectId" id="2R8oPpHtadzmOG67VnqmbvMoGeC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,49 +66,145 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/byung/Desktop/PickCom",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/roozi/Documents/GitHub/PickCom/pickCom",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "모듈",
-    "project.structure.proportion": "0.15332031",
-    "project.structure.side.proportion": "0.28752887",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "spring.configuration.checksum": "54f27fd00411c78fa999fedbbbcd36a6"
+    "project.structure.last.edited": "아티팩트",
+    "project.structure.proportion": "0.1484375",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "spring.configuration.checksum": "54f27fd00411c78fa999fedbbbcd36a6",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\roozi\Documents\GitHub\PickCom\pickCom" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="servlet.shop.product" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.76" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.76" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="PickCom:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="60f80fb1-ef8e-4393-96a7-852320db119c" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50965" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="pickCom:war exploded" />
+          <artifact name="pcomTest:war exploded" />
+          <artifact name="PickCom:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="aa494018-bb7d-47a5-b93b-39329e8fca7f" name="변경" comment="" />
-      <created>1686748888296</created>
+      <changelist id="b49094fd-12be-4c79-bda5-8a9badeebce6" name="변경" comment="" />
+      <created>1686641050775</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1686748888296</updated>
-      <workItem from="1686748890179" duration="104000" />
-      <workItem from="1686749078346" duration="4967000" />
+      <updated>1686641050775</updated>
+      <workItem from="1686641052107" duration="2938000" />
+      <workItem from="1686646796927" duration="760000" />
+      <workItem from="1686647566101" duration="474000" />
+      <workItem from="1686721724697" duration="239000" />
+      <workItem from="1686726106905" duration="4880000" />
+      <workItem from="1686731069951" duration="233000" />
+      <workItem from="1686739900769" duration="8838000" />
+      <workItem from="1686754062784" duration="2996000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

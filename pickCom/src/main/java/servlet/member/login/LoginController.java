@@ -37,7 +37,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("num", dto.getMember_num());
 			session.setAttribute("name", dto.getMember_name());
 			session.setAttribute("rank", rank);
-			resp.sendRedirect("/productList.do");
+			resp.sendRedirect("/shop/productList.do");
 		} else {
 			JSFunction.alertLocation(resp, "로그인 정보를 확인하세요", "/views/login/loginForm.jsp");
 		}

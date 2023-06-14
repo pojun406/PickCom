@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../../tiles/default_layout.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../../tiles/header.jsp" %>
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>PickCom:대한민국 1등 PC 쇼핑몰</title>
@@ -18,6 +19,9 @@
 <body>
 <div id="wrapper">
     <main id="product">
+        <aside>
+            <%@ include file="../../tiles/aside.jsp" %>
+        </aside>
         <section class="list">
             <nav>
                 <h1>새상품</h1>
@@ -106,24 +110,9 @@
         </section>
     </main>
     <button type="button" id="top">상단이동</button>
+    <%@ include file="../../tiles/footer.jsp" %>
 </div>
 <form id="commonForm" name="commonForm"></form>
 </body>
 
 </html>
-<%--
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("a[name='title']").on("click", function (e) {
-            e.preventDefault();
-            fn_openBoardDetail($(this));
-        });
-    });
-
-    function fn_openBoardDetail(obj) {
-        var comSubmit = new ComSubmit();
-        comSubmit.setUrl("/pcom/shop/productDetail.do");
-        comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
-        comSubmit.submit();
-    }
-</script>--%>

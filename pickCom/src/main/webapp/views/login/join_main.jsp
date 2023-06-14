@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../../tiles/loginHeader.jsp" %>
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>PickCom:대한민국 1등 PC 쇼핑몰</title>
