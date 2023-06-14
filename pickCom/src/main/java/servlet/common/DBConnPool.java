@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class DBConnPool {
 	private String url = "jdbc:mariadb://localhost:3306/pcom";
 	private String user = "root";
-	private String pwd = "eodnjs5060!";
+	private String pwd = "";
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
